@@ -19,4 +19,4 @@ Firebase
 ### フロントエンド
 - Next.js, Typescript
 ### UI
-Material UI, Styeld-Components
+Material UI, Styeld-Component
