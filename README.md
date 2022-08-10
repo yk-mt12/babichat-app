@@ -20,4 +20,3 @@ Firebase
 - Next.js, Typescript
 ### UI
 Material UI, Styeld-Components
-test
