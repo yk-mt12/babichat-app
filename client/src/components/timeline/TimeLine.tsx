@@ -3,7 +3,7 @@ import PostBox from './PostBox'
 import './Timeline.css'
 
 import db from '../../firebase'
-import { collection, getDocs, orderBy, query } from 'firebase/firestore'
+import { collection, getDocs, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
 const TimeLine = () => {
@@ -13,7 +13,8 @@ const TimeLine = () => {
   useEffect(() => {
     const postData = collection(db, 'posts')
     const q = query(postData, orderBy('timestamp', 'desc')) // 最新の投稿順に並び替える
-    getDocs(q).then((querySnapshot) => {
+    // リアルタイムでデータを取得
+    onSnapshot(q, (querySnapshot) => {
       setPosts(querySnapshot.docs.map((doc) => doc.data()))
     })
   }, [])
