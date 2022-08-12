@@ -38,3 +38,35 @@ Firebase
 - Next.js, Typescript
 #### UI
 Material UI, Styeld-Components
+
+## backend
+comming soon...
+
+## git操作
+**masterでは作業しない！！ブランチを変更しておく！！**
+### 現在自分が作業しているブランチを確認する
+```
+git branch # masterの場合ブランチを変更する
+```
+### ブランチの変更
+#### ブランチを新規に作成して移動する場合
+```
+git checkout -b 任意のブランチ名
+```
+
+#### ブランチがすでに存在しており、存在しているブランチに移動する場合
+```
+git checkout 任意のブランチ名
+```
+### 変更を追加する
+```
+git add ファイル名（変更を全ての場合は 'git add .'）
+```
+### 変更内容にコメントをつける
+```
+git commit -m '任意のコメント'
+```
+### 変更をpushする
+```
+git push
+```
