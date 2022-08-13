@@ -33,7 +33,11 @@ function createDict(array, str) {
     return dict
 }
 
-
+/**
+ *
+ * @param {原文} text
+ * @returns バビ語変換後の文章
+ */
 function change_babi(text) {
     var babigo = '';
     var out = '';
@@ -76,3 +80,4 @@ function change_babi(text) {
 text = 'さいとうきょうこ'
 babigo = change_babi(text)
 console.log(babigo)
+
