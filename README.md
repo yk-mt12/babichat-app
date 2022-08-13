@@ -6,6 +6,13 @@
 node -v => v16.14.2
 yarn -v => 1.22.19
 ```
+### 注意
+**※babichat直下でインストールや実行はできない。**
+yarn or yarn devなどする場合は、**/client**ディレクトリに移動する
+```
+# /clientディレクトリに移動
+cd /client
+```
 ### インストール
 ```
 yarn
