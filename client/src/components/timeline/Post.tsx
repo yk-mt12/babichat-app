@@ -1,5 +1,3 @@
-import React from 'react'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
 import { ChatBubbleOutline, FavoriteBorder, PublishOutlined, Repeat } from '@mui/icons-material'
 import './Post.css'
@@ -12,6 +10,7 @@ type PostProps = {
   text: string
   avater: string
   image: string
+  // timestamp: any
 }
 
 const Post = (props: PostProps) => {
@@ -24,21 +23,22 @@ const Post = (props: PostProps) => {
       <div className='post--body'>
         <div className='post-header'>
           <div className='post--headerText'>
-            <h3>{displayName}</h3>
-            <span className='post--headerSpecial'>
-              <VerifiedUserIcon className='post--badge' />@{username}
-            </span>
+            <h3>{displayName === '' ? '匿名' : displayName}</h3>
+            {username !== '' && (
+              <span className='post--headerSpecial'>
+                <VerifiedUserIcon className='post--badge' />@{username}
+              </span>
+            )}
           </div>
           <div className='post--headerDescription'>
             <p>{text}</p>
+            {/* <span className='post--timestamp'>{timestamp}</span> */}
           </div>
         </div>
         <img src={image} alt='' />
         <div className='post--footer'>
           <ChatBubbleOutline fontSize='small' />
-          <Repeat fontSize='small' />
           <FavoriteBorder fontSize='small' />
-          <PublishOutlined fontSize='small' />
         </div>
       </div>
     </div>
