@@ -6,18 +6,22 @@ import db from '../../firebase'
 const PostBox = () => {
   const [postMessage, setPostMessage] = useState<string>('')
   const [postImage, setPostImage] = useState<string>('')
+  const [displayName, setDisplayName] = useState<string>('')
 
   const sendPost = (e: any) => {
     e.preventDefault()
+
     addDoc(collection(db, 'posts'), {
-      displayName: 'プログラミングチュートリアル',
-      username: 'kitsune',
+      displayName: displayName,
+      username: '',
       verified: true,
       text: postMessage,
       avater: 'http://shincode.info/wp-content/uploads/2021/12/icon.png',
       image: postImage,
       timestamp: serverTimestamp(),
     })
+
+    setDisplayName('')
     setPostMessage('')
     setPostImage('')
   }
@@ -26,6 +30,12 @@ const PostBox = () => {
     <div className='postBox'>
       <form>
         <Avatar />
+        <input
+          value={displayName}
+          placeholder='名前を入力'
+          type='text'
+          onChange={(e) => setDisplayName(e.target.value)}
+        />
         <input
           value={postMessage}
           placeholder='今どうしてる？'
