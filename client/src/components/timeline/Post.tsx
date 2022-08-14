@@ -2,6 +2,9 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
 import { ChatBubbleOutline, FavoriteBorder, PublishOutlined, Repeat } from '@mui/icons-material'
 import './Post.css'
 import { Avatar } from '@mui/material'
+import { changeBabi }  from '../../logic/babigo'
+import { getText }  from '../../logic/changeText'
+
 
 type PostProps = {
   displayName: string
@@ -31,7 +34,8 @@ const Post = (props: PostProps) => {
             )}
           </div>
           <div className='post--headerDescription'>
-            <p>{text}</p>
+            <p>{ changeBabi(text) }</p>
+            {/* <p>{text}</p> */}
             {/* <span className='post--timestamp'>{timestamp}</span> */}
           </div>
         </div>

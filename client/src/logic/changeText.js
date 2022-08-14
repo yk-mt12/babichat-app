@@ -26,26 +26,34 @@ function replaceArrayElements(array, targetId, sourceId) {
     ], []);
 }
 
-const text = 'ありがとうこんにちはこんばんは'
-const change_num = getRandomArbitrary(1, text.length-1)
-let text_ary = text.split('')
+function changeText(num, ary) {
+    for(let i=0; i<=num; i++) {
+        let rand1 = getRandomArbitrary(1, ary.length-1)
+        let rand2
+        if(rand1+1 == ary.length) {
+            rand2 = rand1 -1
+        } else {
+            rand2 = rand1 +1
+        }
 
-
-// console.log(text.length)
-// console.log(change_num)
-
-for(let i=0; i<=change_num; i++) {
-    rand1 = getRandomArbitrary(1, text_ary.length-1)
-    if(rand1+1 == text_ary.length) {
-        rand2 = rand1 -1
-    } else {
-        rand2 = rand1 +1
+        ary = replaceArrayElements(ary, rand1, rand2)
+        // console.log(txtAry.join())
     }
 
-    text_ary = replaceArrayElements(text_ary, rand1, rand2)
-    // console.log(text_ary.join())
+    return ary
 }
 
-console.log('原文: ' + text)
-console.log('変換後: ' + text_ary.join(''))
 
+export const getText = (text) => {
+    const changeNum = getRandomArbitrary(1, text.length-1)
+    let txtAry = text.split('')
+
+    txtAry = changeText(changeNum, txtAry)
+    return txtAry.join('')
+}
+
+const text = 'ありがとうこんにちはこんばんは'
+// getText(text)
+
+console.log('原文: ' + text)
+console.log('変換後: ' + getText(text))
