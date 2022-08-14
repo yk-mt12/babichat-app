@@ -3,7 +3,7 @@ import { ChatBubbleOutline, FavoriteBorder, PublishOutlined, Repeat } from '@mui
 import './Post.css'
 import { Avatar } from '@mui/material'
 import { changeBabi }  from '../../logic/babigo'
-import { getText }  from '../../logic/changeText'
+// import { getText }  from '../../logic/changeText'
 
 
 type PostProps = {
@@ -35,6 +35,8 @@ const Post = (props: PostProps) => {
           </div>
           <div className='post--headerDescription'>
             <p>{ changeBabi(text) }</p>
+            <p>翻訳:</p>
+            <p>{ text }</p>
             {/* <p>{text}</p> */}
             {/* <span className='post--timestamp'>{timestamp}</span> */}
           </div>

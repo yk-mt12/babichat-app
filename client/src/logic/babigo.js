@@ -1,5 +1,11 @@
-
-var regexp = /[\u{3000}-\u{301C}\u{3041}-\u{3093}\u{309B}-\u{309E}]/mu;
+function isHiragana(str){
+    str = (str==null) ? '' : str;
+    if(str.match(/^[ぁ-んー]*$/)){  // "ー"の後ろの文字は全角スペースです。
+        return true;
+    }else{
+        return false;
+    }
+}
 
 // 文字列の定義
 const rowA = 'あかさたなはまやらわがざだばぱ'.split('');
@@ -35,23 +41,6 @@ function createDict(array, str) {
     return dict
 }
 
-// /**
-//  * 絵文字が含まれているかどうか
-//  * @param {文章} str
-//  * @returns ブール値
-//  */
-// function isEmoji(str) {
-//     var ranges = [
-//         '\ud83c[\udf00-\udfff]', // U+1F300 to U+1F3FF
-//         '\ud83d[\udc00-\ude4f]', // U+1F400 to U+1F64F
-//         '\ud83d[\ude80-\udeff]' // U+1F680 to U+1F6FF
-//     ];
-//     if (str.match(ranges.join('|'))) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
 
 /**
  *
@@ -64,10 +53,11 @@ export const changeBabi = (text) => {
     var out = '';
     const babigoAll = rowA + rowI + rowU + rowE + rowO;
     // console.log(babigoAll)
-    let ary = text.split('');
-    ary.forEach(function(value, i) {
+    let txtArray = text.split('');
+    txtArray.forEach(function(value, i) {
         // console.log(i, value)
-        if(regexp.test(value)) {
+        if(isHiragana(txtArray[i])) {
+            console.log('ひらがなである:', value)
             if(babigoAll.includes(value)) {
                 // console.log('ok')
                 if(out != '') {
@@ -97,7 +87,14 @@ export const changeBabi = (text) => {
             }
         }
         else {
-            babigo += value
+            console.log('ひらがなではない: ', value)
+            if (out != '') {
+                babigo += dictAll[out]
+                babigo += value
+            } else {
+                babigo += value
+            }
+            out = ''
         }
     });
     return babigo
