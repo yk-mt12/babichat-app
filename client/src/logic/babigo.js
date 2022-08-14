@@ -1,3 +1,8 @@
+/**
+ * ひらがな判定
+ * @param {判定文字} str
+ * @returns ひらがなかどうかのブール値
+ */
 function isHiragana(str){
     str = (str==null) ? '' : str;
     if(str.match(/^[ぁ-んー]*$/)){  // "ー"の後ろの文字は全角スペースです。
