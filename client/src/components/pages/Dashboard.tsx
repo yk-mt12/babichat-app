@@ -6,7 +6,7 @@ import Ranking from './ranking'
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='dashboard--body'>
       <TimeLine />
       <Message />
       <Ranking />
