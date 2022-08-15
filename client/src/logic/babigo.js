@@ -5,7 +5,7 @@
  */
 function isHiragana(str){
     str = (str==null) ? '' : str;
-    if(str.match(/^[ぁ-んー]*$/)){  // "ー"の後ろの文字は全角スペースです。
+    if(str.match(/^[ぁ-ん]*$/)){  // "ー"の後ろの文字は全角スペースです。
         return true;
     }else{
         return false;
@@ -53,7 +53,7 @@ function createDict(array, str) {
  * @returns バビ語変換後の文章
  */
 export const changeBabi = (text) => {
-
+    // カタカナ+ーの時に'undefined'と出力されるエラーを解消する
     var babigo = '';
     var out = '';
     const babigoAll = rowA + rowI + rowU + rowE + rowO;
