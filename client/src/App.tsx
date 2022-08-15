@@ -12,7 +12,7 @@ import Profile from './components/pages/profile'
 function App() {
   return (
     <Router>
-      <div className='App'>
+      <div className='app'>
         <Sidebar />
         <Routes>
           <Route path='/' element={<Dashboard />} />
