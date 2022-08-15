@@ -1,5 +1,5 @@
-import Post from './Post'
-import PostBox from './PostBox'
+import Post from '../timeline/Post'
+import PostBox from '../timeline/PostBox'
 import './Timeline.css'
 
 import db from '../../firebase'
@@ -21,7 +21,7 @@ const TimeLine = () => {
   const [posts, setPosts] = useState<any>([])
 
   useEffect(() => {
-    let temp: any[] = []
+    // let temp: any[] = []
     const postData = collection(db, 'posts')
     const q = query(postData, orderBy('timestamp', 'desc')) // 最新の投稿順に並び替える
     // リアルタイムでデータを取得

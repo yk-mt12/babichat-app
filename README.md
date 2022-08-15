@@ -40,11 +40,11 @@ yarn build
 #### データベース
 Firebase
 #### サーバサイド
-- Express, Typescript
+- Express
 #### フロントエンド
-- Next.js, Typescript
+- React.js, Typescript
 #### UI
-Material UI, Styeld-Components
+Material UI
 
 ## backend
 comming soon...
