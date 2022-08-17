@@ -18,6 +18,7 @@ type PostProps = {
 const Post = (props: PostProps) => {
   const { displayName, username, verified, text, avater, image } = props
   const babi = changeBabi(text)
+  const [toggle, setToggle] = useState(false)
 
   /**
    * 音声読み上げ
@@ -26,19 +27,6 @@ const Post = (props: PostProps) => {
   const speechClick = (text:string) => {
     readAloud(text)
   };
-
-  // /**
-  //  * バビ語の翻訳
-  //  * @param text 原文
-  //  */
-  // const transration = (text:string) => {
-
-  //   const ts = document.getElementById('transration')
-  //   const btn = document.getElementById('tsBtn')
-
-  //   ts.innerText = text
-  //   btn.innerText = '元に戻す'
-  // };
 
   return (
     <div className='post'>
@@ -57,11 +45,9 @@ const Post = (props: PostProps) => {
           </div>
           <div className='post--headerDescription'>
             <p>{ babi }</p>
-            {/* <p>翻訳:</p>
-            <p>{ text }</p> */}
             <button onClick={() => speechClick(babi)}>読み上げる</button>
-            {/* <button id = 'tsBtn' onClick={() => transration(text)}>翻訳</button> */}
-            {/* <p>{text}</p> */}
+            <button onClick={() => setToggle(!toggle)}>翻訳</button>
+            {toggle && <p>{ text }</p>}
             {/* <span className='post--timestamp'>{timestamp}</span> */}
           </div>
         </div>
