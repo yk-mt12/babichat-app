@@ -1,28 +1,16 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import './App.css'
-import Dashboard from './components/pages/dashboard'
-import Sidebar from './components/sidebar/Sidebar'
-import Message from './components/pages/message'
-import TimeLine from './components/pages/TimeLine'
-import Setting from './components/pages/Setting'
-import Ranking from './components/pages/ranking'
-import Profile from './components/pages/profile'
+import Home from './components/pages/Home'
+import SignIn from './components/signUp/Signin'
+
+import { useAuth } from './firebase/authFunction'
 
 function App() {
+  const signInUser = useAuth()
+
   return (
     <Router>
-      <div className='app'>
-        <Sidebar />
-        <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/post' element={<TimeLine />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/message' element={<Message />} />
-          <Route path='/setting' element={<Setting />} />
-          <Route path='/ranking' element={<Ranking />} />
-        </Routes>
-      </div>
+      <div className='app'>{signInUser.uid ? <Home /> : <SignIn />}</div>
     </Router>
   )
 }

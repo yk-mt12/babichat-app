@@ -1,7 +1,7 @@
 import { Avatar, Button } from '@mui/material'
 import React, { useState } from 'react'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
-import db from '../../firebase'
+import { db } from '../../firebase'
 
 const PostBox = () => {
   const [postMessage, setPostMessage] = useState<string>('')

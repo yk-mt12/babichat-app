@@ -1226,6 +1226,13 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
+"@types/recoil@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@types/recoil/-/recoil-0.0.9.tgz#a5efceda791ee2720418e232445bb34f4f2e4be9"
+  integrity sha512-dXKcvdzQbkFCcULgxhtc/3shoCNqsspRUY1KwIUYcAzgS0qY7+IxlcjRjq+9PizFnzKrHESllkbezqCMstPmQA==
+  dependencies:
+    recoil "*"
+
 "@types/responselike@*", "@types/responselike@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/responselike/-/responselike-1.0.0.tgz#251f4fe7d154d2bad125abe1b429b23afd262e29"
@@ -1718,6 +1725,11 @@ deprecation@^2.0.0, deprecation@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/deprecation/-/deprecation-2.3.1.tgz#6368cbdb40abf3373b525ac87e4a260c3a700919"
   integrity sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==
+
+dialog-polyfill@^0.4.7:
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/dialog-polyfill/-/dialog-polyfill-0.4.10.tgz#c4ea68a0deed4abb59a6a2a025c548b278cd532e"
+  integrity sha512-j5yGMkP8T00UFgyO+78OxiN5vC5dzRQF3BEio+LhNvDbyfxWBsi3sfPArDm54VloaJwy2hm3erEiDWqHRC8rzw==
 
 dir-glob@^3.0.1:
   version "3.0.1"
@@ -2285,6 +2297,14 @@ firebase@^9.9.2:
     "@firebase/storage-compat" "0.1.17"
     "@firebase/util" "1.6.3"
 
+firebaseui@^6.0.0:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/firebaseui/-/firebaseui-6.0.1.tgz#bdabc69de9c245975a1277d507b2f0ff0044e558"
+  integrity sha512-SMNCFt/xns3mnvd0hImEDu7di5fqRU3MVyIaXpVEfg6v0bH6f3m+YybivU7KElRUT/47DHMn++D8MrZYYnoN5g==
+  dependencies:
+    dialog-polyfill "^0.4.7"
+    material-design-lite "^1.2.0"
+
 flat-cache@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/flat-cache/-/flat-cache-3.0.4.tgz#61b0338302b2fe9f957dcc32fc2a87f1c3048b11"
@@ -2513,6 +2533,11 @@ grapheme-splitter@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
+
+hamt_plus@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hamt_plus/-/hamt_plus-1.0.2.tgz#e21c252968c7e33b20f6a1b094cd85787a265601"
+  integrity sha512-t2JXKaehnMb9paaYA7J0BX8QQAY8lwfQ9Gjf4pg/mk4krt+cmwmU652HOoWonf+7+EQV97ARPMhhVgU1ra2GhA==
 
 has-bigints@^1.0.1, has-bigints@^1.0.2:
   version "1.0.2"
@@ -2953,6 +2978,11 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+material-design-lite@^1.2.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/material-design-lite/-/material-design-lite-1.3.0.tgz#d004ce3fee99a1eeb74a78b8a325134a5f1171d3"
+  integrity sha512-ao76b0bqSTKcEMt7Pui+J/S3eVF0b3GWfuKUwfe2lP5DKlLZOwBq37e0/bXEzxrw7/SuHAuYAdoCwY6mAYhrsg==
+
 md5@^2.2.1:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/md5/-/md5-2.3.0.tgz#c3da9a6aae3a30b46b7b0c349b87b110dc3bda4f"
@@ -3351,6 +3381,18 @@ react-dom@^18.0.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-firebase-hooks@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/react-firebase-hooks/-/react-firebase-hooks-5.0.3.tgz#3125a382d6b72deee776fe1df9e0c8173cf36d5d"
+  integrity sha512-0+V2XwInZJNjW8B2cm+U21Hlv4xnp/1tJqIoDg2rjyWzKTQ9VoLPQ9PAt+fMqPumjLz5uCIREY7YqGSSjc439Q==
+
+react-firebaseui@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-firebaseui/-/react-firebaseui-6.0.0.tgz#97a075e7caa2fb969c8ded9efbbcefccb1f33ce1"
+  integrity sha512-VzLMiW7DBZCsW/qpP9nky/pPlAoIjDxA2Qyc+QAPf+RjelIkvPPiCBXR2aAz+Upy+ujrx6pYDXj547DW5uC4ww==
+  dependencies:
+    firebaseui "^6.0.0"
+
 react-flip-move@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-flip-move/-/react-flip-move-3.0.4.tgz#261f66101fbc305f9b7b28959c5cf8236413ca74"
@@ -3422,6 +3464,13 @@ rechoir@^0.6.2:
   integrity sha512-HFM8rkZ+i3zrV+4LQjwQ0W+ez98pApMGM3HUrN04j3CqzPOzl9nmP15Y8YXNm8QHGv/eacOVEjqhmWpkRV0NAw==
   dependencies:
     resolve "^1.1.6"
+
+recoil@*, recoil@^0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.7.5.tgz#9a33a03350cfd99e08bdd5b73bfc8b8b9ee751b9"
+  integrity sha512-GVShsj5+M/2GULWBs5WBJGcsNis/d3YvDiaKjYh3mLKXftjtmk9kfaQ8jwjoIXySCwn8/RhgJ4Sshwgzj2UpFA==
+  dependencies:
+    hamt_plus "1.0.2"
 
 regenerator-runtime@^0.13.4:
   version "0.13.9"
