@@ -4,8 +4,6 @@ import './Post.css'
 import { Avatar } from '@mui/material'
 import { changeBabi } from '../../logic/babigo'
 import { readAloud } from '../../logic/readText'
-import React from 'react'
-// import { getText }  from '../../logic/changeText'
 
 type LikesType = {
   likedUsers: string[]
@@ -26,9 +24,27 @@ const Post = (props: PostProps) => {
   const { displayName, username, verified, text, avater, image } = props
   const babi = changeBabi(text)
 
-  const handleClick = (text) => {
+  /**
+   * 音声読み上げ
+   * @param text バビ語文章
+   */
+  const speechClick = (text: string) => {
     readAloud(text)
-  };
+  }
+
+  // /**
+  //  * バビ語の翻訳
+  //  * @param text 原文
+  //  */
+  // const transration = (text:string) => {
+
+  //   const ts = document.getElementById('transration')
+  //   const btn = document.getElementById('tsBtn')
+
+  //   ts.innerText = text
+  //   btn.innerText = '元に戻す'
+  // };
+
   return (
     <div className='post'>
       <div className='post--avater'>
@@ -48,8 +64,7 @@ const Post = (props: PostProps) => {
             {/* <p>翻訳:</p>
             <p>{ text }</p> */}
             <button onClick={() => speechClick(babi)}>読み上げる</button>
-            <button id = 'tsBtn' onClick={() => transration(text)}>翻訳</button>
-            <p id = 'transration'></p>
+
             {/* <p>{text}</p> */}
             {/* <span className='post--timestamp'>{timestamp}</span> */}
           </div>
