@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { auth, provider } from '../../firebase'
 // import firebaseui from 'firebaseui'
 // import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import 'firebaseui/dist/firebaseui.css'
 import { signInWithPopup } from 'firebase/auth'
 import { signIn, useAuth } from '../../firebase/authFunction'
-import { Navigate } from 'react-router-dom'
 
 const SignIn = () => {
   const signInWithGoogle = () => {
@@ -17,7 +16,6 @@ const SignIn = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(email, password)
 
     signIn(email, password)
   }

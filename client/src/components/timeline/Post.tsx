@@ -32,11 +32,11 @@ const Post = (props: PostProps) => {
         <div className='post-header'>
           <div className='post--headerText'>
             <h3>{displayName === '' ? '匿名' : displayName}</h3>
-            {username !== '' && (
+            {/* {username !== '' && (
               <span className='post--headerSpecial'>
                 <VerifiedUserIcon className='post--badge' />@{username}
               </span>
-            )}
+            )} */}
           </div>
           <div className='post--headerDescription'>
             <p>{babi}</p>

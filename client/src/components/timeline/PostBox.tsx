@@ -1,22 +1,27 @@
 import { Avatar, Button } from '@mui/material'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../../firebase'
-import { useAuth } from '../../firebase/authFunction'
+import { signIn, useAuth } from '../../firebase/authFunction'
 
 const PostBox = () => {
   const [displayName, setDisplayName] = useState<string>('')
   const [postMessage, setPostMessage] = useState<string>('')
   const [postImage, setPostImage] = useState<string>('')
   const signInUser = useAuth()
+  const uid = signInUser.uid
   const avater = signInUser.photoURL
+  // const username = signInUser.displayName
+
+  // console.log(username);
 
   const sendPost = (e: any) => {
     e.preventDefault()
 
     addDoc(collection(db, 'posts'), {
+      uid: uid,
       displayName: displayName,
-      username: '',
+      // username: username,
       verified: true,
       text: postMessage,
       avater: avater,
