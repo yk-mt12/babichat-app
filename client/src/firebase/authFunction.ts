@@ -54,6 +54,8 @@ export const useAuth = () => {
       if (authUser) {
         setSignInUser({
           uid: authUser.uid,
+          displayName: authUser.displayName,
+          photoURL: authUser.photoURL,
         })
       } else {
         resetStatus()

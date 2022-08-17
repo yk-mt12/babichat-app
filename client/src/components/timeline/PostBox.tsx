@@ -1,26 +1,33 @@
 import { Avatar, Button } from '@mui/material'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../../firebase'
+import { signIn, useAuth } from '../../firebase/authFunction'
 
 const PostBox = () => {
+  const [displayName, setDisplayName] = useState<string>('')
   const [postMessage, setPostMessage] = useState<string>('')
   const [postImage, setPostImage] = useState<string>('')
-  const [displayName, setDisplayName] = useState<string>('')
+  const signInUser = useAuth()
+  const uid = signInUser.uid
+  const avater = signInUser.photoURL
+  // const username = signInUser.displayName
+
+  // console.log(username);
 
   const sendPost = (e: any) => {
     e.preventDefault()
 
     addDoc(collection(db, 'posts'), {
+      uid: uid,
       displayName: displayName,
-      username: '',
+      // username: username,
       verified: true,
       text: postMessage,
-      avater: 'http://shincode.info/wp-content/uploads/2021/12/icon.png',
+      avater: avater,
       image: postImage,
       timestamp: serverTimestamp(),
     })
-
     setDisplayName('')
     setPostMessage('')
     setPostImage('')
@@ -29,7 +36,7 @@ const PostBox = () => {
   return (
     <div className='postBox'>
       <form>
-        <Avatar />
+        <Avatar src={avater} />
         <input
           value={displayName}
           placeholder='名前を入力'
