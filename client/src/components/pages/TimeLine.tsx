@@ -2,9 +2,10 @@ import Post from '../timeline/Post'
 import PostBox from '../timeline/PostBox'
 import './Timeline.css'
 
-import db from '../../firebase'
-import { collection, getDocs, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { db } from '../../firebase'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
+import Sidebar from '../sidebar/Sidebar'
 
 type PostType = {
   id: string

@@ -2,6 +2,7 @@
 import { initializeApp } from 'firebase/app'
 // import { getAnalytics } from 'firebase/analytics'
 import { getFirestore } from 'firebase/firestore'
+import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -19,5 +20,7 @@ const app = initializeApp(firebaseConfig)
 
 // データベースを初期化する
 const db = getFirestore(app)
+const auth = getAuth(app)
+const provider = new GoogleAuthProvider()
 
-export default db
+export { db, auth, provider }

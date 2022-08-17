@@ -1,8 +1,7 @@
-import React from 'react'
 import { collection, query, orderBy, limit } from 'firebase/firestore'
-import db from '../../firebase'
+import { db } from '../../firebase'
 
-const ranking = () => {
+const Ranking = () => {
   const rankingRef = collection(db, 'posts')
 
   const rank = query(rankingRef, orderBy('liked'), limit(10))
@@ -11,4 +10,4 @@ const ranking = () => {
   return <div className='ranking'>RANKING</div>
 }
 
-export default ranking
+export default Ranking
