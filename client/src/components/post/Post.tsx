@@ -25,10 +25,10 @@ type PostProps = {
 const Post = (props: PostProps) => {
   const { displayName, username, verified, text, avater, image } = props
   const babi = changeBabi(text)
-  const handleClick = (text: string) => {
-    readAloud(text)
-  }
 
+  const handleClick = (text) => {
+    readAloud(text)
+  };
   return (
     <div className='post'>
       <div className='post--avater'>
@@ -47,7 +47,9 @@ const Post = (props: PostProps) => {
           <div className='post--headerDescription'>
             {/* <p>翻訳:</p>
             <p>{ text }</p> */}
-            <button onClick={() => handleClick(babi)}>読み上げる</button>
+            <button onClick={() => speechClick(babi)}>読み上げる</button>
+            <button id = 'tsBtn' onClick={() => transration(text)}>翻訳</button>
+            <p id = 'transration'></p>
             {/* <p>{text}</p> */}
             {/* <span className='post--timestamp'>{timestamp}</span> */}
           </div>
