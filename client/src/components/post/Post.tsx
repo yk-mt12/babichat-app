@@ -4,10 +4,10 @@ import './Post.css'
 import { Avatar } from '@mui/material'
 import { changeBabi } from '../../logic/babigo'
 import { readAloud } from '../../logic/readText'
-// import { getText }  from '../../logic/changeText'
 import { db } from '../../firebase'
 import { arrayUnion, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
 import { useAuth } from '../../firebase/authFunction'
+import { useState } from 'react'
 
 type PostProps = {
   uid: string
@@ -34,7 +34,7 @@ const Post = (props: PostProps) => {
    * 音声読み上げ
    * @param text バビ語文章
    */
-  const speechClick = (text:string) => {
+  const speechClick = (text: string) => {
     readAloud(text)
   }
 
@@ -62,11 +62,10 @@ const Post = (props: PostProps) => {
             )} */}
           </div>
           <div className='post--headerDescription'>
-            <p>{ babi }</p>
+            <p>{babi}</p>
             <button onClick={() => speechClick(babi)}>読み上げる</button>
             <button onClick={() => setToggle(!toggle)}>翻訳</button>
-            {toggle && <p>{ text }</p>}
-            {/* <span className='post--timestamp'>{timestamp}</span> */}
+            {toggle && <p>{text}</p>}
           </div>
         </div>
         <img src={image} alt='' />
