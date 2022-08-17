@@ -1,4 +1,4 @@
-export const readAloud = (text) => {
+export const readAloud = (text: string) => {
     // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
     if ('speechSynthesis' in window) {
 
