@@ -28,8 +28,13 @@ const Post = (props: PostProps) => {
   const signInUser = useAuth()
   const { displayName, username, verified, text, avater, image } = props
   const babi = changeBabi(text)
+  const [toggle, setToggle] = useState(false)
 
-  const handleClick = (text: string) => {
+  /**
+   * 音声読み上げ
+   * @param text バビ語文章
+   */
+  const speechClick = (text:string) => {
     readAloud(text)
   }
 
@@ -57,11 +62,10 @@ const Post = (props: PostProps) => {
             )} */}
           </div>
           <div className='post--headerDescription'>
-            <p>{babi}</p>
-            {/* <p>翻訳:</p>
-            <p>{ text }</p> */}
-            <button onClick={() => handleClick(babi)}>読み上げる</button>
-            {/* <p>{text}</p> */}
+            <p>{ babi }</p>
+            <button onClick={() => speechClick(babi)}>読み上げる</button>
+            <button onClick={() => setToggle(!toggle)}>翻訳</button>
+            {toggle && <p>{ text }</p>}
             {/* <span className='post--timestamp'>{timestamp}</span> */}
           </div>
         </div>
