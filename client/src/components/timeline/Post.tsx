@@ -2,8 +2,9 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
 import { ChatBubbleOutline, FavoriteBorder, PublishOutlined, Repeat } from '@mui/icons-material'
 import './Post.css'
 import { Avatar } from '@mui/material'
-import { changeBabi } from '../../logic/babigo'
+import { changeBabi }  from '../../logic/babigo'
 import { readAloud } from '../../logic/readText'
+import { useState } from 'react'
 
 type PostProps = {
   displayName: string
