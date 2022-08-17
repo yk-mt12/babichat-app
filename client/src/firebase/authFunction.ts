@@ -10,6 +10,13 @@ import {
 } from 'firebase/auth'
 
 /**
+userCredential.user.accessToken //トークンを取得
+userCredential.user.email       //メールアドレスを取得
+userCredential.user.uid.        //ユーザーIDを取得
+userCredential.user.metadata.createdAt   //ユーザー作成日時を取得
+userCredential.user.metadata.lastLoginAt //最終ログイン日時を取得
+*/
+/**
  * ユーザー認証する
  */
 export const signIn = async (email: string, password: string) => {

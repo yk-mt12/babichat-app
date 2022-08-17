@@ -1,5 +1,5 @@
-import Post from '../timeline/Post'
-import PostBox from '../timeline/PostBox'
+import Post from '../post/Post'
+import PostBox from '../post/PostBox'
 import './Timeline.css'
 
 import { db } from '../../firebase'
@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import Sidebar from '../sidebar/Sidebar'
 
 type PostType = {
+  likedUser: any
   id: string
   displayName: string
   username: string
@@ -15,6 +16,7 @@ type PostType = {
   text: string
   avater: string
   image: string
+  likedUsers: string[]
 }
 
 const TimeLine = () => {
@@ -70,6 +72,7 @@ const TimeLine = () => {
           avater={post.avater}
           image={post.image}
           // timestamp={post.timestamp}
+          // likes={post.likedUser.length()}
         />
       ))}
     </div>

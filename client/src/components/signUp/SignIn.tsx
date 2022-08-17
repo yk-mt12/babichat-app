@@ -5,6 +5,7 @@ import { auth, provider } from '../../firebase'
 import 'firebaseui/dist/firebaseui.css'
 import { signInWithPopup } from 'firebase/auth'
 import { signIn, useAuth } from '../../firebase/authFunction'
+import { Link } from 'react-router-dom'
 
 const SignIn = () => {
   const signInWithGoogle = () => {
@@ -46,8 +47,7 @@ const SignIn = () => {
           <button>ログイン</button>
         </div>
         <div>
-          ユーザ登録はこちらから
-          {/* <Navigate to='/signup' /> */}
+          <Link to='/signup'>ユーザ登録はこちらから</Link>
         </div>
       </form>
       <div>
