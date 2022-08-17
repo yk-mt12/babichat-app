@@ -7,13 +7,13 @@ import { signInWithPopup } from 'firebase/auth'
 import { signIn, signUp } from '../../firebase/authFunction'
 import { Navigate } from 'react-router-dom'
 
+// TODO:メールログイン（サインアップ）の場合、うまくいかない
 const SignUp = () => {
   // const signInWithGoogle = () => {
   //   signInWithPopup(auth, provider)
   // }
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
 
