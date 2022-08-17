@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom'
 
-import Message from './Message'
+import Message from '../sidebar/Message'
 import TimeLine from './TimeLine'
 import Setting from './Setting'
 import Ranking from './Ranking'

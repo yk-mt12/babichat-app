@@ -29,6 +29,7 @@ const PostBox = () => {
       createTime: serverTimestamp(),
       updateTime: serverTimestamp(),
       likeCount: 0,
+      likedUsers: [],
     })
     setDisplayName('')
     setPostMessage('')

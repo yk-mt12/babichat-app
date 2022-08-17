@@ -1,12 +1,16 @@
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
-import { ChatBubbleOutline, FavoriteBorder, PublishOutlined, Repeat } from '@mui/icons-material'
+import { ChatBubbleOutline, FavoriteBorder } from '@mui/icons-material'
 import './Post.css'
 import { Avatar } from '@mui/material'
-import { changeBabi }  from '../../logic/babigo'
+import { changeBabi } from '../../logic/babigo'
 import { readAloud } from '../../logic/readText'
 // import { getText }  from '../../logic/changeText'
+import { db } from '../../firebase'
+import { arrayUnion, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { useAuth } from '../../firebase/authFunction'
 
 type PostProps = {
+  uid: string
   displayName: string
   username: string
   verified: boolean
@@ -14,16 +18,29 @@ type PostProps = {
   avater: string
   image: string
   // timestamp: any
-  likes: LikesType
+  createTime: string
+  updateTime: string
+  likeCount: 0
+  likedUsers: string[]
 }
 
 const Post = (props: PostProps) => {
+  const signInUser = useAuth()
   const { displayName, username, verified, text, avater, image } = props
   const babi = changeBabi(text)
 
   const handleClick = (text: string) => {
     readAloud(text)
   }
+
+  // const incrimentLikedUsers = async () => {
+  //   const postRef = collection(db, 'posts').doc('4eADonIyVHL8bdISoN5T')
+  //   await postRef.update({
+  //     likedUsers: arrayUnion(signInUser.uid),
+  //     updatedAt: serverTimestamp(),
+  //   })
+  // }
+
   return (
     <div className='post'>
       <div className='post--avater'>

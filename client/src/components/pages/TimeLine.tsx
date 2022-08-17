@@ -8,14 +8,16 @@ import { useEffect, useState } from 'react'
 import Sidebar from '../sidebar/Sidebar'
 
 type PostType = {
-  likedUser: any
-  id: string
+  uid: string
   displayName: string
   username: string
   verified: boolean
   text: string
   avater: string
   image: string
+  createTime: string
+  updateTime: string
+  likeCount: 0
   likedUsers: string[]
 }
 
@@ -29,8 +31,10 @@ const TimeLine = () => {
     const q = query(postData, orderBy('timestamp', 'desc')) // 最新の投稿順に並び替える
     // リアルタイムでデータを取得
     onSnapshot(q, (querySnapshot) => {
-      setPosts(querySnapshot.docs.map((doc) => doc.data()))
+      setPosts([querySnapshot.docs.map((doc) => doc.data())])
+      setPosts([...posts, querySnapshot.docs.map((doc) => doc.id)])
     })
+    console.log(posts)
 
     // TODO: ユニークキーをドキュメントから取得したい。以下のコメントアウトでpostsのデータを取得すると、postsのデータがデータベースに存在するデータより5倍ほど増える。
     // onSnapshot(q, (querySnapshot) => {
@@ -64,6 +68,7 @@ const TimeLine = () => {
 
       {posts.map((post: PostType) => (
         <Post
+          uid={post.uid}
           key={post.text}
           displayName={post.displayName}
           username={post.username}
@@ -71,8 +76,10 @@ const TimeLine = () => {
           text={post.text}
           avater={post.avater}
           image={post.image}
-          // timestamp={post.timestamp}
-          // likes={post.likedUser.length()}
+          createTime={post.createTime}
+          updateTime={post.updateTime}
+          likeCount={post.likeCount}
+          likedUsers={post.likedUsers}
         />
       ))}
     </div>
