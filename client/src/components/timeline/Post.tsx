@@ -22,7 +22,7 @@ const Post = (props: PostProps) => {
 
   const handleClick = (text: string) => {
     readAloud(text)
-  }
+  };
   return (
     <div className='post'>
       <div className='post--avater'>
@@ -39,10 +39,12 @@ const Post = (props: PostProps) => {
             )} */}
           </div>
           <div className='post--headerDescription'>
-            <p>{babi}</p>
+            <p>{ babi }</p>
             {/* <p>翻訳:</p>
             <p>{ text }</p> */}
-            <button onClick={() => handleClick(babi)}>読み上げる</button>
+            <button onClick={() => speechClick(babi)}>読み上げる</button>
+            <button id = 'tsBtn' onClick={() => transration(text)}>翻訳</button>
+            <p id = 'transration'></p>
             {/* <p>{text}</p> */}
             {/* <span className='post--timestamp'>{timestamp}</span> */}
           </div>
