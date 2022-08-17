@@ -56,8 +56,7 @@ function createDict(array: string[], str: string) {
  * @param {原文} text
  * @returns バビ語変換後の文章
  */
-export const changeBabi = (text:string) => {
-    // カタカナ+ーの時に'undefined'と出力されるエラーを解消する
+export const changeBabi = (text:string):string => {
     let babigo = '';
     let out = '';
     const babigoAll = rowA.concat(rowI).concat(rowU).concat(rowE).concat(rowO);
@@ -66,7 +65,7 @@ export const changeBabi = (text:string) => {
     txtArray.forEach(function(value, i) {
         // console.log(i, value)
         if(isHiragana(txtArray[i])) {
-            console.log('ひらがなである:', value)
+            // console.log('ひらがなである:', value)
             if(babigoAll.includes(value)) {
                 // console.log('ok')
                 if(out != '') {
@@ -96,7 +95,7 @@ export const changeBabi = (text:string) => {
             }
         }
         else {
-            console.log('ひらがなではない: ', value)
+            // console.log('ひらがなではない: ', value)
             if (out != '') {
                 babigo += dictAll[out]
                 babigo += value
