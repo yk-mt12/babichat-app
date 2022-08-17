@@ -3,7 +3,7 @@
  * @param {判定文字} str
  * @returns ひらがなかどうかのブール値
  */
-function isHiragana(str){
+function isHiragana(str:string){
     str = (str==null) ? '' : str;
     if(str.match(/^[ぁ-ん]*$/)){  // "ー"の後ろの文字は全角スペースです。
         return true;
@@ -34,9 +34,13 @@ const dictKyu = createDict(rowKyu, 'ぶ')
 const dictKyo = createDict(rowKyo, 'ぼ')
 const dictAll = Object.assign(dictA ,dictI ,dictU ,dictE ,dictO,dictKya ,dictKyu ,dictKyo);
 
+type DictType = {
+    [Key:string]:string;
+}
 // 辞書の生成
-function createDict(array, str) {
-    var dict = {}
+function createDict(array: string[], str: string) {
+
+    const dict:DictType = {}
     array.forEach(element => {
         dict[element] = element + str
         // console.log(element+str)
@@ -52,13 +56,13 @@ function createDict(array, str) {
  * @param {原文} text
  * @returns バビ語変換後の文章
  */
-export const changeBabi = (text) => {
+export const changeBabi = (text:string) => {
     // カタカナ+ーの時に'undefined'と出力されるエラーを解消する
-    var babigo = '';
-    var out = '';
-    const babigoAll = rowA + rowI + rowU + rowE + rowO;
+    let babigo = '';
+    let out = '';
+    const babigoAll = rowA.concat(rowI).concat(rowU).concat(rowE).concat(rowO);
     // console.log(babigoAll)
-    let txtArray = text.split('');
+    const txtArray = text.split('');
     txtArray.forEach(function(value, i) {
         // console.log(i, value)
         if(isHiragana(txtArray[i])) {
@@ -80,7 +84,7 @@ export const changeBabi = (text) => {
                 babigo += dictAll[out];
                 out = '';
             } else if(value == 'ー') {
-                var tmp = dictAll[out]
+                const tmp = dictAll[out]
                 babigo += tmp + value // + tmp[tmp.length-1]
                 out = ''
             } else if(['、', '。'].includes(value)) {
@@ -105,7 +109,7 @@ export const changeBabi = (text) => {
     return babigo
 }
 
-let text = 'さいとうきょうこ'
-let babigo = changeBabi(text)
-console.log(babigo)
+// let text = 'さいとうきょうこ'
+// let babigo = changeBabi(text)
+// console.log(babigo)
 
