@@ -14,6 +14,8 @@ const SignUp = () => {
   // }
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  // const [username, setUsername] = useState<string>('')
+
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -22,8 +24,17 @@ const SignUp = () => {
 
   return (
     <div>
-      <h1>登録する</h1>
+      <h1>アカウントを作成</h1>
       <form onSubmit={handleSubmit}>
+        {/* <div>
+          <label>ユーザ名</label>
+          <input
+            name='username'
+            type='text'
+            placeholder='username'
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div> */}
         <div>
           <label>メールアドレス</label>
           <input

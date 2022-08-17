@@ -4,7 +4,7 @@ import './Post.css'
 import { Avatar } from '@mui/material'
 import { changeBabi }  from '../../logic/babigo'
 import { readAloud } from '../../logic/readText'
-import { useState } from 'react'
+// import { getText }  from '../../logic/changeText'
 
 type PostProps = {
   displayName: string
@@ -14,21 +14,16 @@ type PostProps = {
   avater: string
   image: string
   // timestamp: any
+  likes: LikesType
 }
 
 const Post = (props: PostProps) => {
   const { displayName, username, verified, text, avater, image } = props
   const babi = changeBabi(text)
-  const [toggle, setToggle] = useState(false)
 
-  /**
-   * 音声読み上げ
-   * @param text バビ語文章
-   */
-  const speechClick = (text:string) => {
+  const handleClick = (text: string) => {
     readAloud(text)
-  };
-
+  }
   return (
     <div className='post'>
       <div className='post--avater'>
@@ -45,10 +40,11 @@ const Post = (props: PostProps) => {
             )} */}
           </div>
           <div className='post--headerDescription'>
-            <p>{ babi }</p>
-            <button onClick={() => speechClick(babi)}>読み上げる</button>
-            <button onClick={() => setToggle(!toggle)}>翻訳</button>
-            {toggle && <p>{ text }</p>}
+            <p>{babi}</p>
+            {/* <p>翻訳:</p>
+            <p>{ text }</p> */}
+            <button onClick={() => handleClick(babi)}>読み上げる</button>
+            {/* <p>{text}</p> */}
             {/* <span className='post--timestamp'>{timestamp}</span> */}
           </div>
         </div>
