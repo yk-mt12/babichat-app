@@ -5,7 +5,6 @@ const Ranking = () => {
   const rankingRef = collection(db, 'posts')
 
   const rank = query(rankingRef, orderBy('liked'), limit(10))
-  console.log(rank)
 
   return <div className='ranking'>RANKING</div>
 }

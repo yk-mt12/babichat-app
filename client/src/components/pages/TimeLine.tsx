@@ -5,27 +5,18 @@ import './Timeline.css'
 import { db } from '../../firebase'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
-import Sidebar from '../sidebar/Sidebar'
 
 type PostType = {
-<<<<<<< HEAD
   uid: string
-=======
-  likedUser: any
-  id: string
->>>>>>> refs/remotes/origin/login-function
   displayName: string
   username: string
   verified: boolean
   text: string
   avater: string
   image: string
-<<<<<<< HEAD
   createTime: string
   updateTime: string
-  likeCount: 0
-=======
->>>>>>> refs/remotes/origin/login-function
+  likedCount: number
   likedUsers: string[]
 }
 
@@ -34,34 +25,12 @@ const TimeLine = () => {
   const [posts, setPosts] = useState<any>([])
 
   useEffect(() => {
-    // let temp: any[] = []
     const postData = collection(db, 'posts')
-    const q = query(postData, orderBy('timestamp', 'desc')) // 最新の投稿順に並び替える
+    const q = query(postData, orderBy('createTime', 'desc')) // 最新の投稿順に並び替える
     // リアルタイムでデータを取得
     onSnapshot(q, (querySnapshot) => {
-      setPosts([querySnapshot.docs.map((doc) => doc.data())])
-      setPosts([...posts, querySnapshot.docs.map((doc) => doc.id)])
+      setPosts(querySnapshot.docs.map((doc) => doc.data()))
     })
-    console.log(posts)
-
-    // TODO: ユニークキーをドキュメントから取得したい。以下のコメントアウトでpostsのデータを取得すると、postsのデータがデータベースに存在するデータより5倍ほど増える。
-    // onSnapshot(q, (querySnapshot) => {
-    //   querySnapshot.docs.map((doc) => {
-    //     const data = doc.data()
-    //     // console.log(data)
-    //     temp.push({
-    //       displayName: data.displayName,
-    //       username: data.username,
-    //       verified: data.verified,
-    //       text: data.text,
-    //       avater: data.avater,
-    //       image: data.image,
-    //       id: doc.id,
-    //     })
-    //     // console.log(temp)
-    //   })
-    //   setPosts(temp)
-    // })
   }, [])
 
   return (
@@ -84,15 +53,10 @@ const TimeLine = () => {
           text={post.text}
           avater={post.avater}
           image={post.image}
-<<<<<<< HEAD
           createTime={post.createTime}
           updateTime={post.updateTime}
-          likeCount={post.likeCount}
+          likedCount={post.likedCount}
           likedUsers={post.likedUsers}
-=======
-          // timestamp={post.timestamp}
-          // likes={post.likedUser.length()}
->>>>>>> refs/remotes/origin/login-function
         />
       ))}
     </div>
