@@ -2,7 +2,7 @@ import { Avatar, Button } from '@mui/material'
 import { useState } from 'react'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../../firebase'
-import { signIn, useAuth } from '../../firebase/authFunction'
+import { useAuth } from '../../firebase/authFunction'
 
 const PostBox = () => {
   const [displayName, setDisplayName] = useState<string>('')
@@ -11,7 +11,7 @@ const PostBox = () => {
   const signInUser = useAuth()
   const uid = signInUser.uid
   const avater = signInUser.photoURL
-  // const username = signInUser.displayName
+  const username = signInUser.displayName
 
   // console.log(username);
 
@@ -21,12 +21,18 @@ const PostBox = () => {
     addDoc(collection(db, 'posts'), {
       uid: uid,
       displayName: displayName,
-      // username: username,
+      username: username,
       verified: true,
       text: postMessage,
       avater: avater,
       image: postImage,
-      timestamp: serverTimestamp(),
+      createTime: serverTimestamp(),
+      updateTime: serverTimestamp(),
+      likeCount: 0,
+<<<<<<< HEAD:client/src/components/post/PostBox.tsx
+      likedUsers: [],
+=======
+>>>>>>> refs/remotes/origin/login-function:client/src/components/timeline/PostBox.tsx
     })
     setDisplayName('')
     setPostMessage('')

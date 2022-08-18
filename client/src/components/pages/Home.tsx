@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom'
 
 import Dashboard from './Dashboard'
-import Message from './Message'
+import Message from '../sidebar/Message'
 import TimeLine from './TimeLine'
 import Setting from './Setting'
 import Ranking from './Ranking'
 import Profile from './Profile'
-import SignIn from '../signUp/Signin'
+import SignIn from '../signUp/SignIn'
 import SignUp from '../signUp/SignUp'
 
 const Home = () => {

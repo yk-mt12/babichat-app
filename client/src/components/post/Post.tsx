@@ -1,23 +1,43 @@
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
-import { ChatBubbleOutline, FavoriteBorder, PublishOutlined, Repeat } from '@mui/icons-material'
+import { ChatBubbleOutline, FavoriteBorder } from '@mui/icons-material'
 import './Post.css'
 import { Avatar } from '@mui/material'
-import { changeBabi }  from '../../logic/babigo'
+import { changeBabi } from '../../logic/babigo'
 import { readAloud } from '../../logic/readText'
+import { db } from '../../firebase'
+import { arrayUnion, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { useAuth } from '../../firebase/authFunction'
 import { useState } from 'react'
 
 type PostProps = {
+  uid: string
   displayName: string
   username: string
   verified: boolean
   text: string
   avater: string
   image: string
-  // timestamp: any
+  createTime: string
+  updateTime: string
+  likeCount: 0
+  likedUsers: string[]
 }
 
 const Post = (props: PostProps) => {
-  const { displayName, username, verified, text, avater, image } = props
+  const signInUser = useAuth()
+  const {
+    displayName,
+    username,
+    verified,
+    text,
+    avater,
+    image,
+    uid,
+    createTime,
+    updateTime,
+    likeCount,
+    likedUsers,
+  } = props
   const babi = changeBabi(text)
   const [toggle, setToggle] = useState(false)
 
@@ -25,9 +45,17 @@ const Post = (props: PostProps) => {
    * 音声読み上げ
    * @param text バビ語文章
    */
-  const speechClick = (text:string) => {
+  const speechClick = (text: string) => {
     readAloud(text)
-  };
+  }
+
+  // const incrimentLikedUsers = async () => {
+  //   const postRef = collection(db, 'posts').doc('4eADonIyVHL8bdISoN5T')
+  //   await postRef.update({
+  //     likedUsers: arrayUnion(signInUser.uid),
+  //     updatedAt: serverTimestamp(),
+  //   })
+  // }
 
   return (
     <div className='post'>
@@ -45,11 +73,10 @@ const Post = (props: PostProps) => {
             )} */}
           </div>
           <div className='post--headerDescription'>
-            <p>{ babi }</p>
+            <p>{babi}</p>
             <button onClick={() => speechClick(babi)}>読み上げる</button>
             <button onClick={() => setToggle(!toggle)}>翻訳</button>
-            {toggle && <p>{ text }</p>}
-            {/* <span className='post--timestamp'>{timestamp}</span> */}
+            {toggle && <p>{text}</p>}
           </div>
         </div>
         <img src={image} alt='' />
