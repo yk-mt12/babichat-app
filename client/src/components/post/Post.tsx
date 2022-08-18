@@ -19,23 +19,23 @@ type PostProps = {
   image: string
   createTime: string
   updateTime: string
-  likeCount: 0
+  likedCount: number
   likedUsers: string[]
 }
 
 const Post = (props: PostProps) => {
   const signInUser = useAuth()
   const {
+    avater,
+    uid,
     displayName,
     username,
     verified,
     text,
-    avater,
     image,
-    uid,
     createTime,
     updateTime,
-    likeCount,
+    likedCount,
     likedUsers,
   } = props
   const babi = changeBabi(text)
