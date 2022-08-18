@@ -8,16 +8,24 @@ import { useEffect, useState } from 'react'
 import Sidebar from '../sidebar/Sidebar'
 
 type PostType = {
+<<<<<<< HEAD
   uid: string
+=======
+  likedUser: any
+  id: string
+>>>>>>> refs/remotes/origin/login-function
   displayName: string
   username: string
   verified: boolean
   text: string
   avater: string
   image: string
+<<<<<<< HEAD
   createTime: string
   updateTime: string
   likeCount: 0
+=======
+>>>>>>> refs/remotes/origin/login-function
   likedUsers: string[]
 }
 
@@ -76,10 +84,15 @@ const TimeLine = () => {
           text={post.text}
           avater={post.avater}
           image={post.image}
+<<<<<<< HEAD
           createTime={post.createTime}
           updateTime={post.updateTime}
           likeCount={post.likeCount}
           likedUsers={post.likedUsers}
+=======
+          // timestamp={post.timestamp}
+          // likes={post.likedUser.length()}
+>>>>>>> refs/remotes/origin/login-function
         />
       ))}
     </div>

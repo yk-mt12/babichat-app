@@ -29,7 +29,10 @@ const PostBox = () => {
       createTime: serverTimestamp(),
       updateTime: serverTimestamp(),
       likeCount: 0,
+<<<<<<< HEAD:client/src/components/post/PostBox.tsx
       likedUsers: [],
+=======
+>>>>>>> refs/remotes/origin/login-function:client/src/components/timeline/PostBox.tsx
     })
     setDisplayName('')
     setPostMessage('')

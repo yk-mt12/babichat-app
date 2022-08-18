@@ -57,9 +57,6 @@ const Post = (props: PostProps) => {
   //   })
   // }
 
-  console.log('postコンポーネント');
-
-
   return (
     <div className='post'>
       <div className='post--avater'>
