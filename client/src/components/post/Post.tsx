@@ -17,7 +17,6 @@ type PostProps = {
   text: string
   avater: string
   image: string
-  // timestamp: any
   createTime: string
   updateTime: string
   likeCount: 0
@@ -26,7 +25,19 @@ type PostProps = {
 
 const Post = (props: PostProps) => {
   const signInUser = useAuth()
-  const { displayName, username, verified, text, avater, image } = props
+  const {
+    displayName,
+    username,
+    verified,
+    text,
+    avater,
+    image,
+    uid,
+    createTime,
+    updateTime,
+    likeCount,
+    likedUsers,
+  } = props
   const babi = changeBabi(text)
   const [toggle, setToggle] = useState(false)
 
@@ -45,6 +56,9 @@ const Post = (props: PostProps) => {
   //     updatedAt: serverTimestamp(),
   //   })
   // }
+
+  console.log('postコンポーネント');
+
 
   return (
     <div className='post'>
