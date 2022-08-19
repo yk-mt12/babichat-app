@@ -1,6 +1,10 @@
 import React from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import HomeIcon from '@mui/icons-material/Home'
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import ForumIcon from '@mui/icons-material/Forum';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
+import SettingsIcon from '@mui/icons-material/Settings';
 import SidebarOption from './SidebarOption'
 import './Sidebar.css'
 const Sidebar = () => {
@@ -11,11 +15,11 @@ const Sidebar = () => {
       <h2>Name</h2>
 
       <SidebarOption Icon={HomeIcon} text='Home' />
-      <SidebarOption Icon={HomeIcon} text='Post' />
-      <SidebarOption Icon={HomeIcon} text='Message' />
-      <SidebarOption Icon={HomeIcon} text='Ranking' />
+      <SidebarOption Icon={AssignmentIcon} text='Post' />
+      <SidebarOption Icon={ForumIcon} text='Message' />
+      <SidebarOption Icon={QueryStatsIcon} text='Ranking' />
 
-      <SidebarOption Icon={HomeIcon} text='Setting' />
+      <SidebarOption Icon={SettingsIcon} text='Setting' />
     </div>
   )
 }
