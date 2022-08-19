@@ -12,7 +12,7 @@ const Sidebar = () => {
       <AccountCircleIcon className='sidebar-option' />
       <h2>Name</h2>
 
-      <SidebarOption Icon={HomeIcon} text='Home' />
+      <SidebarOption Icon={HomeIcon} text='Home' navigate=''/>
       <SidebarOption Icon={HomeIcon} text='Post' navigate='post' />
       <SidebarOption Icon={HomeIcon} text='Message' navigate='message' />
       <SidebarOption Icon={HomeIcon} text='Ranking' navigate='ranking' />

@@ -11,7 +11,7 @@ const Dashboard = () => {
     <div className='dashboard--body'>
       <Sidebar />
       <TimeLine />
-      <Message />
+      {/* <Message /> */}
       <Ranking />
       <Setting />
       <SignOut />
