@@ -1,21 +1,42 @@
+import {
+  addDoc,
+  serverTimestamp,
+  collection,
+  doc,
+  setDoc,
+  Timestamp,
+  getDoc,
+} from 'firebase/firestore'
 import { useEffect } from 'react'
 import { useRecoilState, useResetRecoilState } from 'recoil'
 import { signInUserState } from '../store/auth'
-import { auth } from './index'
+import { auth, db } from './index'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  signInAnonymously,
+  getAuth,
 } from 'firebase/auth'
+import { Navigate } from 'react-router-dom'
 
 /**
+ * userCredential.userの使い方
 userCredential.user.accessToken //トークンを取得
 userCredential.user.email       //メールアドレスを取得
 userCredential.user.uid.        //ユーザーIDを取得
 userCredential.user.metadata.createdAt   //ユーザー作成日時を取得
 userCredential.user.metadata.lastLoginAt //最終ログイン日時を取得
 */
+
+type User = {
+  name: string
+  createTime: Timestamp
+  updateTime: Timestamp
+  likePostCount: number
+}
+
 /**
  * ユーザー認証する
  */
@@ -52,6 +73,7 @@ export const logout = async () => {
 /**
  * SignInの状態を監視する
  */
+
 export const useAuth = () => {
   const [signInUser, setSignInUser] = useRecoilState(signInUserState)
   const resetStatus = useResetRecoilState(signInUserState)
@@ -63,13 +85,42 @@ export const useAuth = () => {
           uid: authUser.uid,
           displayName: authUser.displayName,
           photoURL: authUser.photoURL,
+          createTime: serverTimestamp(),
+          updateTime: serverTimestamp(),
         })
       } else {
         resetStatus()
       }
     })
+
     return () => unSub()
   }, [setSignInUser, resetStatus])
 
   return signInUser
+}
+
+export const createUsersDB = async () => {
+  auth.onAuthStateChanged(async (authUser) => {
+    // 未ログイン時
+    if (!authUser) {
+      // 匿名ログインする
+      signInAnonymously(auth)
+    }
+    // ログイン時
+    else {
+      // ログイン済みのユーザー情報があるかをチェック
+      const userRef = doc(db, 'users', authUser.uid)
+      const userDoc = await getDoc(userRef)
+      if (!userDoc.exists()) {
+        // Firestore にユーザー用のドキュメントが作られていなければ作る
+        await setDoc(doc(db, 'users', authUser.uid), {
+          createTime: serverTimestamp(),
+          displayName: authUser.displayName ? authUser.displayName : 'ゲストユーザ',
+          likeCount: 0,
+          photoURL: authUser.photoURL ? authUser.photoURL : '',
+          updateTime: serverTimestamp(),
+        })
+      }
+    }
+  })
 }

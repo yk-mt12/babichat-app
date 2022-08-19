@@ -8,8 +8,12 @@ import Ranking from './Ranking'
 import Profile from './Profile'
 import SignIn from '../signUp/SignIn'
 import SignUp from '../signUp/SignUp'
+import { useAuth } from '../../firebase/authFunction'
 
 const Home = () => {
+  const signInUser = useAuth()
+  console.log(signInUser);
+
   return (
     <div>
       <Routes>
