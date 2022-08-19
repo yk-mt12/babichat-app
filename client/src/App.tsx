@@ -1,19 +1,25 @@
-import { BrowserRouter as Router } from 'react-router-dom'
+import { memo, useEffect, useState } from 'react'
+import { BrowserRouter as Router, Navigate } from 'react-router-dom'
 import './App.css'
 import Home from './components/pages/Home'
 import SignIn from './components/signUp/SignIn'
 import SignUp from './components/signUp/SignUp'
 
-import { useAuth } from './firebase/authFunction'
+import { createUsersDB } from './firebase/authFunction'
 
-function App() {
-  const signInUser = useAuth()
-
+const App = memo(() => {
+  useEffect(() => {
+    createUsersDB()
+  },[])
   return (
     <Router>
-      <div className='app'>{signInUser.uid ? <Home /> : <SignIn />}</div>
+      <div className='app'>
+        <Home />
+      </div>
     </Router>
   )
-}
+})
 
 export default App
+
+
