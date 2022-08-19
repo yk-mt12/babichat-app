@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 
 import Dashboard from './Dashboard'
-import Message from '../sidebar/Message'
+import Message from './Message'
 import TimeLine from './TimeLine'
 import Setting from './Setting'
 import Ranking from './Ranking'
