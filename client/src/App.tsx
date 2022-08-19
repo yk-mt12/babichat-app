@@ -1,19 +1,25 @@
-import { useState } from 'react'
+import { memo, useEffect, useState } from 'react'
+import { BrowserRouter as Router, Navigate } from 'react-router-dom'
 import './App.css'
-import Sidebar from './components/sidebar/Sidebar'
-import TimeLine from './components/timeline/TimeLine'
+import Home from './components/pages/Home'
+import SignIn from './components/signUp/SignIn'
+import SignUp from './components/signUp/SignUp'
 
-function App() {
+import { createUsersDB } from './firebase/authFunction'
+
+const App = memo(() => {
+  useEffect(() => {
+    createUsersDB()
+  },[])
   return (
-    <div className='app'>
-      <Sidebar />
-      {/* Ranking */}
-      {/* TimeLine(post) */}
-      <TimeLine />
-      {/* Message */}
-      {/* Setting */}
-    </div>
+    <Router>
+      <div className='app'>
+        <Home />
+      </div>
+    </Router>
   )
-}
+})
 
 export default App
+
+
