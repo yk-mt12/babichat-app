@@ -6,8 +6,8 @@ import TimeLine from './TimeLine'
 import Setting from './Setting'
 import Ranking from './Ranking'
 import Profile from './Profile'
-import SignIn from '../signUp/SignIn'
-import SignUp from '../signUp/SignUp'
+import SignIn from '../user/SignIn'
+import SignUp from '../user/SignUp'
 import { useAuth } from '../../firebase/authFunction'
 
 const Home = () => {

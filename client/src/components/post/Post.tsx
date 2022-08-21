@@ -4,7 +4,6 @@ import './Post.css'
 import { Avatar } from '@mui/material'
 import { changeBabi } from '../../logic/babigo'
 import { readAloud } from '../../logic/readText'
-import { db } from '../../firebase'
 import {
   arrayUnion,
   collection,
@@ -12,10 +11,11 @@ import {
   DocumentReference,
   serverTimestamp,
   updateDoc,
+  writeBatch,
 } from 'firebase/firestore'
 import { useAuth } from '../../firebase/authFunction'
-import { useEffect, useState } from 'react'
-import { batchPostLiked, batchPostUnliked } from './Liked'
+import { useCallback, useEffect, useState } from 'react'
+import useBatchPostLiked from '../../hooks/useBatchPostLiked'
 
 type PostProps = {
   author: DocumentReference
@@ -26,11 +26,13 @@ type PostProps = {
   createTime: string
   updateTime: string
   likedCount: number
+  postId: string
 }
 
 const Post = (props: PostProps) => {
   const signInUser = useAuth()
-  const { avater, displayName, text, image, createTime, updateTime, likedCount } = props
+  const { postLiked, postUnliked, setPostId } = useBatchPostLiked()
+  const { avater, displayName, text, image, createTime, updateTime, likedCount, postId } = props
   const babi = changeBabi(text)
   const [toggle, setToggle] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
@@ -42,18 +44,6 @@ const Post = (props: PostProps) => {
   const speechClick = (text: string) => {
     readAloud(text)
   }
-
-  // const incrimentLikedUsers = async () => {
-  //   const postRef = collection(db, 'posts').doc('4eADonIyVHL8bdISoN5T')
-  //   await postRef.update({
-  //     likedUsers: arrayUnion(signInUser.uid),
-  //     updatedAt: serverTimestamp(),
-  //   })
-  // }
-
-  // useEffect(() => {
-  //   isLiked ? batchPostLiked() : batchPostUnliked()
-  // }, [setIsLiked])
 
   return (
     <div className='post'>
@@ -80,7 +70,14 @@ const Post = (props: PostProps) => {
         <img src={image} alt='' />
         <div className='post--footer'>
           <ChatBubbleOutline fontSize='small' />
-          <FavoriteBorder fontSize='small'/>
+          <FavoriteBorder
+            fontSize='small'
+            onClick={() => {
+              setPostId(postId)
+              postLiked()
+            }}
+          />
+          <p>{likedCount}</p>
         </div>
       </div>
     </div>

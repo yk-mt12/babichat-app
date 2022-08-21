@@ -24,6 +24,7 @@ type PostType = {
   createTime: string
   updateTime: string
   likedCount: number
+  postId: string
 }
 
 const TimeLine = () => {
@@ -52,7 +53,7 @@ const TimeLine = () => {
 
       {posts.map((post: PostType) => (
         <Post
-          key={post.text}
+          key={post.postId}
           author={post.author}
           displayName={post.displayName}
           text={post.text}
@@ -61,6 +62,7 @@ const TimeLine = () => {
           createTime={post.createTime}
           updateTime={post.updateTime}
           likedCount={post.likedCount}
+          postId={post.postId}
         />
       ))}
     </div>

@@ -10,7 +10,7 @@ import {
 import { useEffect } from 'react'
 import { useRecoilState, useResetRecoilState } from 'recoil'
 import { signInUserState } from '../store/auth'
-import { auth, db } from './index'
+import { auth, db } from '.'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
