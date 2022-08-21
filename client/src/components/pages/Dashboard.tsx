@@ -1,9 +1,9 @@
-import Message from '../sidebar/Message'
+import Message from './Message'
 import TimeLine from './TimeLine'
 import Setting from './Setting'
 import Ranking from './Ranking'
 import Sidebar from '../sidebar/Sidebar'
-import SignOut from '../signUp/SignOut'
+import SignOut from '../user/SignOut'
 import './Dashboard.css'
 
 const Dashboard = () => {
