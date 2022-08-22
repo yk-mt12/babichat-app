@@ -1,5 +1,5 @@
 .timeline {
-  flex: 0.45;
+  /* flex: 0.45; */
   border-right: 1px solid var(--babichat-color);
   overflow: scroll;
 }

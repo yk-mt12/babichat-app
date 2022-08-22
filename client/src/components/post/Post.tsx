@@ -27,14 +27,14 @@ type PostProps = {
   image: string
   createTime: string
   updateTime: string
-  likedCount: number
+  likeCount: number
   postId: string
 }
 
 const Post = (props: PostProps) => {
   const signInUser = useAuth()
   const { checkPostIsLiked, setPostId } = useBatchPostLiked()
-  const { avater, displayName, text, image, createTime, updateTime, likedCount, postId } = props
+  const { avater, displayName, text, image, createTime, updateTime, likeCount, postId } = props
   const babi = changeBabi(text)
   const [isClicked, setIsClicked] = useState(false)
 
@@ -64,21 +64,24 @@ const Post = (props: PostProps) => {
           <div className='post--headerDescription'>
             <p>{babi}</p>
             <Button variant="contained" onClick={() => speechClick(babi)}>読み上げる</Button>
-            <Button variant="contained" onClick={() => setToggle(!toggle)}>翻訳</Button>
-            {toggle && <p>{text}</p>}
+            <Button variant="contained" onClick={() => setIsClicked(!isClicked)}>翻訳</Button>
+            {isClicked && <p>{text}</p>}
           </div>
         </div>
         <img src={image} alt='' />
         <div className='post--footer'>
           <ChatBubbleOutline fontSize='small' />
-          <FavoriteBorder
-            fontSize='small'
-            onClick={() => {
-              setPostId(postId)
-              checkPostIsLiked()
-            }}
-          />
-          <p>{likedCount}</p>
+          <div className='like-box'>
+            <FavoriteBorder
+
+              fontSize='small'
+              onClick={() => {
+                setPostId(postId)
+                checkPostIsLiked()
+              }}
+            />
+            <p>{likeCount}</p>
+          </div>
         </div>
       </div>
     </div>

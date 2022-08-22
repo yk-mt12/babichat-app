@@ -23,7 +23,7 @@ type PostType = {
   image: string
   createTime: string
   updateTime: string
-  likedCount: number
+  likeCount: number
   postId: string
 }
 
@@ -60,7 +60,7 @@ const TimeLine = () => {
           image={post.image}
           createTime={post.createTime}
           updateTime={post.updateTime}
-          likedCount={post.likedCount}
+          likeCount={post.likeCount}
           postId={post.postId}
         />
       ))}
