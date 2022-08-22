@@ -31,11 +31,10 @@ type PostProps = {
 
 const Post = (props: PostProps) => {
   const signInUser = useAuth()
-  const { postLiked, postUnliked, setPostId } = useBatchPostLiked()
+  const { checkPostIsLiked, setPostId } = useBatchPostLiked()
   const { avater, displayName, text, image, createTime, updateTime, likedCount, postId } = props
   const babi = changeBabi(text)
-  const [toggle, setToggle] = useState(false)
-  const [isLiked, setIsLiked] = useState(false)
+  const [isClicked, setIsClicked] = useState(false)
 
   /**
    * 音声読み上げ
@@ -63,8 +62,8 @@ const Post = (props: PostProps) => {
           <div className='post--headerDescription'>
             <p>{babi}</p>
             <button onClick={() => speechClick(babi)}>読み上げる</button>
-            <button onClick={() => setToggle(!toggle)}>翻訳</button>
-            {toggle && <p>{text}</p>}
+            <button onClick={() => setIsClicked(!isClicked)}>翻訳</button>
+            {isClicked && <p>{text}</p>}
           </div>
         </div>
         <img src={image} alt='' />
@@ -74,7 +73,7 @@ const Post = (props: PostProps) => {
             fontSize='small'
             onClick={() => {
               setPostId(postId)
-              postLiked()
+              checkPostIsLiked()
             }}
           />
           <p>{likedCount}</p>
