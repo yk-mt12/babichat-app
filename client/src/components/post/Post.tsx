@@ -27,14 +27,14 @@ type PostProps = {
   image: string
   createTime: string
   updateTime: string
-  likedCount: number
+  likeCount: number
   postId: string
 }
 
 const Post = (props: PostProps) => {
   const signInUser = useAuth()
   const { checkPostIsLiked, setPostId } = useBatchPostLiked()
-  const { avater, displayName, text, image, createTime, updateTime, likedCount, postId } = props
+  const { avater, displayName, text, image, createTime, updateTime, likeCount, postId } = props
   const babi = changeBabi(text)
   const [isClicked, setIsClicked] = useState(false)
 
@@ -71,14 +71,17 @@ const Post = (props: PostProps) => {
         <img src={image} alt='' />
         <div className='post--footer'>
           <ChatBubbleOutline fontSize='small' />
-          <FavoriteBorder
-            fontSize='small'
-            onClick={() => {
-              setPostId(postId)
-              checkPostIsLiked()
-            }}
-          />
-          <p>{likedCount}</p>
+          <div className='like-box'>
+            <FavoriteBorder
+              
+              fontSize='small'
+              onClick={() => {
+                setPostId(postId)
+                checkPostIsLiked()
+              }}
+            />
+            <p>{likeCount}</p>
+          </div>
         </div>
       </div>
     </div>
