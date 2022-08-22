@@ -10,6 +10,7 @@ import {
   doc,
   serverTimestamp,
   setDoc,
+  getDoc,
 } from 'firebase/firestore'
 import { db } from '../firebase'
 import { useAuth } from '../firebase/authFunction'
@@ -30,8 +31,8 @@ type LikedPost = {
 }
 
 const useBatchPostLiked = () => {
-  console.log('useBatchPostLiked 開始')
   const [postId, setPostId] = useState('cV9hJDJbRYIRQ8Ck0r9s')
+  const [postData, setPostData] = useState<any>([])
   const signInUser = useAuth()
   const uid = signInUser.uid
   const userRef = doc(db, 'users', uid)
@@ -39,21 +40,45 @@ const useBatchPostLiked = () => {
   const likedUserRef = doc(postRef, 'likedUser', uid)
   const likedPostRef = doc(userRef, 'likedPosts', postId)
 
+  const checkPostIsLiked = async () => {
+    console.log('checkPostIsLiked:')
+    const likedUserSnap = await getDoc(likedUserRef)
+    const likedPostSnap = await getDoc(likedPostRef)
+    const postSnap = await getDoc(postRef)
+    if (postSnap.exists()) {
+      setPostData(postSnap.data())
+    }
+
+    if (likedUserSnap.exists() && likedPostSnap.exists()) {
+      postUnliked()
+    } else {
+      postLiked()
+    }
+  }
+
   const postLiked = async () => {
     const batch = writeBatch(db)
 
     batch.set(likedUserRef, {
-      id: userRef.id,
+      userId: userRef.id,
       createTime: serverTimestamp(),
     })
 
     batch.set(likedPostRef, {
-      id: postRef.id,
-      postRef: postRef,
-      createTime: serverTimestamp(),
+      author: userRef.path,
+      postId: postRef.id,
+      postRef: postRef.path,
+      createTime: serverTimestamp()
     })
 
-    await batch.commit()
+    await batch
+      .commit()
+      .then(() => {
+        console.log('いいね成功')
+      })
+      .catch((e) => {
+        console.log('いいね失敗')
+      })
   }
 
   const postUnliked = async () => {
@@ -65,7 +90,7 @@ const useBatchPostLiked = () => {
     await batch.commit()
   }
 
-  return { postLiked, postUnliked, setPostId }
+  return { checkPostIsLiked, postLiked, postUnliked, setPostId }
 }
 
 export default useBatchPostLiked
