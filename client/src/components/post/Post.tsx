@@ -64,8 +64,8 @@ const Post = (props: PostProps) => {
           <div className='post--headerDescription'>
             <p>{babi}</p>
             <Button variant="contained" onClick={() => speechClick(babi)}>読み上げる</Button>
-            <Button variant="contained" onClick={() => setToggle(!toggle)}>翻訳</Button>
-            {toggle && <p>{text}</p>}
+            <Button variant="contained" onClick={() => setIsClicked(!isClicked)}>翻訳</Button>
+            {isClicked && <p>{text}</p>}
           </div>
         </div>
         <img src={image} alt='' />
@@ -73,7 +73,7 @@ const Post = (props: PostProps) => {
           <ChatBubbleOutline fontSize='small' />
           <div className='like-box'>
             <FavoriteBorder
-              
+
               fontSize='small'
               onClick={() => {
                 setPostId(postId)
