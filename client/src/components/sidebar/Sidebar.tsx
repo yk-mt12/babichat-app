@@ -14,7 +14,7 @@ const Sidebar = () => {
 
       <SidebarOption Icon={HomeIcon} text='Home' navigate=''/>
       <SidebarOption Icon={HomeIcon} text='Post' navigate='post' />
-      <SidebarOption Icon={HomeIcon} text='Message' navigate='message' />
+      <SidebarOption Icon={HomeIcon} text='ChatRoom' navigate='chatroom' />
       <SidebarOption Icon={HomeIcon} text='Ranking' navigate='ranking' />
 
       <SidebarOption Icon={HomeIcon} text='Setting' navigate='setting' />
