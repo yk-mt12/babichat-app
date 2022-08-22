@@ -17,6 +17,8 @@ import { useAuth } from '../../firebase/authFunction'
 import { useCallback, useEffect, useState } from 'react'
 import useBatchPostLiked from '../../hooks/useBatchPostLiked'
 
+import Button from '@mui/material/Button';
+
 type PostProps = {
   author: DocumentReference
   displayName: string
@@ -61,9 +63,9 @@ const Post = (props: PostProps) => {
           </div>
           <div className='post--headerDescription'>
             <p>{babi}</p>
-            <button onClick={() => speechClick(babi)}>読み上げる</button>
-            <button onClick={() => setIsClicked(!isClicked)}>翻訳</button>
-            {isClicked && <p>{text}</p>}
+            <Button variant="contained" onClick={() => speechClick(babi)}>読み上げる</Button>
+            <Button variant="contained" onClick={() => setToggle(!toggle)}>翻訳</Button>
+            {toggle && <p>{text}</p>}
           </div>
         </div>
         <img src={image} alt='' />
