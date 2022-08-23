@@ -56,7 +56,7 @@ const Post = (props: PostProps) => {
           <div className='post--headerText'>
             <h3>{displayName === '' ? '匿名' : displayName}</h3>
             {/* {username !== '' && (
-              <span className='post--headerSpecial'>
+                <span className='post--headerSpecial'>
                 <VerifiedUserIcon className='post--badge' />@{username}
               </span>
             )} */}

@@ -1,3 +1,4 @@
+import { likePost } from './../firebase/likeFunction'
 import { useMemo, useEffect, useState } from 'react'
 import { user } from 'firebase-functions/v1/auth'
 import {
@@ -11,6 +12,7 @@ import {
   serverTimestamp,
   setDoc,
   getDoc,
+  increment,
 } from 'firebase/firestore'
 import { db } from '../firebase'
 import { useAuth } from '../firebase/authFunction'
@@ -68,8 +70,11 @@ const useBatchPostLiked = () => {
       author: userRef.path,
       postId: postRef.id,
       postRef: postRef.path,
-      createTime: serverTimestamp()
+      createTime: serverTimestamp(),
     })
+
+    batch.update(postRef, { likeCount: increment(1) })
+    batch.update(userRef, { likePostCount: increment(1) })
 
     await batch
       .commit()
@@ -87,6 +92,8 @@ const useBatchPostLiked = () => {
     batch.delete(likedPostRef)
     batch.delete(likedUserRef)
 
+    batch.update(postRef, { likeCount: increment(-1) })
+    batch.update(userRef, { likePostCount: increment(-1) })
     await batch.commit()
   }
 
