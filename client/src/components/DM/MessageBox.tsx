@@ -1,12 +1,10 @@
 
-import { addDoc, collection, doc, serverTimestamp, setDoc, Timestamp, updateDoc } from 'firebase/firestore';
-import{ useEffect, useMemo, useState } from 'react'
+import { addDoc, collection, doc, serverTimestamp } from 'firebase/firestore';
+import{ useState } from 'react'
 import { db } from '../../firebase';
 import { useAuth } from '../../firebase/authFunction';
-import TimeLine from '../pages/TimeLine';
-import Sidebar from '../sidebar/Sidebar';
-import Chat from './Chat';
-import './Message.css'
+import SendIcon from '@mui/icons-material/Send';
+
 
 type ChatLog = {
   key: string,
@@ -15,12 +13,11 @@ type ChatLog = {
   createTime: any,
 };
 
-const Message = () => {
+const MessageBox = () => {
 
   const signInUser = useAuth()
   const displayName = signInUser.displayName
   const uid = signInUser.uid
-  const [chatLogs, setChatLogs] = useState<any>([]);
   const [msg, setMsg] = useState('');
 
   const sendMsg = (e:any) => {
@@ -37,35 +34,42 @@ const Message = () => {
     const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2' // TODO：相手のidを入れる
     const chatroomRef = doc(db, 'users', uid, 'chatroom', anotherId);
     const chatsRef = collection(chatroomRef, 'chats')
-    // const aiteRef = doc(db, 'users', anotherId, 'chatroom', uid);
 
     console.log(chatroomRef)
 
     addDoc(chatsRef, data)
-    // setDoc(aiteRef, data)
     setMsg('')
   }
 
 
   return (
     <>
-      {/* <Sidebar /> */}
       <div className='chat'>
         <form className='chatform'>
-          {/* <div>{ userName }</div> */}
           <input
+            style={{
+              width: '78%',
+              fontSize: '15px',
+              fontWeight: '550',
+              marginLeft: '5px',
+              marginBottom: '-3px',
+            }}
             placeholder='メッセージを入力'
             type='text'
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
           />
-          <button className='postBox-postButton' type='submit' onClick={sendMsg}>
-          送信
-          </button>
+          <SendIcon
+            style={{
+              marginLeft: '20px',
+              marginBottom: '-5px',
+            }}
+            className='postBox-postButton'
+            type='submit' onClick={sendMsg} />
         </form>
       </div>
     </>
   );
 };
 
-export default Message
+export default MessageBox
