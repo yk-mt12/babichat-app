@@ -106,7 +106,7 @@ export const createUsersDB = async () => {
         // Firestore にユーザー用のドキュメントが作られていなければ作る
         await setDoc(doc(db, 'users', authUser.uid), {
           createTime: serverTimestamp(),
-          displayName: authUser.displayName ? authUser.displayName : 'ゲストユーザ',
+          displayName: 'ログインユーザ',
           likePostCount: 0,
           photoURL: authUser.photoURL ? authUser.photoURL : '',
           updateTime: serverTimestamp(),
