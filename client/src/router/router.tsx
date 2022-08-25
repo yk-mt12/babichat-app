@@ -1,18 +1,18 @@
 import { Route, Routes } from 'react-router-dom'
 
-import Dashboard from './Dashboard'
-import Message from './Message'
-import TimeLine from './TimeLine'
-import Setting from './Setting'
-import Ranking from './Ranking'
-import Profile from './Profile'
-import SignIn from '../user/SignIn'
-import SignUp from '../user/SignUp'
-import { useAuth } from '../../firebase/authFunction'
+import Dashboard from '../components/pages/dashboard/Dashboard'
+import Message from '../components/pages/message/Message'
+import Setting from '../components/pages/setting/Setting'
+import Ranking from '../components/pages/ranking/ranking'
+import Profile from '../components/pages/profile/Profile'
+import SignIn from '../components/model/user/SignIn'
+import SignUp from '../components/model/user/SignUp'
+import TimeLine from '../components/pages/timeline/TimeLine'
+import { useAuth } from '../firebase/authFunction'
 
-const Home = () => {
+const Router = () => {
   const signInUser = useAuth()
-  console.log(signInUser);
+  console.log(signInUser)
 
   return (
     <div>
@@ -30,4 +30,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Router

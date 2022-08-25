@@ -1,26 +1,29 @@
 import { memo, useEffect, useState } from 'react'
-import { BrowserRouter as Router, Navigate } from 'react-router-dom'
+import { BrowserRouter, Navigate } from 'react-router-dom'
 import './App.css'
-import Home from './components/pages/Home'
-import SignIn from './components/user/SignIn'
-import SignUp from './components/user/SignUp'
+import Router from './router/router'
+import SignIn from './components/model/user/SignIn'
+import SignUp from './components/model/user/SignUp'
 
-import { createUsersDB } from './firebase/authFunction'
+import { createUsersDB, useAuth } from './firebase/authFunction'
+import Sidebar from './components/ui/sidebar/Sidebar'
+import SignOut from './components/model/user/SignOut'
 
 const App = memo(() => {
+  const signInUser = useAuth()
   useEffect(() => {
     createUsersDB()
-  },[])
+  }, [])
 
   return (
-    <Router>
+    <BrowserRouter>
       <div className='app'>
-        <Home />
+        {signInUser && <Sidebar />}
+        <Router />
+        {signInUser && <SignOut />}
       </div>
-    </Router>
+    </BrowserRouter>
   )
 })
 
 export default App
-
-
