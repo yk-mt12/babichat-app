@@ -12,8 +12,6 @@ const Chat = (props: chatProps) => {
     return (
         <div className='chat'>
             <p>{name}:{msg}</p>
-
-            {/* <p>{msg}</p> */}
         </div>
     )
 

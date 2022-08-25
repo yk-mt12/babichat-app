@@ -1,4 +1,3 @@
-import Message from '../DM/Message'
 import TimeLine from './TimeLine'
 import Setting from './Setting'
 import Ranking from './Ranking'
@@ -11,7 +10,6 @@ const Dashboard = () => {
     <div className='dashboard--body'>
       <Sidebar />
       <TimeLine />
-      {/* <Message /> */}
       <Ranking />
       <Setting />
       <SignOut />

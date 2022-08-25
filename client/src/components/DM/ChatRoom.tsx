@@ -1,10 +1,11 @@
-import { doc, collection, getDoc, onSnapshot } from 'firebase/firestore'
-import React, { useEffect, useState } from 'react'
+import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
 import { db } from '../../firebase'
 import { useAuth } from '../../firebase/authFunction'
 import Sidebar from '../sidebar/Sidebar'
 import Chat from './Chat'
-import Message from './Message'
+import Message from './MessageBox'
+import './ChatRoom.css'
 
 type chatProps = {
     key: string
@@ -22,12 +23,8 @@ const ChatRoom = () => {
         const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2' // TODO：相手のidを入れる
 
         const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId, 'chats');
-        // const chatsRef = collection(chatroomRef, 'chats')
-        // console.log(chatsRef)
-
-        // const docSnap = await getDoc(chatsRef)
-        // setChats(docSnap.data())
-        const unsub = onSnapshot(chatroomRef, (querySnapshot) => {
+        const q = query(chatroomRef, orderBy('createTime', 'desc'), limit(10))
+        const unsub = onSnapshot(q , (querySnapshot) => {
             setChats(
                 querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
             );
@@ -38,20 +35,28 @@ const ChatRoom = () => {
 
     return (
         <div className='chatroom'>
-            <div className='header'>
-                <h2>ChatRoom</h2>
-            </div>
             <Sidebar />
-            {chats.map((chat: chatProps) => (
-            // eslint-disable-next-line react/jsx-key
-            <Chat
-                name={chat.name}
-                msg={chat.msg}
-                createTime={chat.createTime}
-                key={chat.key}
-            />
-            ))}
-            <Message />
+            <div className='chat'>
+                <div className='header'>
+                    <h2>ChatRoom</h2>
+                </div>
+                <div className='chat-screen'>
+                    <div className='message'>
+                        {chats.map((chat: chatProps) => (
+                            // eslint-disable-next-line react/jsx-key
+                            <Chat
+                            name={chat.name}
+                            msg={chat.msg}
+                            createTime={chat.createTime}
+                            key={chat.key}
+                            />
+                        ))}
+                    </div>
+                </div>
+                <div className='input-form'>
+                    <Message />
+                </div>
+            </div>
         </div>
     )
 }

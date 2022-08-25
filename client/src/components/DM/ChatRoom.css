@@ -1,0 +1,27 @@
+.chatroom {
+    display: flex;
+}
+
+.chat {
+    margin-left: 20px
+}
+
+.header {
+    width: 200px;
+    height: 50px;
+}
+
+.chat-screen {
+    width: 1000px;
+    height: 600px;
+    padding-left: 20px;
+    border: solid 3px #000000
+
+
+}
+
+.input-form {
+    width: auto;
+    height: 200;
+    padding: 0px;
+}
