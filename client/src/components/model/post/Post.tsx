@@ -2,8 +2,8 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser'
 import { ChatBubbleOutline, FavoriteBorder } from '@mui/icons-material'
 import './Post.css'
 import { Avatar } from '@mui/material'
-import { changeBabi } from '../../logic/babigo'
-import { readAloud } from '../../logic/readText'
+import { changeBabi } from '../../../logic/babigo'
+import { readAloud } from '../../../logic/readText'
 import {
   arrayUnion,
   collection,
@@ -13,10 +13,9 @@ import {
   updateDoc,
   writeBatch,
 } from 'firebase/firestore'
-import { useAuth } from '../../firebase/authFunction'
+import { useAuth } from '../../../firebase/authFunction'
 import { useCallback, useEffect, useState } from 'react'
-import useBatchPostLiked from '../../hooks/useBatchPostLiked'
-
+import useBatchPostLiked from '../../../hooks/useBatchPostLiked'
 import Button from '@mui/material/Button';
 
 type PostProps = {

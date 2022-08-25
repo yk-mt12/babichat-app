@@ -13,15 +13,12 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
       {/* {アイコン} */}
-      <AccountCircleIcon className='sidebar-option' />
-      <h2>Name</h2>
-
-      <SidebarOption Icon={HomeIcon} text='Home' />
-      <SidebarOption Icon={AssignmentIcon} text='Post' />
-      <SidebarOption Icon={ForumIcon} text='Message' />
-      <SidebarOption Icon={QueryStatsIcon} text='Ranking' />
-
-      <SidebarOption Icon={SettingsIcon} text='Setting' />
+      <SidebarOption Icon={AccountCircleIcon} text='My account' navigate='profile'/>
+      <SidebarOption Icon={HomeIcon} text='Dashboard' navigate=''/>
+      <SidebarOption Icon={AssignmentIcon} text='Post' navigate='post'/>
+      <SidebarOption Icon={ForumIcon} text='Message' navigate='message'/>
+      <SidebarOption Icon={QueryStatsIcon} text='Ranking' navigate='ranking'/>
+      <SidebarOption Icon={SettingsIcon} text='Setting' navigate='setting'/>
     </div>
   )
 }

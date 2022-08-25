@@ -1,5 +1,5 @@
 import React from 'react'
-import { logout } from '../../firebase/authFunction'
+import { logout } from '../../../firebase/authFunction'
 import { useNavigate, Navigate } from 'react-router-dom'
 
 const SignOut = () => {

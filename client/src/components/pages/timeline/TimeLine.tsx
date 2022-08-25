@@ -1,8 +1,4 @@
-import Post from '../post/Post'
-import PostBox from '../post/PostBox'
-import './Timeline.css'
 
-import { db } from '../../firebase'
 import {
   collection,
   collectionGroup,
@@ -14,6 +10,11 @@ import {
   where,
 } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
+import { db } from '../../../firebase'
+import Post from '../../model/post/Post'
+import PostBox from '../../ui/input/post/PostBox'
+
+import './Timeline.css'
 
 type PostType = {
   author: DocumentReference
@@ -36,7 +37,7 @@ const TimeLine = () => {
     // 最新の投稿順に並び替える
     // リアルタイムでデータを取得
     onSnapshot(q, (querySnapshot: { docs: any[] }) => {
-      setPosts(querySnapshot.docs.map((doc: { data: () => any }) => doc.data()))
+      setPosts(querySnapshot.docs.map((doc) => doc.data()))
     })
   }, [])
 

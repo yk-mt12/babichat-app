@@ -1,8 +1,8 @@
 import { Avatar, Button } from '@mui/material'
 import { useState } from 'react'
 import { collection, setDoc, doc, serverTimestamp, addDoc, updateDoc } from 'firebase/firestore'
-import { db } from '../../firebase'
-import { useAuth } from '../../firebase/authFunction'
+import { db } from '../../../../firebase'
+import { useAuth } from '../../../../firebase/authFunction'
 
 const PostBox = () => {
   const [displayName, setDisplayName] = useState<string>('')

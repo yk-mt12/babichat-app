@@ -1,5 +1,5 @@
 import { collection, query, orderBy, limit } from 'firebase/firestore'
-import { db } from '../../firebase'
+import { db } from '../../../firebase'
 
 const Ranking = () => {
   const rankingRef = collection(db, 'posts')
