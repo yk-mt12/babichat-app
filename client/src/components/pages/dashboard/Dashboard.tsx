@@ -1,4 +1,3 @@
-
 import Message from '../message/Message'
 import Ranking from '../ranking/ranking'
 import Setting from '../setting/Setting'

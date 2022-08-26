@@ -1,4 +1,3 @@
-
 /**
  * 任意の範囲の整数をランダムに返す
  * @param {最小値} min
@@ -7,7 +6,7 @@
  *
  */
 function getRandomArbitrary(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min) + min)
 }
 
 /**
@@ -18,38 +17,42 @@ function getRandomArbitrary(min, max) {
  * @returns 入れ替え後の配列
  */
 function replaceArrayElements(array, targetId, sourceId) {
-    return array.reduce((resultArray, element, id, originalArray) => [
-        ...resultArray,
-        id === targetId ? originalArray[sourceId] :
-        id === sourceId ? originalArray[targetId] :
-        element
-    ], []);
+  return array.reduce(
+    (resultArray, element, id, originalArray) => [
+      ...resultArray,
+      id === targetId
+        ? originalArray[sourceId]
+        : id === sourceId
+        ? originalArray[targetId]
+        : element,
+    ],
+    [],
+  )
 }
 
 function changeText(num, ary) {
-    for(let i=0; i<=num; i++) {
-        let rand1 = getRandomArbitrary(1, ary.length-1)
-        let rand2
-        if(rand1+1 == ary.length) {
-            rand2 = rand1 -1
-        } else {
-            rand2 = rand1 +1
-        }
-
-        ary = replaceArrayElements(ary, rand1, rand2)
-        // console.log(txtAry.join())
+  for (let i = 0; i <= num; i++) {
+    let rand1 = getRandomArbitrary(1, ary.length - 1)
+    let rand2
+    if (rand1 + 1 == ary.length) {
+      rand2 = rand1 - 1
+    } else {
+      rand2 = rand1 + 1
     }
 
-    return ary
+    ary = replaceArrayElements(ary, rand1, rand2)
+    // console.log(txtAry.join())
+  }
+
+  return ary
 }
 
-
 export const getText = (text) => {
-    const changeNum = getRandomArbitrary(1, text.length-1)
-    let txtAry = text.split('')
+  const changeNum = getRandomArbitrary(1, text.length - 1)
+  let txtAry = text.split('')
 
-    txtAry = changeText(changeNum, txtAry)
-    return txtAry.join('')
+  txtAry = changeText(changeNum, txtAry)
+  return txtAry.join('')
 }
 
 const text = 'ありがとうこんにちはこんばんは'
