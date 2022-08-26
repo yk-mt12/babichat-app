@@ -1,57 +1,71 @@
-import { likePost } from './../firebase/likeFunction'
-import { useMemo, useEffect, useState } from 'react'
-import { user } from 'firebase-functions/v1/auth'
 import {
-  collection,
   collectionGroup,
-  DocumentReference,
   query,
-  Timestamp,
   writeBatch,
   doc,
   serverTimestamp,
-  setDoc,
   getDoc,
   increment,
+  getDocs,
+  where,
 } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
 import { db } from '../firebase'
 import { useAuth } from '../firebase/authFunction'
 
-type LikedUsers = {
-  id: string
-  name?: string
+type LikedUsersType = {
+  userId: string
   createTime: any
 }
 
-type LikedPost = {
-  id: string
-  postRef: DocumentReference
+type LikedPostType = {
+  postId: string
+  postRef: string
   createTime: any
-  title?: string
-  text?: string
-  author?: DocumentReference
+  author: string
 }
 
 const useBatchPostLiked = () => {
+  /**
+   * TODO:postIdとpostDataの初期値をnullにしておくと、初回レンダリング時に、doc()のempty path errorが出てしまう。
+   *下記の場合では、postData.authorの値が書き変わらない場合があり、その場合 postData.author/posts/postId に一致しないコレクションを参照するため、firebase errorになる。
+   *対策
+   *1.getAnotherPostData関数で、必ずpostData.authorが書き変わった状態で、checkLikedPost関数を呼び出す方法があると考える。
+   *2.初期値を空白にしておき、useEffect内で if(postId == '' || postData.lenght < 1) return で抜ける。この場合、post.tsxで、returnに何も返さないため、エラーになる。
+   * */
   const [postId, setPostId] = useState('cV9hJDJbRYIRQ8Ck0r9s')
-  const [postData, setPostData] = useState<any>([])
+  const [postData, setPostData] = useState<any>({
+    author: 'users/H6IKIRLlFTYfEwYcPBwkyFznF4K2',
+  })
+
   const signInUser = useAuth()
   const uid = signInUser.uid
   const userRef = doc(db, 'users', uid)
-  const postRef = doc(userRef, 'posts', postId)
+  const anotherUserRef = doc(db, postData.author)
+  const postRef = doc(anotherUserRef, 'posts', postId)
+  // users/anotherUserID/posts/postID/likedUser/signInUserID
   const likedUserRef = doc(postRef, 'likedUser', uid)
+  // users/signInUserID/likedPosts/postID
   const likedPostRef = doc(userRef, 'likedPosts', postId)
 
+  const getAnotherPostData = async () => {
+    console.log('--------getAnotherId----------')
+    const q = query(collectionGroup(db, 'posts'), where('postId', '==', postId))
+
+    const querySnapshot = await getDocs(q)
+    querySnapshot.forEach((doc) => {
+      setPostData(doc.data())
+    })
+
+    await checkPostIsLiked()
+  }
+
   const checkPostIsLiked = async () => {
-    console.log('checkPostIsLiked:')
+    console.log(postData.author, postId)
     const likedUserSnap = await getDoc(likedUserRef)
     const likedPostSnap = await getDoc(likedPostRef)
-    const postSnap = await getDoc(postRef)
-    if (postSnap.exists()) {
-      setPostData(postSnap.data())
-    }
 
-    if (likedUserSnap.exists() && likedPostSnap.exists()) {
+    if (likedUserSnap.exists() || likedPostSnap.exists()) {
       postUnliked()
     } else {
       postLiked()
@@ -61,17 +75,21 @@ const useBatchPostLiked = () => {
   const postLiked = async () => {
     const batch = writeBatch(db)
 
-    batch.set(likedUserRef, {
-      userId: userRef.id,
+    // users/anotherUserID/posts/postID/likedUser/signInUserID
+    const likedUserData: LikedUsersType = {
+      userId: uid,
       createTime: serverTimestamp(),
-    })
+    }
+    batch.set(likedUserRef, likedUserData)
 
-    batch.set(likedPostRef, {
-      author: userRef.path,
+    // users/signInUserID/likedPosts/postID
+    const likedPostData: LikedPostType = {
+      author: anotherUserRef.path,
       postId: postRef.id,
       postRef: postRef.path,
       createTime: serverTimestamp(),
-    })
+    }
+    batch.set(likedPostRef, likedPostData)
 
     batch.update(postRef, { likeCount: increment(1) })
     batch.update(userRef, { likePostCount: increment(1) })
@@ -82,7 +100,7 @@ const useBatchPostLiked = () => {
         console.log('いいね成功')
       })
       .catch((e) => {
-        console.log('いいね失敗')
+        console.log('いいね失敗', e)
       })
   }
 
@@ -92,12 +110,22 @@ const useBatchPostLiked = () => {
     batch.delete(likedPostRef)
     batch.delete(likedUserRef)
 
+    // console.log('batch delete完了')
     batch.update(postRef, { likeCount: increment(-1) })
+    // console.log('batch /users/posts/likeCount -1 完了')
     batch.update(userRef, { likePostCount: increment(-1) })
-    await batch.commit()
-  }
+    // console.log('batch /users/likePostCount -1 完了')
 
-  return { checkPostIsLiked, postLiked, postUnliked, setPostId }
+    await batch
+      .commit()
+      .then(() => {
+        console.log('いいね削除成功')
+      })
+      .catch((e) => {
+        console.log('いいね削除失敗', e)
+      })
+  }
+  return { checkPostIsLiked, setPostId, getAnotherPostData }
 }
 
 export default useBatchPostLiked
