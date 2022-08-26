@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 type SidebarOptionProps = {
   Icon: any
-  text: String
-  navigate?: String
+  text: string
+  navigate?: string
 }
 
 const SidebarOption = (props: SidebarOptionProps) => {

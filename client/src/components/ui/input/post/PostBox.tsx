@@ -16,8 +16,8 @@ const PostBox = () => {
 
   const sendPost = async (e: any) => {
     e.preventDefault()
-    const usersRef = doc(db, 'users', uid) //uidを指定して、usersコレクションを取得
-    const postsRef = collection(usersRef, 'posts') //ログインユーザに紐ずくpostsコレクションを取得
+    const usersRef = doc(db, 'users', uid) // uidを指定して、usersコレクションを取得
+    const postsRef = collection(usersRef, 'posts') // ログインユーザに紐ずくpostsコレクションを取得
 
     const data = {
       author: usersRef.path,
@@ -31,7 +31,7 @@ const PostBox = () => {
       likeCount: 0,
     }
 
-    const postRef = await addDoc(postsRef, data) //ログインユーザのpostsコレクションにデータを追加
+    const postRef = await addDoc(postsRef, data) // ログインユーザのpostsコレクションにデータを追加
     await updateDoc(postRef, {
       postId: postRef.id,
     })
