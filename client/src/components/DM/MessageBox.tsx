@@ -1,6 +1,7 @@
 
 import { addDoc, collection, doc, serverTimestamp } from 'firebase/firestore';
 import{ useState } from 'react'
+import { useForm } from 'react-hook-form';
 import { db } from '../../firebase';
 import { useAuth } from '../../firebase/authFunction';
 import SendIcon from '@mui/icons-material/Send';
@@ -14,7 +15,7 @@ type ChatLog = {
 };
 
 const MessageBox = () => {
-
+  // const { register, handleSubmit } = useForm();
   const signInUser = useAuth()
   const displayName = signInUser.displayName
   const uid = signInUser.uid
@@ -36,7 +37,10 @@ const MessageBox = () => {
     const chatsRef = collection(chatroomRef, 'chats')
 
     console.log(chatroomRef)
-
+    if(msg === '') {
+      console.log('メッセージは空です')
+      return
+    }
     addDoc(chatsRef, data)
     setMsg('')
   }
@@ -45,7 +49,8 @@ const MessageBox = () => {
   return (
     <>
       <div className='chat'>
-        <form className='chatform'>
+        <form className='chatform'
+        onSubmit={sendMsg}>
           <input
             style={{
               width: '78%',
@@ -54,10 +59,12 @@ const MessageBox = () => {
               marginLeft: '5px',
               marginBottom: '-3px',
             }}
+
             placeholder='メッセージを入力'
             type='text'
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
+
           />
           <SendIcon
             style={{
@@ -65,7 +72,9 @@ const MessageBox = () => {
               marginBottom: '-5px',
             }}
             className='postBox-postButton'
-            type='submit' onClick={sendMsg} />
+            type='submit'
+            onClick={sendMsg}
+            />
         </form>
       </div>
     </>

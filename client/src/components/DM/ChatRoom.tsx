@@ -4,8 +4,10 @@ import { db } from '../../firebase'
 import { useAuth } from '../../firebase/authFunction'
 import Sidebar from '../sidebar/Sidebar'
 import Chat from './Chat'
-import Message from './MessageBox'
+import MessageBox from './MessageBox'
 import './ChatRoom.css'
+import { Grid } from '@mui/material'
+
 
 type chatProps = {
     key: string
@@ -23,7 +25,7 @@ const ChatRoom = () => {
         const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2' // TODO：相手のidを入れる
 
         const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId, 'chats');
-        const q = query(chatroomRef, orderBy('createTime'), limit(50))
+        const q = query(chatroomRef, orderBy('createTime'), limit(500))
         const unsub = onSnapshot(q , (querySnapshot) => {
             setChats(
                 querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
@@ -34,18 +36,16 @@ const ChatRoom = () => {
     return (
         <div className='chatroom'>
             <Sidebar />
-            <div className='chat'>
+            <Grid container className='chat'>
                 <div className='header'>
                     <h2>ChatRoom</h2>
                 </div>
                 <div className='chat-screen'
                     style={{
-                        width: '1000px',
-                        height: '600px',
-                        overflow: 'scroll',
+                        overflow: 'auto',
                     }}
                 >
-                    <div className='message'>
+                    <div className='message' id='chatBottom' >
                         {chats.map((chat: chatProps) => (
                             // eslint-disable-next-line react/jsx-key
                             <Chat
@@ -57,10 +57,11 @@ const ChatRoom = () => {
                         ))}
                     </div>
                 </div>
-                <div className='input-form'>
-                    <Message />
-                </div>
-            </div>
+                {/* <div id='chatBottom'></div> */}
+                <Grid item xs={6} md={8} className='input-form'>
+                    <MessageBox />
+                </Grid>
+            </Grid>
         </div>
     )
 }
