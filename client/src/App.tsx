@@ -17,7 +17,9 @@ const App = memo(() => {
     <BrowserRouter>
       <div className='app'>
         <Grid container>
-          <Grid item xs={3}>{signInUser && <Sidebar />}</Grid>
+          <Grid item xs={3}>
+            {signInUser && <Sidebar />}
+          </Grid>
           <Grid item xs={9}>
             <Router />
           </Grid>
