@@ -1,4 +1,3 @@
-import { Timestamp } from 'firebase/firestore'
 import { atom } from 'recoil'
 
 // TODO: displayName, photoURLの型をstringにしたいが、authFucntionでは、格納する際、型がstrirng | nullであるため、エラーを吐く

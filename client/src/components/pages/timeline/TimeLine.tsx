@@ -1,13 +1,4 @@
-import {
-  collection,
-  collectionGroup,
-  DocumentReference,
-  getDocs,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-} from 'firebase/firestore'
+import { collectionGroup, DocumentReference, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import { db } from '../../../firebase'
 import Post from '../../model/post/Post'
