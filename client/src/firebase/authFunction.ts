@@ -1,12 +1,4 @@
-import {
-  addDoc,
-  serverTimestamp,
-  collection,
-  doc,
-  setDoc,
-  Timestamp,
-  getDoc,
-} from 'firebase/firestore'
+import { serverTimestamp, doc, setDoc, getDoc } from 'firebase/firestore'
 import { useEffect } from 'react'
 import { useRecoilState, useResetRecoilState } from 'recoil'
 import { signInUserState } from '../store/auth'
@@ -14,19 +6,9 @@ import { auth, db } from '.'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   signOut,
   signInAnonymously,
-  getAuth,
 } from 'firebase/auth'
-import { Navigate } from 'react-router-dom'
-
-type User = {
-  name: string
-  createTime: Timestamp
-  updateTime: Timestamp
-  likePostCount: number
-}
 
 /**
  * ユーザー認証する
@@ -89,6 +71,14 @@ export const useAuth = () => {
 
   return signInUser
 }
+
+// type UserType = {
+//   name: string
+//   photoUrl: string
+//   createTime: string
+//   updateTime: string
+//   likePostCount: number
+// }
 
 export const createUsersDB = async () => {
   auth.onAuthStateChanged(async (authUser) => {

@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { auth, provider } from '../../../firebase'
-// import firebaseui from 'firebaseui'
-// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import React, { useState } from 'react'
 import 'firebaseui/dist/firebaseui.css'
-import { signInWithPopup } from 'firebase/auth'
-import { signIn, signUp, useAuth } from '../../../firebase/authFunction'
+import { signUp, useAuth } from '../../../firebase/authFunction'
 import { Navigate } from 'react-router-dom'
 
 // TODO:メールログイン（サインアップ）の場合、うまくいかない

@@ -9,7 +9,7 @@ import {
   getDocs,
   where,
 } from 'firebase/firestore'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { db } from '../firebase'
 import { useAuth } from '../firebase/authFunction'
 

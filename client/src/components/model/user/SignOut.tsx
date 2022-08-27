@@ -1,6 +1,5 @@
-import React from 'react'
 import { logout } from '../../../firebase/authFunction'
-import { useNavigate, Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const SignOut = () => {
   const navigate = useNavigate()
