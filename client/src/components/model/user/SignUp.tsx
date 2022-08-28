@@ -17,7 +17,7 @@ const SignUp = () => {
   return (
     <>
       {signInUser.uid ? (
-        <Navigate to='/' />
+        <Navigate to='/home' />
       ) : (
         <div>
           <h1>アカウントを作成</h1>

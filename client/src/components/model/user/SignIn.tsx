@@ -21,7 +21,7 @@ const SignIn = () => {
   return (
     <>
       {signInUser.uid ? (
-        <Navigate to='/' />
+        <Navigate to='/home' />
       ) : (
         <div>
           <h1>ログイン</h1>
