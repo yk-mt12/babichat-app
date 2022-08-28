@@ -17,7 +17,7 @@ const App = memo(() => {
     <BrowserRouter>
       <div className='app'>
         <Grid container justifyContent='center' spacing={16}>
-          <Grid item xs={2} >
+          <Grid item xs={2}>
             {signInUser && <Sidebar />}
           </Grid>
           <Grid item xs={10}>

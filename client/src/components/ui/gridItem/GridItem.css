@@ -1,11 +1,27 @@
 .container-box {
   padding: 8px;
   border: 2px solid var(--babichat-color);
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: scroll;
 }
 
 .container-box--item {
   margin: 0;
   padding: 0;
+}
+
+.text {
+  color: var(--babichat-color);
+  font-size: 16px;
+}
+
+.hover-text {
+  color: var(--babichat-color);
+  font-size: 16px;
+}
+
+.hover-text:hover {
+  color: var(--babichat-background);
+  transition: opacity 0.15s ease-out;
+  cursor: pointer;
 }

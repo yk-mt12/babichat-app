@@ -1,3 +1,33 @@
 .ranking--body {
   margin: 20px 15px;
 }
+
+.ranking--view {
+  margin-top: 5px;
+}
+
+.ranking--block {
+  padding: 8px 20px;
+  border: 2px solid var(--babichat-color);
+  border-radius: 16px;
+  overflow: scroll;
+  height: 74vh;
+}
+
+.ranking--post {
+  margin: 6px 16px 0;
+  align-items: center;
+  border-bottom: 1px solid var(--babichat-color);
+}
+
+.rank-index {
+  color: var(--babichat-color);
+  font-size: 32px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.text {
+  color: var(--babichat-color);
+  font-size: 16px;
+}

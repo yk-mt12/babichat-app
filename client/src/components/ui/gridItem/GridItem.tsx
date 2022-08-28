@@ -3,27 +3,40 @@ import { Link } from 'react-router-dom'
 import './GridItem.css'
 
 type Props = {
-  child: JSX.Element
+  child?: JSX.Element
   colRatio: any
   navigate?: string
-  width: Number // gridカードの横幅
-  height: string // gridカードの縦
+  width?: string | Number // gridカードの横幅
+  height?: string | Number // gridカードの縦
+  label?: string
+  cName?: string
 }
 const GridItem = (props: Props) => {
-  const { child, colRatio, navigate, width, height } = props
+  const { child, colRatio, navigate, width, height, label, cName } = props
   const navLink = navigate ? '/' + navigate : ''
 
   return (
     <Grid
       item
       xs={colRatio}
-      className='container-box'
+      className={`container-box ${cName}`}
       sx={{
         mb: 1,
       }}
       style={{ width: `${width}`, height: `${height}` }}
     >
-      <Link to={navLink}>{child}</Link>
+      {navLink && <Link to={navLink}>{child}</Link>}
+      {label && (
+        <p
+          style={{
+            margin: 0,
+            textAlign: 'center',
+          }}
+          className={`${cName}`}
+        >
+          {label}
+        </p>
+      )}
     </Grid>
   )
 }
