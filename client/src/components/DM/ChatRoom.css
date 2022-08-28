@@ -18,6 +18,10 @@
     background: #7da4cd;
 }
 
+.chat-screen::-webkit-scrollbar {
+    display: none;
+}
+
 .input-form {
     width: auto;
     height: 200;
