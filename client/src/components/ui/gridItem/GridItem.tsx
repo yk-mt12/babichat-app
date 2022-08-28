@@ -1,23 +1,27 @@
 import { Grid } from '@mui/material'
+import { Link } from 'react-router-dom'
 import './GridItem.css'
 
 type Props = {
   child: JSX.Element
-  colRatio: Number
+  colRatio: any
+  navigate?: string
 }
 const GridItem = (props: Props) => {
-  const { child, colRatio } = props
+  const { child, colRatio, navigate } = props
+  const navLink = navigate ? '/' + navigate : ''
+
   return (
     <Grid
       item
       xs={colRatio}
       className='container-box'
       sx={{
-        mr: 2,
-        mt: 1,
+        mb: 1,
+        mt: 2,
       }}
     >
-      {child}
+      <Link to={navLink}>{child}</Link>
     </Grid>
   )
 }

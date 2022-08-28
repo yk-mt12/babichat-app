@@ -6,4 +6,14 @@
   padding-right: 20px;
   padding-bottom: 40px;
   background-color: var(--babichat-color);
+  height: 90vh;
+}
+
+
+/* .setting-icon {
+  margin-top: 200px;
+} */
+
+.sidebar--option {
+  padding-left: 20px;
 }

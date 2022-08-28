@@ -9,17 +9,13 @@ import './Dashboard.css'
 const Dashboard = () => {
   return (
     <div className='dashboard--body'>
-      {/* <TimeLine />
-      <Message />
-      <Ranking />
-      <Setting /> */}
-      <Grid container direction='row' justifyContent='center' alignItems='flex-start'>
-        <GridItem child={<Ranking />} colRatio={6} />
-        <GridItem child={<TimeLine />} colRatio={6} />
+      <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start'>
+        <GridItem child={<Ranking />} colRatio={3} navigate='ranking'/>
+        <GridItem child={<TimeLine />} colRatio={9} navigate='post'/>
       </Grid>
-      <Grid container direction='row' justifyContent='center' alignItems='flex-start'>
-        <GridItem child={<Message />} colRatio={4} />
-        <GridItem child={<Setting />} colRatio={8} />
+      <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start'>
+        <GridItem child={<Message />} colRatio={4} navigate='message'/>
+        <GridItem child={<Setting />} colRatio={8} navigate='setting'/>
       </Grid>
     </div>
   )
