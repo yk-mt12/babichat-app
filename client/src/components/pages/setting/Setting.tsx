@@ -1,7 +1,12 @@
 import React from 'react'
+import Header from '../../ui/header/Header'
 
 const Setting = () => {
-  return <div>設定</div>
+  return (
+    <div>
+      <Header title='Setting' />
+    </div>
+  )
 }
 
 export default Setting

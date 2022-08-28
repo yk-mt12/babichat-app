@@ -1,7 +1,8 @@
 import { Grid } from '@mui/material'
 import GridItem from '../../ui/gridItem/GridItem'
+import Header from '../../ui/header/Header'
 import Message from '../message/Message'
-import Ranking from '../ranking/ranking'
+import Ranking from '../ranking/Ranking'
 import Setting from '../setting/Setting'
 import TimeLine from '../timeline/TimeLine'
 import './Home.css'
@@ -9,6 +10,7 @@ import './Home.css'
 const Home = () => {
   return (
     <div className='dashboard--body'>
+      <Header title='チャバットボ' />
       <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start'>
         <GridItem child={<Ranking />} colRatio={3} navigate='ranking' />
         <GridItem child={<TimeLine />} colRatio={9} navigate='post' />
