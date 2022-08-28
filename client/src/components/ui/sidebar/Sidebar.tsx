@@ -16,7 +16,9 @@ const Sidebar = () => {
       <SidebarOption Icon={AssignmentIcon} text='Post' navigate='post' />
       <SidebarOption Icon={ForumIcon} text='Message' navigate='message' />
       <SidebarOption Icon={QueryStatsIcon} text='Ranking' navigate='ranking' />
-      <SidebarOption Icon={SettingsIcon} text='Setting' navigate='setting' />
+      <div className='setting-icon'>
+        <SidebarOption Icon={SettingsIcon} text='Setting' navigate='setting' />
+      </div>
     </div>
   )
 }

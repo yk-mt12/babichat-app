@@ -1,7 +1,13 @@
 .container-box {
   padding: 8px;
   border: 2px solid var(--babichat-color);
-  border-radius: 8%;
-  height: 300px;
+  border-radius: 20px;
+  height: 45vh;
+  width: 350px;
   overflow: scroll;
+}
+
+.container-box--item {
+  margin: 0;
+  padding: 0;
 }
