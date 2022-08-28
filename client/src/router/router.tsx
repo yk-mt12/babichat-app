@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
-import Dashboard from '../components/pages/dashboard/Dashboard'
+import Home from '../components/pages/home/Home'
 import Message from '../components/pages/message/Message'
 import Setting from '../components/pages/setting/Setting'
 import Ranking from '../components/pages/ranking/ranking'
@@ -17,7 +17,7 @@ const Router = () => {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Dashboard />} />
+        <Route path='/home' element={<Home />} />
         <Route path='/post' element={<TimeLine />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/message' element={<Message />} />

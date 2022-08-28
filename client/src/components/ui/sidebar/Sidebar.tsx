@@ -12,7 +12,7 @@ const Sidebar = () => {
     <div className='sidebar'>
       {/* {アイコン} */}
       <SidebarOption Icon={AccountCircleIcon} text='My account' navigate='profile' />
-      <SidebarOption Icon={HomeIcon} text='Dashboard' navigate='' />
+      <SidebarOption Icon={HomeIcon} text='Home' navigate='home' />
       <SidebarOption Icon={AssignmentIcon} text='Post' navigate='post' />
       <SidebarOption Icon={ForumIcon} text='Message' navigate='message' />
       <SidebarOption Icon={QueryStatsIcon} text='Ranking' navigate='ranking' />
