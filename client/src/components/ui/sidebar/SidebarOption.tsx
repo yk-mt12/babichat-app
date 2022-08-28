@@ -20,11 +20,29 @@ const SidebarOption = (props: SidebarOptionProps) => {
           alignItems='baseline'
           sx={{ m: '0 auto', p: '0 8px' }}
         >
-          <Grid item xs={2}>
+          <Grid
+            item
+            xs={2}
+            sx={{
+              color: '#fff',
+            }}
+          >
             <Icon />
           </Grid>
-          <Grid item xs={10}>
-            <h2>{text}</h2>
+          <Grid
+            item
+            xs={10}
+            sx={{
+              color: '#fff',
+            }}
+          >
+            <h2
+              style={{
+                fontWeight: 400,
+              }}
+            >
+              {text}
+            </h2>
           </Grid>
         </Grid>
       </Link>
