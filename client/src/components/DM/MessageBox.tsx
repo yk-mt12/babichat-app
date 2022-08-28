@@ -60,7 +60,7 @@ const MessageBox = () => {
               marginBottom: '-3px',
             }}
 
-            placeholder='メッセージを入力'
+            placeholder='新しいメッセージの作成'
             type='text'
             value={msg}
             onChange={(e) => setMsg(e.target.value)}

@@ -12,16 +12,24 @@
 }
 
 .chat-screen {
-    width: 1000px;
     height: 600px;
-    padding-left: 20px;
-    border: solid 3px #000000
-
-
+    /* margin: 15px auto; */
+    font-size: 14px;
+    background: #7da4cd;
 }
 
 .input-form {
     width: auto;
     height: 200;
     padding: 0px;
+    /* background: #599ce3; */
+}
+
+.history {
+    /* width: 200; */
+    border:solid 1px #000
+}
+
+.history-title {
+    text-align: center;
 }

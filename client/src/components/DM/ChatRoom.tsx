@@ -8,7 +8,6 @@ import MessageBox from './MessageBox'
 import './ChatRoom.css'
 import { Grid } from '@mui/material'
 
-
 type chatProps = {
     key: string
     name: string
@@ -36,32 +35,41 @@ const ChatRoom = () => {
     return (
         <div className='chatroom'>
             <Sidebar />
-            <Grid container className='chat'>
-                <div className='header'>
-                    <h2>ChatRoom</h2>
-                </div>
-                <div className='chat-screen'
-                    style={{
-                        overflow: 'auto',
-                    }}
-                >
-                    <div className='message' id='chatBottom' >
-                        {chats.map((chat: chatProps) => (
-                            // eslint-disable-next-line react/jsx-key
-                            <Chat
-                            name={chat.name}
-                            msg={chat.msg}
-                            createTime={chat.createTime}
-                            key={chat.key}
-                            />
-                        ))}
-                    </div>
-                </div>
-                {/* <div id='chatBottom'></div> */}
-                <Grid item xs={6} md={8} className='input-form'>
-                    <MessageBox />
+            <div>
+                <Grid container className='chat'>
+                    <Grid item xs={12} className='header'>
+                        <h2>Massage</h2>
+                    </Grid>
+
+                    <Grid item xs={12} md={8}>
+                        <div className='chat-screen'
+                        style={{
+                            overflow: 'auto',
+                        }}>
+                            <div className='message' id='chatBottom' >
+                                {chats.map((chat: chatProps) => (
+                                    <Chat
+                                    name={chat.name}
+                                    msg={chat.msg}
+                                    createTime={chat.createTime}
+                                    key={chat.key}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                        <div className='input-form'>
+                            <MessageBox />
+                        </div>
+                    </Grid>
+                    <Grid item xs={4} className='history'>
+                        <div className='history-title'>
+                            <p>履歴</p>
+                        </div>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </div>
+
+
         </div>
     )
 }

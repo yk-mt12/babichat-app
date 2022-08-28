@@ -1,4 +1,7 @@
 import React from 'react'
+import { useAuth } from '../../firebase/authFunction'
+import './Chat.css'
+
 
 type chatProps = {
     key: string
@@ -8,10 +11,13 @@ type chatProps = {
 }
 
 const Chat = (props: chatProps) => {
-    const { msg, createTime, name } = props
+    const { msg, createTime, name, key } = props
+    const signInUser = useAuth()
+    const uid = signInUser.uid
     return (
-        <div className='chat'>
-            <p>{name}:{msg}</p>
+        <div className={uid === key ? 'me': 'you'}>
+            <p>私</p>
+            <p className='says'>{msg}</p>
         </div>
     )
 
