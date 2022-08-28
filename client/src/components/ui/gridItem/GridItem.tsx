@@ -6,9 +6,11 @@ type Props = {
   child: JSX.Element
   colRatio: any
   navigate?: string
+  width: Number // gridカードの横幅
+  height: string // gridカードの縦
 }
 const GridItem = (props: Props) => {
-  const { child, colRatio, navigate } = props
+  const { child, colRatio, navigate, width, height } = props
   const navLink = navigate ? '/' + navigate : ''
 
   return (
@@ -18,8 +20,8 @@ const GridItem = (props: Props) => {
       className='container-box'
       sx={{
         mb: 1,
-        mt: 2,
       }}
+      style={{ width: `${width}`, height: `${height}` }}
     >
       <Link to={navLink}>{child}</Link>
     </Grid>
