@@ -16,11 +16,11 @@ const App = memo(() => {
   return (
     <BrowserRouter>
       <div className='app'>
-        <Grid container>
-          <Grid item xs={3}>
+        <Grid container justifyContent='center' spacing={16}>
+          <Grid item xs={2} >
             {signInUser && <Sidebar />}
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={10}>
             <Router />
           </Grid>
         </Grid>
