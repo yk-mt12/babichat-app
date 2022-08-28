@@ -43,9 +43,9 @@ const Ranking = () => {
   return (
     <div className='ranking--body'>
       <Header title='Ranking' />
-      <Grid container>
-        <GridItem colRatio={6} label='いいね数' height={2} cName=' hover-text' />
-        <GridItem colRatio={6} label='返信数' height={2} cName=' hover-text' />
+      <Grid container justifyContent='space-between' alignItems='center'>
+        <GridItem colRatio={5.95} label='いいね数' height={2} cName=' hover-text' />
+        <GridItem colRatio={5.95} label='返信数' height={2} cName=' hover-text' />
       </Grid>
       <div className='ranking--block'>
         <RankingPostTimeline postsArray={postsArray} />
