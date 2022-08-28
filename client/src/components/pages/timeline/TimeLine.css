@@ -1,7 +1,8 @@
 .timeline {
   /* flex: 0.45; */
   border-right: 1px solid var(--babichat-color);
-  overflow: scroll;
+  overflow-y: scroll;
+  padding-left: 20px;
 }
 
 .timeline::-webkit-scrollbar {
