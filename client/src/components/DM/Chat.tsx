@@ -4,18 +4,20 @@ import './Chat.css'
 
 
 type chatProps = {
-    key: string
+    sendid: string
     name: string
     msg: string
     createTime: any
 }
 
 const Chat = (props: chatProps) => {
-    const { msg, createTime, name, key } = props
+    const { msg, createTime, name, sendid } = props
     const signInUser = useAuth()
     const uid = signInUser.uid
+    console.log('ユーザーid', uid)
+    console.log('sendid', sendid)
     return (
-        <div className={uid === key ? 'me': 'you'}>
+        <div className={uid === sendid ? 'me': 'you'}>
             <p>私</p>
             <p className='says'>{msg}</p>
         </div>

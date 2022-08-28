@@ -7,7 +7,7 @@ import SendIcon from '@mui/icons-material/Send';
 
 
 type ChatLog = {
-  key: string,
+  sendid: string,
   name: string,
   msg: string,
   createTime: any,
@@ -24,7 +24,7 @@ const MessageBox = () => {
     e.preventDefault()
 
     const data: ChatLog = {
-      key: uid,
+      sendid: uid,
       name: displayName,
       msg: msg,
       createTime: serverTimestamp()
@@ -35,12 +35,16 @@ const MessageBox = () => {
     const chatroomRef = doc(db, 'users', uid, 'chatroom', anotherId);
     const chatsRef = collection(chatroomRef, 'chats')
 
-    console.log(chatroomRef)
+    const receiveChatroomRef = doc(db, 'users', anotherId, 'chatroom', uid);
+    const receiveChatsRef = collection(receiveChatroomRef, 'chats')
+
+    // console.log(chatroomRef)
     if(msg === '') {
       console.log('メッセージは空です')
       return
     }
     addDoc(chatsRef, data)
+    addDoc(receiveChatsRef, data)
     setMsg('')
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { useEffect, useRef, useState } from 'react'
 import { db } from '../../firebase'
@@ -9,7 +10,7 @@ import './ChatRoom.css'
 import { Grid } from '@mui/material'
 
 type chatProps = {
-    key: string
+    sendid: string
     name: string
     msg: string
     createTime: any
@@ -52,7 +53,7 @@ const ChatRoom = () => {
                                     name={chat.name}
                                     msg={chat.msg}
                                     createTime={chat.createTime}
-                                    key={chat.key}
+                                    sendid={chat.sendid}
                                     />
                                 ))}
                             </div>
