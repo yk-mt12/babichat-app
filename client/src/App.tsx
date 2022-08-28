@@ -20,7 +20,7 @@ const App = memo(() => {
           <Grid item xs={2}>
             {signInUser && <Sidebar />}
           </Grid>
-          <Grid item xs={9.8}>
+          <Grid item xs={9.5}>
             <Router />
           </Grid>
         </Grid>
