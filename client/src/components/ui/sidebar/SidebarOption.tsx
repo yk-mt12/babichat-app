@@ -22,7 +22,7 @@ const SidebarOption = (props: SidebarOptionProps) => {
         >
           <Grid
             item
-            xs={2}
+            xs={3}
             sx={{
               color: '#fff',
             }}
@@ -31,7 +31,7 @@ const SidebarOption = (props: SidebarOptionProps) => {
           </Grid>
           <Grid
             item
-            xs={10}
+            xs={9}
             sx={{
               color: '#fff',
             }}
@@ -39,6 +39,7 @@ const SidebarOption = (props: SidebarOptionProps) => {
             <h2
               style={{
                 fontWeight: 400,
+                fontSize: 18,
               }}
             >
               {text}
