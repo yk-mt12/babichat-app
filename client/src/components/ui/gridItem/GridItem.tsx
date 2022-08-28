@@ -3,18 +3,19 @@ import './GridItem.css'
 
 type Props = {
   child: JSX.Element
-  colRatio: Number
+  colRatio?: Number
+  style?: any
 }
+
 const GridItem = (props: Props) => {
   const { child, colRatio } = props
   return (
     <Grid
       item
-      xs={colRatio}
       className='container-box'
+      md={colRatio}
       sx={{
-        mr: 2,
-        mt: 1,
+        m: '1, 2',
       }}
     >
       {child}
