@@ -2,6 +2,7 @@ import { collectionGroup, DocumentReference, onSnapshot, orderBy, query } from '
 import { useEffect, useState } from 'react'
 import { db } from '../../../firebase'
 import Post from '../../model/post/Post'
+import Header from '../../ui/header/Header'
 import PostBox from '../../ui/input/post/PostBox'
 
 import './Timeline.css'
@@ -34,10 +35,7 @@ const TimeLine = () => {
   return (
     <div className='timeline'>
       {/* Header */}
-      <div className='timeline--header'>
-        <h2>Post</h2>
-      </div>
-      {/* PostBox */}
+      <Header title='Post'/>
       <PostBox />
       {/* Post */}
 
