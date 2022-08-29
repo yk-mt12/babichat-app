@@ -8,6 +8,7 @@ import Chat from './Chat'
 import MessageBox from './MessageBox'
 import './ChatRoom.css'
 import Header from '../../ui/header/Header'
+import UserList from './UserList'
 
 type chatProps = {
     sendid: string
@@ -65,11 +66,7 @@ const ChatRoom = () => {
                     </div>
                 </Grid>
 
-                <Grid item xs={4} className='grid history'>
-                    <div className='history-title'>
-                        <p>履歴</p>
-                    </div>
-                </Grid>
+                <UserList />
             </Grid>
 
 

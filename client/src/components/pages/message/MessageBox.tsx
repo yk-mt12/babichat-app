@@ -70,6 +70,15 @@ const MessageBox = () => {
             onChange={(e) => setMsg(e.target.value)}
             className='input-box'
           />
+          <SendIcon
+            style={{
+              marginLeft: '20px',
+              marginBottom: '-5px',
+            }}
+            className='postBox-postButton'
+            type='submit'
+            onClick={sendMsg}
+            />
         </form>
       </div>
     </>
