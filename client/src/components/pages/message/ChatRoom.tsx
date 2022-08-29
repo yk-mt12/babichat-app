@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-key */
 import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { useEffect, useRef, useState } from 'react'
-import { db } from '../../firebase'
-import { useAuth } from '../../firebase/authFunction'
-import Sidebar from '../sidebar/Sidebar'
+import { db } from '../../../firebase'
+import { useAuth } from '../../../firebase/authFunction'
+import Sidebar from '../../sidebar/Sidebar'
 import Chat from './Chat'
 import MessageBox from './MessageBox'
 import './ChatRoom.css'

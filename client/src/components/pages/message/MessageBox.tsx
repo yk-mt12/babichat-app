@@ -1,8 +1,8 @@
 
 import { addDoc, collection, doc, serverTimestamp } from 'firebase/firestore';
 import{ useState } from 'react'
-import { db } from '../../firebase';
-import { useAuth } from '../../firebase/authFunction';
+import { db } from '../../../firebase';
+import { useAuth } from '../../../firebase/authFunction';
 import SendIcon from '@mui/icons-material/Send';
 
 

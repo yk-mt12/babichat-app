@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from '../../firebase/authFunction'
+import { useAuth } from '../../../firebase/authFunction'
 import './Chat.css'
 
 

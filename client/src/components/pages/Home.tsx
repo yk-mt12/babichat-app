@@ -8,7 +8,7 @@ import Profile from './Profile'
 import SignIn from '../signUp/SignIn'
 import SignUp from '../signUp/SignUp'
 import { useAuth } from '../../firebase/authFunction'
-import ChatRoom from '../DM/ChatRoom'
+import ChatRoom from '../pages/message/ChatRoom'
 
 const Home = () => {
   const signInUser = useAuth()
