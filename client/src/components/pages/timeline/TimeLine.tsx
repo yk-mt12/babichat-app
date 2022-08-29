@@ -5,7 +5,7 @@ import Post from '../../model/post/Post'
 import Header from '../../ui/header/Header'
 import PostBox from '../../ui/input/post/PostBox'
 
-import './Timeline.css'
+import './TimeLine.css'
 
 type PostType = {
   author: DocumentReference
@@ -34,25 +34,24 @@ const TimeLine = () => {
 
   return (
     <div className='timeline'>
-      {/* Header */}
-      <Header title='Post'/>
+      <Header title='Post' />
       <PostBox />
-      {/* Post */}
-
-      {posts.map((post: PostType) => (
-        <Post
-          key={post.postId}
-          author={post.author}
-          displayName={post.displayName}
-          text={post.text}
-          avater={post.avater}
-          image={post.image}
-          createTime={post.createTime}
-          updateTime={post.updateTime}
-          likeCount={post.likeCount}
-          postId={post.postId}
-        />
-      ))}
+      <div className='timeline--block'>
+        {posts.map((post: PostType) => (
+          <Post
+            key={post.postId}
+            author={post.author}
+            displayName={post.displayName}
+            text={post.text}
+            avater={post.avater}
+            image={post.image}
+            createTime={post.createTime}
+            updateTime={post.updateTime}
+            likeCount={post.likeCount}
+            postId={post.postId}
+          />
+        ))}
+      </div>
     </div>
   )
 }

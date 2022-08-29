@@ -1,10 +1,18 @@
 .timeline {
   /* flex: 0.45; */
-  border-right: 1px solid var(--babichat-color);
-  overflow-y: scroll;
-  padding-left: 20px;
+  /* border-right: 1px solid var(--babichat-color); */
+  /* padding-left: 20px; */
 }
 
 .timeline::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
+}
+
+.timeline--block {
+  margin-top: 10px;
+  padding: 8px 20px;
+  border: 2px solid var(--babichat-color);
+  border-radius: 16px;
+  overflow: scroll;
+  height: 74vh;
 }
