@@ -17,12 +17,11 @@ const Chat = (props: chatProps) => {
     console.log('ユーザーid', uid)
     console.log('sendid', sendid)
     return (
-        <div className={uid === sendid ? 'me': 'you'}>
+        <div className={uid == sendid ? 'me': 'you'}>
             <p>私</p>
             <p className='says'>{msg}</p>
         </div>
     )
-
 }
 
 export default Chat

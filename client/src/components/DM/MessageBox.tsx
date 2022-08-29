@@ -30,7 +30,6 @@ const MessageBox = () => {
       createTime: serverTimestamp()
     }
 
-    console.log('sendmsg start!')
     const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2' // TODO：相手のidを入れる
     const chatroomRef = doc(db, 'users', uid, 'chatroom', anotherId);
     const chatsRef = collection(chatroomRef, 'chats')
