@@ -50,6 +50,7 @@ const ChatRoom = () => {
                     <div className='grid chat-screen'>
                         <div className='message' id='chatBottom' >
                             {chats.map((chat: chatProps) => (
+                                // eslint-disable-next-line react/jsx-key
                                 <Chat
                                 name={chat.name}
                                 msg={chat.msg}

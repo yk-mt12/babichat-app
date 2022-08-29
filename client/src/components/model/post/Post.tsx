@@ -31,8 +31,8 @@ const Post = memo((props: PostProps) => {
    * 音声読み上げ
    * @param text バビ語文章
    */
-  const speechClick = (text: string) => {
-    readAloud(text)
+  const speechClick = () => {
+    readAloud(isClicked ? text: babi)
   }
 
   const handleClick = async (e: any) => {
@@ -72,13 +72,13 @@ const Post = memo((props: PostProps) => {
       </Grid>
       <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start'>
         <Grid item>
-          <Button variant='contained' onClick={() => speechClick(babi)}>
+          <Button variant='contained' size='small' onClick={() => speechClick()}>
             読み上げる
           </Button>
         </Grid>
         <Grid item>
-          <Button variant='contained' onClick={() => setIsClicked(!isClicked)}>
-            翻訳
+          <Button variant='contained' size='small' onClick={() => setIsClicked(!isClicked)}>
+            {isClicked ? 'バビ語': '翻訳'}
           </Button>
         </Grid>
       </Grid>
