@@ -49,7 +49,8 @@ const TimeLine = () => {
   return (
     <div className='timeline'>
       <Header title='Post' />
-      {location.pathname != '/home' && <PostBox />}
+      {/* /homeの時は非表示にする */}
+      {location.pathname !== '/home' && <PostBox />}
 
       <div className={location.pathname !== '/home' ? 'timeline--block' : ''}>
         {posts.map((post: PostType) => (

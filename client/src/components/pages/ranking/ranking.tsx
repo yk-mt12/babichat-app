@@ -29,6 +29,7 @@ type PostType = {
 
 const Ranking = () => {
   const [posts, setPosts] = useState<any>([])
+  const location = useLocation()
 
   useEffect(() => {
     // postのいいね数順に並び替える
@@ -40,15 +41,15 @@ const Ranking = () => {
   }, [])
 
   const postsArray = posts //useStateのpostsをpropsとして<RankingPostTimeline />に渡すとエラーになるため、postsArrayにコピー
-  const location = useLocation()
 
   return (
     <div>
       <Header title='Ranking' />
+      {/* /homeの時は非表示にする */}
       {location.pathname !== '/home' && (
         <Grid container justifyContent='space-between' alignItems='center'>
           <GridItem colRatio={5.95} label='いいね数' height={2} cName=' hover-text' />
-          <GridItem colRatio={5.95} label='返信数' height={2} cName=' hover-text' />
+          {/* <GridItem colRatio={5.95} label='返信数' height={2} cName=' hover-text' /> */}
         </Grid>
       )}
 

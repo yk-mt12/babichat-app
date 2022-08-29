@@ -1,38 +1,55 @@
 .login-page {
   margin-top: 200px;
-  margin-right: 10px;
+  text-align: center;
+  padding-right: 200px;
 }
 
 form {
   text-align: center;
 }
 
-.login-page {
-  padding-right: 200px;
-}
-
-.google-login {
-  text-align: center;
-  margin-top: 10px;
-}
-
-input {
-  width: 200px;
-  height: 38px;
-  border-color: var(--babichat-color);
+.signIn-input {
+  width: 63%;
+  height: 52px;
   margin-bottom: 10px;
   /* outline: solid 1px var(--babichat-color); */
+  padding: 2px;
+  border: 2px solid var(--babichat-color);
+  border-radius: 4px;
+  text-align: center;
+  font-size: -1.4em;
+}
+
+.signIn-input::placeholder {
+  color: var(--babichat-color);
+  font-size: 1.6em;
+  font-style: italic;
+  text-align: center;
 }
 
 Link {
   font-size: 10px;
 }
 
-button {
-  width: 208px;
-  height: 40px;
+.signIn-button {
+  width: 64%;
+  height: 55px;
   margin-bottom: 10px;
   background-color: var(--babichat-color);
-  border-color: var(--babichat-color);
+  /* border-color: var(--babichat-color); */
   color: #ffffff;
+  padding: 2px;
+  border: 2px solid var(--babichat-color);
+  border-radius: 4px;
+  font-size: -1.4em;
+  font-style: italic;
+}
+
+.google-login {
+  /* text-align: center; */
+  margin-left: 150px;
+}
+
+.link-text {
+  color: var(--babichat-color);
 }
