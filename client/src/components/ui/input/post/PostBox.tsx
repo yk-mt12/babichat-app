@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { collection, setDoc, doc, serverTimestamp, addDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../../firebase'
 import { useAuth } from '../../../../firebase/authFunction'
+import React from 'react'
 
 const PostBox = () => {
   const [displayName, setDisplayName] = useState<string>('')
