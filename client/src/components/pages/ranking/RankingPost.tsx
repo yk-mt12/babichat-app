@@ -14,7 +14,7 @@ type Props = {
   updateTime: string
   likeCount: number
   postId: string
-  rank: Number
+  rank: number
 }
 
 const RankingPost = (props: Props) => {

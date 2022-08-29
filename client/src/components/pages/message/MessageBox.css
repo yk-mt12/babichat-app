@@ -1,3 +1,15 @@
 .postBox-postButton {
     padding: 10px, 0, 0, 10px;
 }
+
+.input-box {
+    padding: 10px 20px;
+    border: 2px solid var(--babichat-color);
+    border-radius: 16px;
+    min-width: 70px;
+    width: 40%;
+}
+
+.chat-form {
+    position: flex
+}

@@ -39,7 +39,7 @@
     padding: 8px;
     max-width: 250px;
     border-radius: 12px;
-    background: #30e852;
+    background: #30d9e8;
     font-size: 15px;
 }
 
@@ -49,7 +49,7 @@
     top: 3px;
     right: -19px;
     border: 8px solid transparent;
-    border-left: 18px solid #30e852;
+    border-left: 18px solid #30d9e8;
     -webkit-transform: rotate(-35deg);
     transform: rotate(-35deg);
 }

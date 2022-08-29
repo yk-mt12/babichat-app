@@ -5,6 +5,7 @@ import { db } from '../../../firebase';
 import { useAuth } from '../../../firebase/authFunction';
 import SendIcon from '@mui/icons-material/Send';
 import { useParams } from 'react-router-dom';
+import PostBox from '../../ui/input/post/PostBox';
 
 
 type ChatLog = {
@@ -54,13 +55,12 @@ const MessageBox = () => {
     <>
       <div className='chat'>
         <form className='chatform'
-        onSubmit={sendMsg}>
+          onSubmit={sendMsg}>
           <input
             style={{
               width: '78%',
               fontSize: '15px',
               fontWeight: '550',
-              marginLeft: '5px',
               marginBottom: '-3px',
             }}
 
@@ -68,17 +68,8 @@ const MessageBox = () => {
             type='text'
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
-
+            className='input-box'
           />
-          <SendIcon
-            style={{
-              marginLeft: '20px',
-              marginBottom: '-5px',
-            }}
-            className='postBox-postButton'
-            type='submit'
-            onClick={sendMsg}
-            />
         </form>
       </div>
     </>
