@@ -14,8 +14,6 @@ const Chat = (props: chatProps) => {
     const { msg, createTime, name, sendid } = props
     const signInUser = useAuth()
     const uid = signInUser.uid
-    console.log('ユーザーid', uid)
-    console.log('sendid', sendid)
     return (
         <div className={uid == sendid ? 'me': 'you'}>
             <p>私</p>

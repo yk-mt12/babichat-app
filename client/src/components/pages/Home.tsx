@@ -20,7 +20,7 @@ const Home = () => {
         <Route path='/' element={<Dashboard />} />
         <Route path='/post' element={<TimeLine />} />
         <Route path='/profile' element={<Profile />} />
-        <Route path='/chatroom' element={<ChatRoom />} />
+        <Route path='/chatroom/:anotherId' element={<ChatRoom />} />
         <Route path='/setting' element={<Setting />} />
         <Route path='/ranking' element={<Ranking />} />
         <Route path='/login' element={<SignIn />} />
