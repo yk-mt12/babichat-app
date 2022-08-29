@@ -1,0 +1,59 @@
+li {
+    list-style: none;
+}
+
+.container {
+    display: flex;
+}
+
+.profile-logo {
+    font-size: 30px;
+    padding: 10px 0 0 20px;
+}
+
+.box {
+    width: 1000px;
+    height: 300px;
+    margin: 10px 0 0 20px;
+    font-weight: bold;
+    border: solid 3px #000000;
+}
+
+.icon {
+    float: left;
+    width: 100px;
+    height: 100px;
+    padding: 30px 0 0 60px;
+}
+
+.box1-list {
+    padding-bottom: 10px;
+}
+
+.user-name {
+    font-size: 25px;
+    margin-left: 10px;
+    margin-top: 40px;
+}
+
+.self-introduction {
+    margin: 0 0 10px 100px;
+}
+
+.box1-1 {
+    width: 800px;
+    height: 110px;
+    margin: 0 0 0 100px;
+    font-weight: bold;
+    border: solid 3px #000000;
+}
+
+.box2-list {
+    float: left;
+    padding: 10px 20px 0 0;
+}
+
+.post-list {
+    padding: 0;
+    margin: 10px 0 0 20px;
+}
