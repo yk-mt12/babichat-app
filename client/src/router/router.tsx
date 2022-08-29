@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom'
 
 import Home from '../components/pages/home/Home'
-import Message from '../components/pages/message/Message'
+import Message from '../components/pages/message/ChatRoom'
 import Setting from '../components/pages/setting/Setting'
-import Ranking from '../components/pages/ranking/Ranking'
+import Ranking from '../components/pages/ranking/RankingPost'
 import Profile from '../components/pages/profile/Profile'
 import SignIn from '../components/model/user/SignIn'
 import SignUp from '../components/model/user/SignUp'
