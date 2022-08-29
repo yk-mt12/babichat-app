@@ -1,0 +1,12 @@
+.input-box {
+  padding: 8px 20px;
+  border: 2px solid var(--babichat-color);
+  border-radius: 16px;
+  min-width: 100px;
+  width: 95%;
+}
+
+.button:hover {
+  cursor: pointer;
+  border-radius: 16px;
+}
