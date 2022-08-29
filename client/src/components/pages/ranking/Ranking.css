@@ -14,6 +14,10 @@
   height: 74vh;
 }
 
+.ranking--block::-webkit-scrollbar {
+  display: none;
+}
+
 .ranking--post {
   margin: 6px 16px 0;
   align-items: center;

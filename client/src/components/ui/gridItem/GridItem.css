@@ -5,6 +5,10 @@
   overflow: scroll;
 }
 
+.container-box::-webkit-scrollbar {
+  display: none;
+}
+
 .container-box--item {
   margin: 0;
   padding: 0;
