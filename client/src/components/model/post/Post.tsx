@@ -77,7 +77,7 @@ const Post = memo((props: PostProps) => {
               <ChatBubbleOutline fontSize='small' {...{ style }} />
             </Grid>
             <Grid item md={0.8}>
-              <p {...{ style }} className='text'>
+              <p style={{marginTop: 2}} className='text'>
                 rep
               </p>
             </Grid>
@@ -85,7 +85,7 @@ const Post = memo((props: PostProps) => {
               <FavoriteBorder fontSize='small' {...{ style }} />
             </Grid>
             <Grid item md={0.8}>
-              <p {...{ style }} className='text'>
+              <p style={{marginTop: 4}} className='text'>
                 {likeCount}
               </p>
             </Grid>

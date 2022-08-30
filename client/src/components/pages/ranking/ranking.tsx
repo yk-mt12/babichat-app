@@ -8,6 +8,7 @@ import {
   DocumentReference,
 } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
 import GridItem from '../../ui/gridItem/GridItem'
 import Header from '../../ui/header/Header'
@@ -38,16 +39,20 @@ const Ranking = () => {
     })
   }, [])
 
-  const postsArray = posts
+  const postsArray = posts //useStateのpostsをpropsとして<RankingPostTimeline />に渡すとエラーになるため、postsArrayにコピー
+  const location = useLocation()
 
   return (
-    <div className='ranking--body'>
+    <div>
       <Header title='Ranking' />
-      <Grid container justifyContent='space-between' alignItems='center'>
-        <GridItem colRatio={5.95} label='いいね数' height={2} cName=' hover-text' />
-        <GridItem colRatio={5.95} label='返信数' height={2} cName=' hover-text' />
-      </Grid>
-      <div className='ranking--block'>
+      {location.pathname !== '/home' && (
+        <Grid container justifyContent='space-between' alignItems='center'>
+          <GridItem colRatio={5.95} label='いいね数' height={2} cName=' hover-text' />
+          <GridItem colRatio={5.95} label='返信数' height={2} cName=' hover-text' />
+        </Grid>
+      )}
+
+      <div className={`{location.pathname !== '/home' && 'ranking-block' }`}>
         <RankingPostTimeline postsArray={postsArray} />
       </div>
     </div>
