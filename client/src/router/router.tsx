@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import Home from '../components/pages/home/Home'
 import Message from '../components/pages/message/ChatRoom'
@@ -25,6 +25,7 @@ const Router = () => {
         <Route path='/ranking' element={<Ranking />} />
         <Route path='/login' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
+        <Route path='*' element={<Navigate to='/home' replace />} />
       </Routes>
     </div>
   )

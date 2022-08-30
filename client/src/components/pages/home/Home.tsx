@@ -12,8 +12,8 @@ const Home = () => {
     <div className='dashboard--body'>
       <Header title='チャバットボ' />
       <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-        <GridItem child={<Ranking />} colRatio={5.9} navigate='ranking' width={300} height='40vh' />
-        <GridItem child={<TimeLine />} colRatio={5.9} navigate='post' width={300} height='40vh' />
+        <GridItem child={<Ranking />} colRatio={7.9} navigate='ranking' width={300} height='40vh' />
+        <GridItem child={<TimeLine />} colRatio={3.9} navigate='post' width={300} height='40vh' />
       </Grid>
       <Grid container direction='row' justifyContent='space-between' alignItems='center'>
         <GridItem child={<Message />} colRatio={4.8} navigate='message' width={300} height='40vh' />
