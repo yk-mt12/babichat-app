@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import 'firebaseui/dist/firebaseui.css'
 import { signUp, useAuth } from '../../../firebase/authFunction'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
+
+import './style.css'
 
 // TODO:メールログイン（サインアップ）の場合、うまくいかない
 const SignUp = () => {
@@ -41,9 +43,17 @@ const SignUp = () => {
               />
             </div>
             <div>
-              <button>ログイン</button>
+              <button>アカウントを作成する</button>
             </div>
           </form>
+          <div>
+            <p>
+              ログインは
+              <span className='link-text'>
+                <Link to='/login'>こちら</Link>
+              </span>
+            </p>
+          </div>
         </div>
       )}
     </>
