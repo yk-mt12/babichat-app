@@ -2,3 +2,9 @@
   color: var(--babichat-color);
   font-size: 34px;
 }
+
+.when-home {
+  margin-top: 5px;
+  margin-bottom: 0;
+  text-align: center;
+}
