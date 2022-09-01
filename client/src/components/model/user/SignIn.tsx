@@ -50,12 +50,12 @@ const SignIn = () => {
               <button>ログイン</button>
             </div>
             <div>
-            <p>
-              新規作成は
-              <span className='link-text'>
-                <Link to='/signup'>こちら</Link>
-              </span>
-            </p>
+              <p>
+                新規作成は
+                <span className='link-text'>
+                  <Link to='/signup'>こちら</Link>
+                </span>
+              </p>
             </div>
           </form>
           <div>

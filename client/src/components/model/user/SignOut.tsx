@@ -1,5 +1,6 @@
 import { logout } from '../../../firebase/authFunction'
 import { useNavigate } from 'react-router-dom'
+import { Button } from '@mui/material'
 
 const SignOut = () => {
   const navigate = useNavigate()
@@ -9,7 +10,7 @@ const SignOut = () => {
   }
   return (
     <div>
-      <button onClick={handleLogout}>ログアウト</button>
+      <Button variant='contained' onClick={handleLogout}>ログアウト</Button>
     </div>
   )
 }
