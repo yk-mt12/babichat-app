@@ -26,6 +26,7 @@ const SignIn = () => {
         <Navigate to='/home' />
       ) : (
         <div>
+          <p>{(signInUser.uid, signInUser.createTime)}</p>
           <h1>ログイン</h1>
           <form onSubmit={handleSubmit}>
             <div>
