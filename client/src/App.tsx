@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { BrowserRouter, useLocation } from 'react-router-dom'
 import './App.css'
 import Router from './router/router'
@@ -6,26 +6,37 @@ import { createUsersDB, useAuth } from './firebase/authFunction'
 import Sidebar from './components/ui/sidebar/Sidebar'
 import SignOut from './components/model/user/SignOut'
 import { Grid } from '@mui/material'
+import Loading from './components/ui/loading/Loading'
 
 const App = memo(() => {
   const signInUser = useAuth()
   const location = useLocation()
   const path = location.pathname
   const pathList = ['/signup', '/login']
+  const [isLoading, setIsLoading] = useState<Boolean>(false)
+
   useEffect(() => {
+    setIsLoading(true)
     createUsersDB()
+    setIsLoading(false)
   }, [])
 
   return (
     <div className='app'>
-      <Grid container justifyContent='space-between' alignItems='flex-start'>
-        <Grid item xs={2}>
-          {signInUser && !pathList.includes(path) && <Sidebar />}
-        </Grid>
-        <Grid item xs={9.5}>
-          <Router />
-        </Grid>
-      </Grid>
+      {isLoading ? (
+        <Loading text='読み込み中' />
+      ) : (
+        <>
+          <Grid container justifyContent='space-between' alignItems='flex-start'>
+            <Grid item xs={2}>
+              {signInUser && !pathList.includes(path) && <Sidebar />}
+            </Grid>
+            <Grid item xs={9.5}>
+              <Router />
+            </Grid>
+          </Grid>
+        </>
+      )}
     </div>
   )
 })

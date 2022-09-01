@@ -2,7 +2,14 @@
   padding: 8px;
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
+}
+
+.scroll-box {
   overflow: scroll;
+}
+
+.scroll-box::-webkit-scrollbar {
+  display: none;
 }
 
 .container-box--item {

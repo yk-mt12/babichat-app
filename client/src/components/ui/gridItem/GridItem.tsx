@@ -10,16 +10,17 @@ type Props = {
   height?: string | Number // gridカードの縦
   label?: string
   cName?: string
+  isScroll?: boolean
 }
 const GridItem = (props: Props) => {
-  const { child, colRatio, navigate, width, height, label, cName } = props
+  const { child, colRatio, navigate, width, height, label, cName, isScroll } = props
   const navLink = navigate ? '/' + navigate : ''
 
   return (
     <Grid
       item
       xs={colRatio}
-      className={`container-box ${cName}`}
+      className={`container-box ${cName} ${isScroll ? 'scroll-box' : ''}`}
       sx={{
         mb: 1,
       }}

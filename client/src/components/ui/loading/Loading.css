@@ -1,7 +1,7 @@
 .loading-screen {
   text-align: center;
   justify-content: center;
-  display:flex;
+  display: flex;
   justify-items: center;
   margin-top: 100px;
 }
