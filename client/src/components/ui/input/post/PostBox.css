@@ -10,3 +10,7 @@
   cursor: pointer;
   border-radius: 16px;
 }
+
+.button-disable {
+  color: rgb(134, 134, 134);
+}

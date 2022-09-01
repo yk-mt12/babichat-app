@@ -2,7 +2,7 @@ import { collectionGroup, DocumentReference, onSnapshot, orderBy, query } from '
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
-import Post from '../../model/post/Post'
+import Post from './Post'
 import Header from '../../ui/header/Header'
 import PostBox from '../../ui/input/post/PostBox'
 
