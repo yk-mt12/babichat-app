@@ -30,7 +30,14 @@ const Home = () => {
         />
       </Grid>
       <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-        <GridItem child={<Message />} colRatio={4.8} navigate='message' width={300} height='40vh' />
+        <GridItem
+          child={<Message />}
+          colRatio={4.8}
+          navigate='message'
+          width={300}
+          height='40vh'
+          isScroll={true}
+        />
         <GridItem child={<Setting />} colRatio={7} navigate='setting' width={300} height='40vh' />
       </Grid>
     </div>

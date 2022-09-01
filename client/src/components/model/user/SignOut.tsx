@@ -9,9 +9,7 @@ const SignOut = () => {
   const [isLoading, setIsLoading] = useState<Boolean>(false)
 
   const handleLogout = async () => {
-    setIsLoading(true)
     await logout()
-    setIsLoading(false)
     navigate('/login')
   }
 
