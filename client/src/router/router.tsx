@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import Home from '../components/pages/home/Home'
-import Message from '../components/pages/message/ChatRoom'
 import Setting from '../components/pages/setting/Setting'
 import Ranking from '../components/pages/ranking/Ranking'
 import Profile from '../components/pages/profile/Profile'
@@ -10,10 +9,10 @@ import SignUp from '../components/model/user/SignUp'
 import TimeLine from '../components/pages/timeline/TimeLine'
 import { useAuth } from '../firebase/authFunction'
 import { PrivateRoute } from './PrivateRoute'
+import ChatRoom from '../components/pages/message/ChatRoom'
 
 const Router = () => {
   const signInUser = useAuth()
-  console.log(signInUser)
 
   return (
     <div>
@@ -46,7 +45,7 @@ const Router = () => {
           path='/chatroom/:anotherId'
           element={
             <PrivateRoute>
-              <Message />
+              <ChatRoom />
             </PrivateRoute>
           }
         />

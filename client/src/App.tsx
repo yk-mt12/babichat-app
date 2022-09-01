@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from 'react'
-import { BrowserRouter, useLocation } from 'react-router-dom'
+import { BrowserRouter, Navigate, useLocation } from 'react-router-dom'
 import './App.css'
 import Router from './router/router'
 import { createUsersDB, useAuth } from './firebase/authFunction'
@@ -17,9 +17,9 @@ const App = memo(() => {
 
   useEffect(() => {
     setIsLoading(true)
-    createUsersDB()
+    signInUser.uid && createUsersDB()
     setIsLoading(false)
-  }, [])
+  }, [signInUser.uid])
 
   return (
     <div className='app'>
@@ -29,7 +29,7 @@ const App = memo(() => {
         <>
           <Grid container justifyContent='space-between' alignItems='flex-start'>
             <Grid item xs={2}>
-              {signInUser && !pathList.includes(path) && <Sidebar />}
+              {signInUser.uid && !pathList.includes(path) && <Sidebar />}
             </Grid>
             <Grid item xs={9.5}>
               <Router />

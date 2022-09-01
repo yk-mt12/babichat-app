@@ -32,3 +32,15 @@
   transition: opacity 0.15s ease-out;
   cursor: pointer;
 }
+
+/* IsLoadingGrid.tsx */
+
+.block-label {
+  margin-top: 50px;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  color: var(--babichat-color);
+  font-weight: bold;
+  font-size: 20px;
+}
