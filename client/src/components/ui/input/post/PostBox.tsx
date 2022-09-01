@@ -65,9 +65,6 @@ const PostBox = () => {
     <div className='postBox'>
       <form>
         <Grid container justifyContent='space-between' alignItems='center'>
-          {/* <Grid item>
-          <Avatar src={avater} />
-        </Grid> */}
           <Grid item xs={8}>
             <input
               value={postMessage}
@@ -93,14 +90,6 @@ const PostBox = () => {
             {error}
           </span>
         )}
-
-        {/* <input
-          className='postBox--imageInput'
-          value={postImage}
-          placeholder='画像のURLを入力してください'
-          type='text'
-          onChange={(e) => setPostImage(e.target.value)}
-        /> */}
       </form>
     </div>
   )
