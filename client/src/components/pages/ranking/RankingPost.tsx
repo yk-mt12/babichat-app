@@ -42,7 +42,7 @@ const RankingPost = (props: Props) => {
               <ChatBubbleOutline fontSize='small' {...{ style }} />
             </Grid>
             <Grid item>
-              <p style={{marginBottom: 5}} className='text'>
+              <p style={{ marginBottom: 5 }} className='text'>
                 rep
               </p>
             </Grid>
@@ -52,7 +52,7 @@ const RankingPost = (props: Props) => {
               <FavoriteBorder fontSize='small' {...{ style }} />
             </Grid>
             <Grid item>
-              <p style={{marginBottom: 2}} className='text'>
+              <p style={{ marginBottom: 2 }} className='text'>
                 {likeCount}
               </p>
             </Grid>
