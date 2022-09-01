@@ -7,13 +7,10 @@ import Profile from '../components/pages/profile/Profile'
 import SignIn from '../components/model/user/SignIn'
 import SignUp from '../components/model/user/SignUp'
 import TimeLine from '../components/pages/timeline/TimeLine'
-import { useAuth } from '../firebase/authFunction'
 import { PrivateRoute } from './PrivateRoute'
 import ChatRoom from '../components/pages/message/ChatRoom'
 
 const Router = () => {
-  const signInUser = useAuth()
-
   return (
     <div>
       <Routes>

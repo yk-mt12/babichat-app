@@ -21,13 +21,7 @@ const IsLoginGrid = (props: Props) => {
       }}
       style={{ width: `${width}`, height: `${height}` }}
     >
-      {label && (
-        <p
-          className='block-label'
-        >
-          {label}
-        </p>
-      )}
+      {label && <p className='block-label'>{label}</p>}
     </Grid>
   )
 }

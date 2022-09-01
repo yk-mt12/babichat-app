@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { useAuth } from '../firebase/authFunction'
 
 export { PrivateRoute }
 
-function PrivateRoute({ children }) {
+function PrivateRoute({ children }: any) {
   const signInUser = useAuth()
 
   if (!signInUser.uid) {

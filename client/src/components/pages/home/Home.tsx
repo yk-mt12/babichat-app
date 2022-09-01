@@ -44,7 +44,12 @@ const Home = () => {
             isScroll={true}
           />
         ) : (
-          <IsLoginGrid colRatio={4.8} width={300} height='40vh' label='ログインが必要な機能です。' />
+          <IsLoginGrid
+            colRatio={4.8}
+            width={300}
+            height='40vh'
+            label='ログインが必要な機能です。'
+          />
         )}
         {signInUser.uid ? (
           <GridItem child={<Setting />} colRatio={7} navigate='setting' width={300} height='40vh' />
