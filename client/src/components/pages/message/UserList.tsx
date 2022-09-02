@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
-import { getAuth } from 'firebase/auth'
-import { collection, collectionGroup, onSnapshot, query } from 'firebase/firestore'
-import React, { useEffect, useState } from 'react'
+import { collection, onSnapshot, query } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
 import Header from '../../ui/header/Header'
 import User from './User'
@@ -14,6 +14,7 @@ type Props = {
 
 function UserList() {
     const [users, setUsers] = useState<any>([]);
+    const location = useLocation()
 
     useEffect(() => {
         const q: any = query(collection(db, 'users'))

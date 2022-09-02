@@ -1,7 +1,6 @@
 import { useAuth } from '../../../firebase/authFunction'
 import './User.css'
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 type Props = {
     postsArray: any
@@ -18,9 +17,7 @@ function User(props: Props) {
     const { postsArray } = props
     // const [ anotherId, setAnotherId ] = useState('');
     const uid = useAuth().uid
-
     const history = useNavigate();
-
 
     const move = (user: string) => {
         const anotherId = user

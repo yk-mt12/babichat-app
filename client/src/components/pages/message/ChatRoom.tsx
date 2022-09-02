@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
 import { Grid } from '@mui/material'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Chat from './Chat'
 import MessageBox from './MessageBox'
 import './ChatRoom.css'
@@ -21,7 +21,6 @@ const ChatRoom = () => {
     const [chats, setChats] = useState<any>([])
     const { anotherId } = useParams();
     const signInUser = useAuth()
-    const location = useLocation()
     const uid = signInUser.uid
 
     useEffect(() => {
