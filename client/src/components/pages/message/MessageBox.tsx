@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, serverTimestamp } from 'firebase/firestore'
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
 import { useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
@@ -20,7 +20,7 @@ const MessageBox = () => {
   const [msg, setMsg] = useState('')
   const { anotherId } = useParams()
 
-  const sendMsg = (e: any) => {
+  const sendMsg = async (e: any) => {
     e.preventDefault()
 
     const data: ChatLog = {
@@ -42,8 +42,16 @@ const MessageBox = () => {
       console.log('メッセージは空です')
       return
     }
-    addDoc(chatsRef, data)
-    addDoc(receiveChatsRef, data)
+    const chatRef = await addDoc(chatsRef, data)
+
+    await updateDoc(chatRef, {
+      chatId: chatRef.id,
+    })
+
+    const receiveRef = await addDoc(receiveChatsRef, data)
+    await updateDoc(receiveRef, {
+      chatId: receiveRef.id,
+    })
     setMsg('')
   }
 

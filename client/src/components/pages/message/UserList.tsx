@@ -17,6 +17,7 @@ function UserList() {
       setUsers(querySnapshot.docs.map((doc) => doc.data()))
     })
   }, [])
+  
   const userArray = users
 
   return (
