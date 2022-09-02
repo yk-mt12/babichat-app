@@ -11,10 +11,10 @@ import Header from '../../ui/header/Header'
 import UserList from './UserList'
 
 type chatProps = {
-    sendid: string
-    name: string
-    msg: string
-    createTime: any
+  sendid: string
+  name: string
+  msg: string
+  createTime: any
 }
 
 const ChatRoom = () => {
@@ -23,15 +23,13 @@ const ChatRoom = () => {
     const signInUser = useAuth()
     const uid = signInUser.uid
 
-    useEffect(() => {
-        // const anotherId = new URLSearchParams(search).get('anotherId') as string
-        // console.log(anotherId, search) // 'O1ujIkBZmJWXwdZi3htg5yai14X2' // TODO：相手のidを
-        const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId||'', 'chats');
-        const q = query(chatroomRef, orderBy('createTime'), limit(500))
-        const unsub = onSnapshot(q , (querySnapshot) => {
-            setChats(
-                querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-            );
+  useEffect(() => {
+    // const anotherId = new URLSearchParams(search).get('anotherId') as string
+    // console.log(anotherId, search) // 'O1ujIkBZmJWXwdZi3htg5yai14X2' // TODO：相手のidを
+    const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId || '', 'chats')
+    const q = query(chatroomRef, orderBy('createTime'), limit(500))
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      setChats(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
 
             const chatscreen = document.querySelector('.chat-screen')
             if(chatscreen)
@@ -74,4 +72,3 @@ const ChatRoom = () => {
 }
 
 export default ChatRoom
-

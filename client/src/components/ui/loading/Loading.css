@@ -1,0 +1,14 @@
+.loading-screen {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  justify-items: center;
+  margin-top: 100px;
+}
+
+.loading-text {
+  padding-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+}

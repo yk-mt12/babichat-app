@@ -33,24 +33,30 @@ const RankingPost = (props: Props) => {
         <Grid item md={1}>
           <Avatar src={avater} style={{ marginTop: 10 }} />
         </Grid>
-        <Grid item md={8}>
+        <Grid item md={6}>
           <p {...{ style }}>{babi}</p>
         </Grid>
-        <Grid item md={0.5}>
-          <ChatBubbleOutline fontSize='small' {...{ style }} />
-        </Grid>
-        <Grid item md={0.5}>
-          <p {...{ style }} className='text'>
-            rep
-          </p>
-        </Grid>
-        <Grid item md={0.5}>
-          <FavoriteBorder fontSize='small' {...{ style }} />
-        </Grid>
-        <Grid item md={0.5}>
-          <p {...{ style }} className='text'>
-            {likeCount}
-          </p>
+        <Grid item container md justifyContent='space-between' alignItems='center'>
+          <Grid item md={6} container justifyContent='flex-start' alignItems='center'>
+            <Grid item md={4}>
+              <ChatBubbleOutline fontSize='small' {...{ style }} />
+            </Grid>
+            <Grid item>
+              <p style={{ marginBottom: 5 }} className='text'>
+                rep
+              </p>
+            </Grid>
+          </Grid>
+          <Grid item md={6} container justifyContent='flex-start' alignItems='center'>
+            <Grid item md={4}>
+              <FavoriteBorder fontSize='small' {...{ style }} />
+            </Grid>
+            <Grid item>
+              <p style={{ marginBottom: 2 }} className='text'>
+                {likeCount}
+              </p>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>

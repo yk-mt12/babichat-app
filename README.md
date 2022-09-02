@@ -77,3 +77,76 @@ git commit -m '任意のコメント'
 ```
 git push
 ```
+
+```bash
+./src/
+├── App.css
+├── App.tsx
+├── components
+│   ├── model
+│   │   ├── post
+│   │   │   ├── Post.css
+│   │   │   └── Post.tsx
+│   │   └── user
+│   │       ├── SignIn.tsx
+│   │       ├── SignOut.tsx
+│   │       ├── SignUp.tsx
+│   │       └── style.css
+│   ├── pages
+│   │   ├── home
+│   │   │   ├── Home.css
+│   │   │   └── Home.tsx
+│   │   ├── message
+│   │   │   ├── Chat.css
+│   │   │   ├── Chat.tsx
+│   │   │   ├── ChatRoom.css
+│   │   │   ├── ChatRoom.tsx
+│   │   │   ├── MessageBox.css
+│   │   │   └── MessageBox.tsx
+│   │   ├── profile
+│   │   │   └── Profile.tsx
+│   │   ├── ranking
+│   │   │   ├── Ranking.css
+│   │   │   ├── Ranking.tsx
+│   │   │   ├── RankingPost.tsx
+│   │   │   └── RankingTimeline.tsx
+│   │   ├── setting
+│   │   │   └── Setting.tsx
+│   │   └── timeline
+│   │       ├── TimeLine.css
+│   │       └── TimeLine.tsx
+│   └── ui
+│       ├── gridItem
+│       │   ├── GridItem.css
+│       │   └── GridItem.tsx
+│       ├── header
+│       │   ├── Header.css
+│       │   └── Header.tsx
+│       ├── input
+│       │   └── post
+│       │       ├── PostBox.css
+│       │       └── PostBox.tsx
+│       └── sidebar
+│           ├── Sidebar.css
+│           ├── Sidebar.tsx
+│           └── SidebarOption.tsx
+├── firebase
+│   ├── authFunction.ts
+│   ├── index.ts
+│   └── likeFunction.ts
+├── hooks
+│   └── useBatchPostLiked.ts
+├── index.html
+├── logic
+│   ├── babigo.ts
+│   ├── changeText.js
+│   └── readText.ts
+├── main.tsx
+├── router
+│   └── router.tsx
+├── store
+│   └── auth.ts
+└── vite-env.d.ts
+
+22 directories, 45 files
+```

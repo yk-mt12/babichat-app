@@ -1,5 +1,5 @@
 import { Avatar, Button, Grid } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { collection, setDoc, doc, serverTimestamp, addDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../../firebase'
 import { useAuth } from '../../../../firebase/authFunction'
@@ -9,7 +9,8 @@ const PostBox = () => {
   const [displayName, setDisplayName] = useState<string>('')
   const [postMessage, setPostMessage] = useState<string>('')
   const [postImage, setPostImage] = useState<string>('')
-  const [postId, setPostId] = useState<string>('')
+  const [canSubmit, setCanSubmit] = useState<boolean>(true)
+  const [error, setErrors] = useState('')
   const signInUser = useAuth()
   const uid = signInUser.uid
   const avater = signInUser.photoURL
@@ -17,6 +18,11 @@ const PostBox = () => {
 
   const sendPost = async (e: any) => {
     e.preventDefault()
+    if (postMessage.length < 3) {
+      setErrors('2文字以上入力してください。')
+      setCanSubmit(true)
+      return
+    }
     const usersRef = doc(db, 'users', uid) // uidを指定して、usersコレクションを取得
     const postsRef = collection(usersRef, 'posts') // ログインユーザに紐ずくpostsコレクションを取得
 
@@ -40,15 +46,25 @@ const PostBox = () => {
     setDisplayName('')
     setPostMessage('')
     setPostImage('')
+    setErrors('')
   }
+
+  useEffect(() => {
+    if (postMessage.length >= 100) {
+      setErrors(`100文字以上入力しないでください。文字数: -${postMessage.length - 100}`)
+      setCanSubmit(true)
+    } else if (postMessage.length < 3) {
+      setCanSubmit(true)
+    } else {
+      setErrors('')
+      setCanSubmit(false)
+    }
+  }, [postMessage])
 
   return (
     <div className='postBox'>
       <form>
         <Grid container justifyContent='space-between' alignItems='center'>
-          {/* <Grid item>
-          <Avatar src={avater} />
-        </Grid> */}
           <Grid item xs={8}>
             <input
               value={postMessage}
@@ -59,19 +75,21 @@ const PostBox = () => {
             />
           </Grid>
           <Grid item xs={3.8}>
-            <Button className='button' type='submit' onClick={sendPost}>
+            <Button className='button' type='submit' onClick={sendPost} disabled={canSubmit}>
               投稿する
             </Button>
           </Grid>
         </Grid>
-
-        {/* <input
-          className='postBox--imageInput'
-          value={postImage}
-          placeholder='画像のURLを入力してください'
-          type='text'
-          onChange={(e) => setPostImage(e.target.value)}
-        /> */}
+        {error !== '' && (
+          <span
+            style={{
+              color: 'red',
+              fontSize: 14,
+            }}
+          >
+            {error}
+          </span>
+        )}
       </form>
     </div>
   )

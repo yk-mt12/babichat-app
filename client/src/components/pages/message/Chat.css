@@ -3,32 +3,32 @@
 }
 
 .you {
-    width: 100%;
-    padding-left: 20px;
-    text-align: left;
+  width: 100%;
+  padding-left: 20px;
+  text-align: left;
 }
 
 .you .says {
-    display: inline-block;
-    position: relative;
-    margin: 0 10px 0 0;
-    padding: 8px;
-    max-width: 250px;
-    border-radius: 12px;
-    background: #edf1ee;
-    font-size: 15px;
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+  font-size: 15px;
 }
 
 .you .says:after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 3px;
-    left: -19px;
-    border: 8px solid transparent;
-    border-right: 18px solid #edf1ee;
-    -webkit-transform: rotate(35deg);
-    transform: rotate(35deg);
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
 }
 
 .me {
@@ -38,23 +38,23 @@
 }
 
 .me .says {
-    display: inline-block;
-    position: relative;
-    margin: 0 10px 0 0;
-    padding: 8px;
-    max-width: 250px;
-    border-radius: 12px;
-    background: #30d9e8;
-    font-size: 15px;
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30d9e8;
+  font-size: 15px;
 }
 
 .me .says:after {
-    content: "";
-    position: absolute;
-    top: 3px;
-    right: -19px;
-    border: 8px solid transparent;
-    border-left: 18px solid #30d9e8;
-    -webkit-transform: rotate(-35deg);
-    transform: rotate(-35deg);
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30d9e8;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
 }
