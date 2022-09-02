@@ -6,6 +6,7 @@ import { signIn, useAuth } from '../../../firebase/authFunction'
 import { Link, Navigate } from 'react-router-dom'
 
 import './style.css'
+import './SignIn.css'
 
 const SignIn = () => {
   const signInWithGoogle = () => {
@@ -25,11 +26,11 @@ const SignIn = () => {
       {signInUser.uid ? (
         <Navigate to='/home' />
       ) : (
-        <div>
+        <div className='login-page'>
           <h1>ログイン</h1>
           <form onSubmit={handleSubmit}>
             <div>
-              <label>メールアドレス</label>
+              {/* <label>メールアドレス</label> */}
               <input
                 name='email'
                 type='email'
@@ -38,7 +39,7 @@ const SignIn = () => {
               />
             </div>
             <div>
-              <label>パスワード</label>
+              {/* <label>パスワード</label> */}
               <input
                 name='password'
                 type='password'
@@ -58,7 +59,7 @@ const SignIn = () => {
               </p>
             </div>
           </form>
-          <div>
+          <div className='google-login'>
             <button onClick={signInWithGoogle}>Googleでログイン</button>
           </div>
         </div>

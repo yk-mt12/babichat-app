@@ -1,0 +1,38 @@
+.login-page {
+  margin-top: 200px;
+  margin-right: 10px;
+}
+
+form {
+  text-align: center;
+}
+
+.login-page {
+  padding-right: 200px;
+}
+
+.google-login {
+  text-align: center;
+  margin-top: 10px;
+}
+
+input {
+  width: 200px;
+  height: 38px;
+  border-color: var(--babichat-color);
+  margin-bottom: 10px;
+  /* outline: solid 1px var(--babichat-color); */
+}
+
+Link {
+  font-size: 10px;
+}
+
+button {
+  width: 208px;
+  height: 40px;
+  margin-bottom: 10px;
+  background-color: var(--babichat-color);
+  border-color: var(--babichat-color);
+  color: #ffffff;
+}
