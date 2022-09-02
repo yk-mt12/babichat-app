@@ -2,8 +2,8 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../components/pages/home/Home'
 import ChatRoom from '../components/pages/message/ChatRoom'
 import UserList from '../components/pages/message/UserList'
-import Setting from '../components/pages/setting/Setting'
-import Ranking from '../components/pages/ranking/RankingPost'
+// import Setting from '../components/pages/setting/Setting'
+import Ranking from '../components/pages/ranking/Ranking'
 import Profile from '../components/pages/profile/Profile'
 import SignIn from '../components/model/user/SignIn'
 import SignUp from '../components/model/user/SignUp'
@@ -39,6 +39,14 @@ const Router = () => {
           }
         />
         <Route
+          path='/chatroom'
+          element={
+            <PrivateRoute>
+              <UserList />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path='/chatroom/:anotherId'
           element={
             <PrivateRoute>
@@ -46,14 +54,14 @@ const Router = () => {
             </PrivateRoute>
           }
         />
-        <Route
+        {/* <Route
           path='/setting'
           element={
             <PrivateRoute>
               <Setting />
             </PrivateRoute>
           }
-        />
+        /> */}
         <Route
           path='/ranking'
           element={
