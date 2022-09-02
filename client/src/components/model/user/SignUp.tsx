@@ -34,7 +34,6 @@ const SignUp = () => {
               <h1>アカウントを作成</h1>
               <form onSubmit={handleSubmit}>
                 <div>
-                  {/* <label>メールアドレス</label> */}
                   <input
                     name='email'
                     type='email'
