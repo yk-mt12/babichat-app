@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
 import { Grid } from '@mui/material'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import Chat from './Chat'
 import MessageBox from './MessageBox'
 import './ChatRoom.css'
@@ -19,9 +19,9 @@ type chatProps = {
 
 const ChatRoom = () => {
     const [chats, setChats] = useState<any>([])
-    // const { search } = useLocation();
     const { anotherId } = useParams();
     const signInUser = useAuth()
+    const location = useLocation()
     const uid = signInUser.uid
 
     useEffect(() => {
@@ -41,13 +41,13 @@ const ChatRoom = () => {
         return () => unsub()
     }, []);
 
-
-
     return (
+        <>
+
         <div className='chatroom'>
             <Header title='ChatRoom' />
             <Grid container justifyContent='space-between' className='chat'>
-                <Grid item xs={7.5}>
+                    <Grid item xs={7.5}>
                     <div className='grid chat-screen'>
                         <div className='message' id='chatBottom' >
                             {chats.map((chat: chatProps) => (
@@ -62,15 +62,15 @@ const ChatRoom = () => {
                         </div>
                     </div>
                     <div className='input-form'>
-                        <MessageBox />
+                    <MessageBox />
                     </div>
-                </Grid>
+                    </Grid>
 
                 <UserList />
             </Grid>
-
-
         </div>
+        </>
+
     )
 }
 

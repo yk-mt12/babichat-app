@@ -1,23 +1,42 @@
-import React from 'react'
+import { useAuth } from '../../../firebase/authFunction'
+import './User.css'
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 type Props = {
     postsArray: any
 }
 
 type PostType = {
+    key: string
     uid: string
     displayName: string
+    icon : string
 }
 
 function User(props: Props) {
     const { postsArray } = props
-    console.log('postsArray', postsArray)
+    // const [ anotherId, setAnotherId ] = useState('');
+    const uid = useAuth().uid
+
+    const history = useNavigate();
+
+
+    const move = (user: string) => {
+        const anotherId = user
+        history(`/chatroom/${anotherId}`); // 画面遷移
+    }
+
     return (
         <div className='user'>
             {postsArray &&
             postsArray.map((post: PostType) => (
-                // eslint-disable-next-line react/jsx-key
-                <p>{post.displayName}</p>
+                (
+                    post.uid === uid ||
+                    <>
+                        <p className='username' onClick={() => move(post.uid)}>{post.displayName}</p>
+                    </>
+                )
             ))}
         </div>
     )

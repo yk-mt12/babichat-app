@@ -3,6 +3,7 @@ import { getAuth } from 'firebase/auth'
 import { collection, collectionGroup, onSnapshot, query } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from '../../../firebase'
+import Header from '../../ui/header/Header'
 import User from './User'
 import './UserList.css'
 
@@ -23,12 +24,31 @@ function UserList() {
     const userArray = users
 
     return (
-        <Grid item xs={4} className='grid history'>
-        <div className='history-title'>
-            <p>ユーザー一覧</p>
-            <User postsArray={ userArray } />
-        </div>
-    </Grid>
+        <>
+            {location.pathname === '/chatroom' ? (
+                <>
+                <Header title='ChatRoom' />
+                <Grid item xs={12} className='grid history'>
+
+                    <div className='history-title'>
+                        <p>ユーザー一覧</p>
+                        <User postsArray={ userArray } />
+                    </div>
+                </Grid>
+                </>
+            ):
+            <Grid item xs={4} className='grid history'>
+
+                <div className='history-title'>
+                    <p>ユーザー一覧</p>
+                    <User postsArray={ userArray } />
+                </div>
+            </Grid>
+            }
+
+        </>
+
+
     )
 }
 
