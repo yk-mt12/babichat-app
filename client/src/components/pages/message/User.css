@@ -1,6 +1,5 @@
 .username {
   height: 35px;
-  font-weight: bold;
   margin: 3px;
   border-bottom: 1px solid var(--babichat-color);
   text-align: left;
