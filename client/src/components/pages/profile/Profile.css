@@ -1,0 +1,7 @@
+.post-timeline {
+  padding: 8px 20px;
+  border: 2px solid var(--babichat-color);
+  border-radius: 16px;
+  overflow: scroll;
+  height: 74vh;
+}
