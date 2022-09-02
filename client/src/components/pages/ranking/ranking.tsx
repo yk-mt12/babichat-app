@@ -52,7 +52,7 @@ const Ranking = () => {
         </Grid>
       )}
 
-      <div className={`{location.pathname !== '/home' && 'ranking-block' }`}>
+      <div className={`${location.pathname !== '/home' && 'ranking--block' }`}>
         <RankingPostTimeline postsArray={postsArray} />
       </div>
     </div>
