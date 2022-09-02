@@ -7,11 +7,6 @@ import Header from '../../ui/header/Header'
 import User from './User'
 import './UserList.css'
 
-type Props = {
-    uid: string,
-    userName: string
-}
-
 function UserList() {
     const [users, setUsers] = useState<any>([]);
     const location = useLocation()
