@@ -1,14 +1,16 @@
-import { ChatBubbleOutline, FavoriteBorder } from '@mui/icons-material'
+import { ChatBubbleOutline, FavoriteBorder, Favorite } from '@mui/icons-material'
 import { Avatar, Grid } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 import { changeBabi } from '../../../logic/babigo'
 import { readAloud } from '../../../logic/readText'
-import { DocumentReference } from 'firebase/firestore'
-import React, { memo, useState } from 'react'
+import { doc, DocumentReference, getDoc } from 'firebase/firestore'
+import React, { memo, useEffect, useState } from 'react'
 import useBatchPostLiked from '../../../hooks/useBatchPostLiked'
 import Button from '@mui/material/Button'
 
 import './Post.css'
+import { db } from '../../../firebase'
+import { useAuth } from '../../../firebase/authFunction'
 
 type PostProps = {
   author: DocumentReference
@@ -20,14 +22,27 @@ type PostProps = {
   updateTime: string
   likeCount: number
   postId: string
+  likedPosts: any[]
 }
 
 const Post = memo((props: PostProps) => {
-  const { checkPostIsLiked, setPostId, getAnotherPostData } = useBatchPostLiked()
+  const { setPostId, getAnotherPostData } = useBatchPostLiked()
   const location = useLocation()
-  const { avater, displayName, text, image, createTime, updateTime, likeCount, postId } = props
+  const {
+    avater,
+    displayName,
+    text,
+    image,
+    createTime,
+    updateTime,
+    likeCount,
+    postId,
+    likedPosts,
+  } = props
   const babi = changeBabi(text)
+  const signInUser = useAuth()
   const [isClicked, setIsClicked] = useState(false)
+  const [isLiked, setIsLiked] = useState(false)
   const style = { marginTop: 6 }
 
   /**
@@ -38,10 +53,19 @@ const Post = memo((props: PostProps) => {
     readAloud(text)
   }
 
-  const handleClick = async (e: any) => {
-    await setPostId(postId)
-    await getAnotherPostData()
+  const handleClick = (e: any) => {
+    setPostId(postId)
+    getAnotherPostData()
   }
+
+  useEffect(() => {
+    const isLikedCheck = async () => {
+      const docRef = doc(db, 'users', signInUser.uid, 'likedPosts', postId)
+      const docSnap = await getDoc(docRef)
+      setIsLiked(docSnap.exists())
+    }
+    isLikedCheck()
+  }, [handleClick])
 
   return (
     <div className='post'>
@@ -82,7 +106,16 @@ const Post = memo((props: PostProps) => {
               </p>
             </Grid>
             <Grid item md={0.8}>
-              <FavoriteBorder fontSize='small' {...{ style }} />
+              {isLiked ? (
+                <Favorite
+                  fontSize='small'
+                  {...{ style }}
+                  onClick={handleClick}
+                  sx={{ color: 'rgb(249, 24, 128)' }}
+                />
+              ) : (
+                <FavoriteBorder fontSize='small' {...{ style }} onClick={handleClick} />
+              )}
             </Grid>
             <Grid item md={0.8}>
               <p style={{ marginTop: 4 }} className='text'>
@@ -115,7 +148,16 @@ const Post = memo((props: PostProps) => {
             </Grid>
             <Grid item md={6} container>
               <Grid item md={2} mx={{ mt: 2 }}>
-                <FavoriteBorder fontSize='small' {...{ style }} />
+                {isLiked ? (
+                  <Favorite
+                    fontSize='small'
+                    {...{ style }}
+                    onClick={handleClick}
+                    sx={{ color: 'rgb(249, 24, 128)' }}
+                  />
+                ) : (
+                  <FavoriteBorder fontSize='small' {...{ style }} onClick={handleClick} />
+                )}
               </Grid>
               <Grid item md={3}>
                 <p style={{ marginTop: 2, marginBottom: 0 }} className='text'>

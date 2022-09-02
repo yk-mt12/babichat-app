@@ -27,6 +27,7 @@
     "react-firebaseui": "^6.0.0",
     "react-flip-move": "^3.0.4",
     "react-hook-form": "^7.34.2",
+    "react-loading": "^2.0.3",
     "react-router-dom": "^6.3.0",
     "recoil": "^0.7.5"
   },

@@ -13,14 +13,13 @@ const Header = (props: Props) => {
 
   return (
     <div>
-      <Grid container justifyContent="space-between"
-  alignItems="center" >
+      <Grid container justifyContent='space-between' alignItems='center'>
         <Grid item>
-        <h2 className={`title ${location.pathname === '/home' && 'when-home'}`}>{title}</h2>
+          <h2 className={`title ${location.pathname === '/home' && 'when-home'}`}>{title}</h2>
         </Grid>
         <Grid item>
-        {((location.pathname === '/home' && title === 'チャバットボ') ||
-        location.pathname !== '/home') && <SignOut />}
+          {((location.pathname === '/home' && title === 'チャバットボ') ||
+            location.pathname !== '/home') && <SignOut />}
         </Grid>
       </Grid>
     </div>

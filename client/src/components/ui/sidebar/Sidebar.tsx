@@ -17,7 +17,8 @@ const Sidebar = () => {
       <SidebarOption
         Icon={ForumIcon}
         text='ChatRoom'
-        navigate='chatroom/O1ujIkBZmJWXwdZi3htg5yai14X2'
+        // navigate='chatroom/O1ujIkBZmJWXwdZi3htg5yai14X2'
+        navigate='chatroom'
       />
       <SidebarOption Icon={QueryStatsIcon} text='Ranking' navigate='ranking' />
       <div className='setting-icon'>

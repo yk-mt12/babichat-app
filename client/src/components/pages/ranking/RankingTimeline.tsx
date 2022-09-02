@@ -20,10 +20,9 @@ type PostType = {
 
 const RankingPostTimeline = (props: Props) => {
   const { postsArray } = props
-  console.log('postsArray', postsArray)
 
   return (
-    <div className=''>
+    <div>
       {postsArray &&
         postsArray.map((post: PostType, rank: number) => (
           <RankingPost

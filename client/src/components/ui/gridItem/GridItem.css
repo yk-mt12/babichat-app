@@ -2,7 +2,14 @@
   padding: 8px;
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
+}
+
+.scroll-box {
   overflow: scroll;
+}
+
+.scroll-box::-webkit-scrollbar {
+  display: none;
 }
 
 .container-box--item {
@@ -24,4 +31,16 @@
   color: var(--babichat-background);
   transition: opacity 0.15s ease-out;
   cursor: pointer;
+}
+
+/* IsLoadingGrid.tsx */
+
+.block-label {
+  margin-top: 50px;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  color: var(--babichat-color);
+  font-weight: bold;
+  font-size: 20px;
 }

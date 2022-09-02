@@ -49,7 +49,6 @@ const useBatchPostLiked = () => {
   const likedPostRef = doc(userRef, 'likedPosts', postId)
 
   const getAnotherPostData = async () => {
-    console.log('--------getAnotherId----------')
     const q = query(collectionGroup(db, 'posts'), where('postId', '==', postId))
 
     const querySnapshot = await getDocs(q)
