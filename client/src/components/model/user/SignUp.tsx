@@ -43,7 +43,6 @@ const SignUp = () => {
                   />
                 </div>
                 <div>
-                  {/* <label>パスワード</label> */}
                   <input
                     name='password'
                     type='password'
