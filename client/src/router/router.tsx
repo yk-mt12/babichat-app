@@ -46,14 +46,14 @@ const Router = () => {
             </PrivateRoute>
           }
         />
-        <Route
+        {/* <Route
           path='/setting'
           element={
             <PrivateRoute>
               <Setting />
             </PrivateRoute>
           }
-        />
+        /> */}
         <Route
           path='/ranking'
           element={
