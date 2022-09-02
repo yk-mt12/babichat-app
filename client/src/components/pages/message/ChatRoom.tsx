@@ -37,7 +37,6 @@ const ChatRoom = () => {
       })
       return () => unsub()
     }
-
   }, [anotherId])
 
   return (
@@ -51,7 +50,7 @@ const ChatRoom = () => {
                 {chats.map((chat: chatProps) => (
                   // eslint-disable-next-line react/jsx-key
                   <Chat
-                  key={chat.chatId}
+                    key={chat.chatId}
                     name={chat.name}
                     msg={chat.msg}
                     createTime={chat.createTime}
