@@ -8,6 +8,7 @@ import SidebarOption from './SidebarOption'
 import './Sidebar.css'
 
 const Sidebar = () => {
+
   // const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2' // 相手のidを取得
   return (
     <div className='sidebar'>

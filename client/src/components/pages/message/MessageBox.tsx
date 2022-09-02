@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
 import SendIcon from '@mui/icons-material/Send'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+
 
 type ChatLog = {
   sendid: string
@@ -50,7 +51,8 @@ const MessageBox = () => {
   return (
     <>
       <div className='chat'>
-        <form className='chatform' onSubmit={sendMsg}>
+        <form className='chatform'
+          onSubmit={sendMsg}>
           <input
             style={{
               width: '78%',
