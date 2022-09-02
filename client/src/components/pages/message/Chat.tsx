@@ -17,7 +17,7 @@ const Chat = (props: chatProps) => {
   const babi = changeBabi(msg)
   return (
     <div className={uid == sendid ? 'me' : 'you'}>
-      {uid != sendid ? <p>送信者</p> : <p></p>}
+      {uid != sendid ? <p> { name }</p> : <p></p>}
       <p className='says'>{babi}</p>
     </div>
   )
