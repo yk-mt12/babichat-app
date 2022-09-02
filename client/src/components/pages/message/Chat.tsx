@@ -3,12 +3,11 @@ import { useAuth } from '../../../firebase/authFunction'
 import { changeBabi } from '../../../logic/babigo'
 import './Chat.css'
 
-
 type chatProps = {
-    sendid: string
-    name: string
-    msg: string
-    createTime: any
+  sendid: string
+  name: string
+  msg: string
+  createTime: any
 }
 
 const Chat = (props: chatProps) => {
