@@ -15,7 +15,7 @@
   padding: 8px;
   max-width: 250px;
   border-radius: 12px;
-  background: #edf1ee;
+  background: #30d9e8;
   font-size: 15px;
 }
 
@@ -26,7 +26,7 @@
   top: 3px;
   left: -19px;
   border: 8px solid transparent;
-  border-right: 18px solid #edf1ee;
+  border-right: 18px solid #30d9e8;
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
 }
@@ -44,7 +44,7 @@
   padding: 8px;
   max-width: 250px;
   border-radius: 12px;
-  background: #30d9e8;
+  background: #edf1ee;
   font-size: 15px;
 }
 
@@ -54,7 +54,7 @@
   top: 3px;
   right: -19px;
   border: 8px solid transparent;
-  border-left: 18px solid #30d9e8;
+  border-left: 18px solid #edf1ee;
   -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
 }
