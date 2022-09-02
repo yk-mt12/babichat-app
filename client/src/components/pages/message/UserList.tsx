@@ -7,50 +7,41 @@ import Header from '../../ui/header/Header'
 import User from './User'
 import './UserList.css'
 
-type Props = {
-    uid: string,
-    userName: string
-}
-
 function UserList() {
-    const [users, setUsers] = useState<any>([]);
-    const location = useLocation()
+  const [users, setUsers] = useState<any>([])
+  const location = useLocation()
 
-    useEffect(() => {
-        const q: any = query(collection(db, 'users'))
-        onSnapshot(q, (querySnapshot: { docs: any[] }) => {
-            setUsers(querySnapshot.docs.map((doc) => doc.data()))
-        })
-    }, []);
-    const userArray = users
+  useEffect(() => {
+    const q: any = query(collection(db, 'users'))
+    onSnapshot(q, (querySnapshot: { docs: any[] }) => {
+      setUsers(querySnapshot.docs.map((doc) => doc.data()))
+    })
+  }, [])
+  
+  const userArray = users
 
-    return (
+  return (
+    <>
+      {location.pathname === '/chatroom' ? (
         <>
-            {location.pathname === '/chatroom' ? (
-                <>
-                <Header title='ChatRoom' />
-                <Grid item xs={12} className='grid history'>
-
-                    <div className='history-title'>
-                        <p>ユーザー一覧</p>
-                        <User postsArray={ userArray } />
-                    </div>
-                </Grid>
-                </>
-            ):
-            <Grid item xs={4} className='grid history'>
-
-                <div className='history-title'>
-                    <p>ユーザー一覧</p>
-                    <User postsArray={ userArray } />
-                </div>
-            </Grid>
-            }
-
+          <Header title='ChatRoom' />
+          <Grid item xs={12} className='grid history'>
+            <div className='history-title'>
+              <p>ユーザー一覧</p>
+              <User postsArray={userArray} />
+            </div>
+          </Grid>
         </>
-
-
-    )
+      ) : (
+        <Grid item xs={4} className='grid history'>
+          <div className='history-title'>
+            <p>ユーザー一覧</p>
+            <User postsArray={userArray} />
+          </div>
+        </Grid>
+      )}
+    </>
+  )
 }
 
 export default UserList
