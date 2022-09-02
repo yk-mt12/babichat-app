@@ -16,3 +16,7 @@
   overflow: scroll;
   height: 74vh;
 }
+
+.timeline--block::-webkit-scrollbar {
+  display: none;
+}

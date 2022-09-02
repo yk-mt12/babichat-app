@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
 import SendIcon from '@mui/icons-material/Send'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+
 
 type ChatLog = {
   sendid: string
@@ -50,19 +51,20 @@ const MessageBox = () => {
   return (
     <>
       <div className='chat'>
-        <form className='chatform' onSubmit={sendMsg}>
+        <form className='chatform'
+          onSubmit={sendMsg}>
           <input
             style={{
               width: '78%',
               fontSize: '15px',
               fontWeight: '550',
-              marginLeft: '5px',
               marginBottom: '-3px',
             }}
             placeholder='新しいメッセージの作成'
             type='text'
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
+            className='input-box'
           />
           <SendIcon
             style={{

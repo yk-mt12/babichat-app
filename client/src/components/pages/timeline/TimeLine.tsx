@@ -40,9 +40,10 @@ const TimeLine = () => {
     const q: any = query(collectionGroup(db, 'posts'), orderBy('createTime', 'desc'))
     // 最新の投稿順に並び替える
     // リアルタイムでデータを取得
-    onSnapshot(q, (querySnapshot: { docs: any[] }) => {
+    const unsub = onSnapshot(q, (querySnapshot: { docs: any[] }) => {
       setPosts(querySnapshot.docs.map((doc) => doc.data()))
     })
+    return () => unsub()
   }, [])
 
   return (

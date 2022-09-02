@@ -1,9 +1,8 @@
-.chatroom {
-  display: flex;
-}
+.grid {
 
-.chat {
-  margin-left: 20px;
+    border: 2px solid var(--babichat-color);
+  border-radius: 16px;
+    overflow: auto;;
 }
 
 .header {
@@ -17,24 +16,18 @@
   /* margin: 15px auto; */
   font-size: 14px;
   background: #7da4cd;
+>>>>>>> develop
 }
 
 .chat-screen::-webkit-scrollbar {
   display: none;
 }
 
+.message {
+    padding-bottom: 10px;
+}
+
 .input-form {
-  width: auto;
-  height: 200;
-  padding: 0px;
-  /* background: #599ce3; */
+    padding-top: 7px;
 }
 
-.history {
-  /* width: 200; */
-  border: solid 1px #000;
-}
-
-.history-title {
-  text-align: center;
-}
