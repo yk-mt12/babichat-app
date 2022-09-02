@@ -5,6 +5,7 @@ import { Navigate, Link } from 'react-router-dom'
 import Loading from '../../ui/loading/Loading'
 
 import './style.css'
+import './SignIn.css'
 
 // TODO:メールログイン（サインアップ）の場合、うまくいかない
 const SignUp = () => {
@@ -33,7 +34,7 @@ const SignUp = () => {
               <h1>アカウントを作成</h1>
               <form onSubmit={handleSubmit}>
                 <div>
-                  <label>メールアドレス</label>
+                  {/* <label>メールアドレス</label> */}
                   <input
                     name='email'
                     type='email'
@@ -42,7 +43,7 @@ const SignUp = () => {
                   />
                 </div>
                 <div>
-                  <label>パスワード</label>
+                  {/* <label>パスワード</label> */}
                   <input
                     name='password'
                     type='password'
@@ -54,7 +55,7 @@ const SignUp = () => {
                   <button>アカウントを作成する</button>
                 </div>
               </form>
-              <div>
+              <div className='google-login'>
                 <p>
                   ログインは
                   <span className='link-text'>
