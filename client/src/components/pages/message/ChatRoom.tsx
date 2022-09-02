@@ -15,60 +15,62 @@ type chatProps = {
   name: string
   msg: string
   createTime: any
+  chatId: string
 }
 
 const ChatRoom = () => {
-    const [chats, setChats] = useState<any>([])
-    const { anotherId } = useParams();
-    const signInUser = useAuth()
-    const uid = signInUser.uid
+  const [chats, setChats] = useState<any>([])
+  const { anotherId } = useParams()
+  const signInUser = useAuth()
+  const uid = signInUser.uid
 
   useEffect(() => {
+    console.log(anotherId)
+    if (anotherId !== undefined) {
+      const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId || '', 'chats')
+      const q = query(chatroomRef, orderBy('createTime'), limit(500))
+      const unsub = onSnapshot(q, (querySnapshot) => {
+        setChats(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+
+        const chatscreen = document.querySelector('.chat-screen')
+        if (chatscreen) chatscreen.scrollTop = chatscreen.scrollHeight
+      })
+      return () => unsub()
+    }
+    // const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2'
     // const anotherId = new URLSearchParams(search).get('anotherId') as string
     // console.log(anotherId, search) // 'O1ujIkBZmJWXwdZi3htg5yai14X2' // TODO：相手のidを
-    const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId || '', 'chats')
-    const q = query(chatroomRef, orderBy('createTime'), limit(500))
-    const unsub = onSnapshot(q, (querySnapshot) => {
-      setChats(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+  }, [])
 
-            const chatscreen = document.querySelector('.chat-screen')
-            if(chatscreen)
-                chatscreen.scrollTop = chatscreen.scrollHeight;
-        });
-        return () => unsub()
-    }, []);
-
-    return (
-        <>
-
-        <div className='chatroom'>
-            <Header title='ChatRoom' />
-            <Grid container justifyContent='space-between' className='chat'>
-                    <Grid item xs={7.5}>
-                    <div className='grid chat-screen'>
-                        <div className='message' id='chatBottom' >
-                            {chats.map((chat: chatProps) => (
-                                // eslint-disable-next-line react/jsx-key
-                                <Chat
-                                name={chat.name}
-                                msg={chat.msg}
-                                createTime={chat.createTime}
-                                sendid={chat.sendid}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div className='input-form'>
-                    <MessageBox />
-                    </div>
-                    </Grid>
-
-                <UserList />
-            </Grid>
-        </div>
-        </>
-
-    )
+  return (
+    <>
+      <div className='chatroom'>
+        <Header title='ChatRoom' />
+        <Grid container justifyContent='space-between' className='chat'>
+          <Grid item xs={7.5}>
+            <div className='grid chat-screen'>
+              <div className='message' id='chatBottom'>
+                {chats.map((chat: chatProps) => (
+                  // eslint-disable-next-line react/jsx-key
+                  <Chat
+                  key={chat.chatId}
+                    name={chat.name}
+                    msg={chat.msg}
+                    createTime={chat.createTime}
+                    sendid={chat.sendid}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className='input-form'>
+              <MessageBox />
+            </div>
+          </Grid>
+          <UserList />
+        </Grid>
+      </div>
+    </>
+  )
 }
 
 export default ChatRoom

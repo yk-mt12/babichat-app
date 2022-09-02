@@ -1,10 +1,9 @@
-import { addDoc, collection, doc, serverTimestamp } from 'firebase/firestore'
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
 import { useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
 import SendIcon from '@mui/icons-material/Send'
-import { useParams } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom'
 
 type ChatLog = {
   sendid: string
@@ -21,7 +20,7 @@ const MessageBox = () => {
   const [msg, setMsg] = useState('')
   const { anotherId } = useParams()
 
-  const sendMsg = (e: any) => {
+  const sendMsg = async (e: any) => {
     e.preventDefault()
 
     const data: ChatLog = {
@@ -43,16 +42,23 @@ const MessageBox = () => {
       console.log('メッセージは空です')
       return
     }
-    addDoc(chatsRef, data)
-    addDoc(receiveChatsRef, data)
+    const chatRef = await addDoc(chatsRef, data)
+
+    await updateDoc(chatRef, {
+      chatId: chatRef.id,
+    })
+
+    const receiveRef = await addDoc(receiveChatsRef, data)
+    await updateDoc(receiveRef, {
+      chatId: receiveRef.id,
+    })
     setMsg('')
   }
 
   return (
     <>
       <div className='chat'>
-        <form className='chatform'
-          onSubmit={sendMsg}>
+        <form className='chatform' onSubmit={sendMsg}>
           <input
             style={{
               width: '78%',
