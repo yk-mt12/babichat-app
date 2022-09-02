@@ -18,10 +18,10 @@ type chatProps = {
 }
 
 const ChatRoom = () => {
-    const [chats, setChats] = useState<any>([])
-    const { anotherId } = useParams();
-    const signInUser = useAuth()
-    const uid = signInUser.uid
+  const [chats, setChats] = useState<any>([])
+  const { anotherId } = useParams()
+  const signInUser = useAuth()
+  const uid = signInUser.uid
 
   useEffect(() => {
     // const anotherId = new URLSearchParams(search).get('anotherId') as string
@@ -31,44 +31,41 @@ const ChatRoom = () => {
     const unsub = onSnapshot(q, (querySnapshot) => {
       setChats(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
 
-            const chatscreen = document.querySelector('.chat-screen')
-            if(chatscreen)
-                chatscreen.scrollTop = chatscreen.scrollHeight;
-        });
-        return () => unsub()
-    }, []);
+      const chatscreen = document.querySelector('.chat-screen')
+      if (chatscreen) chatscreen.scrollTop = chatscreen.scrollHeight
+    })
+    return () => unsub()
+  }, [])
 
-    return (
-        <>
+  return (
+    <>
+      <div className='chatroom'>
+        <Header title='ChatRoom' />
+        <Grid container justifyContent='space-between' className='chat'>
+          <Grid item xs={7.5}>
+            <div className='grid chat-screen'>
+              <div className='message' id='chatBottom'>
+                {chats.map((chat: chatProps) => (
+                  // eslint-disable-next-line react/jsx-key
+                  <Chat
+                    name={chat.name}
+                    msg={chat.msg}
+                    createTime={chat.createTime}
+                    sendid={chat.sendid}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className='input-form'>
+              <MessageBox />
+            </div>
+          </Grid>
 
-        <div className='chatroom'>
-            <Header title='ChatRoom' />
-            <Grid container justifyContent='space-between' className='chat'>
-                    <Grid item xs={7.5}>
-                    <div className='grid chat-screen'>
-                        <div className='message' id='chatBottom' >
-                            {chats.map((chat: chatProps) => (
-                                // eslint-disable-next-line react/jsx-key
-                                <Chat
-                                name={chat.name}
-                                msg={chat.msg}
-                                createTime={chat.createTime}
-                                sendid={chat.sendid}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div className='input-form'>
-                    <MessageBox />
-                    </div>
-                    </Grid>
-
-                <UserList />
-            </Grid>
-        </div>
-        </>
-
-    )
+          <UserList />
+        </Grid>
+      </div>
+    </>
+  )
 }
 
 export default ChatRoom
