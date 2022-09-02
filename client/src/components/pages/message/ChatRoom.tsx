@@ -37,10 +37,8 @@ const ChatRoom = () => {
       })
       return () => unsub()
     }
-    // const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2'
-    // const anotherId = new URLSearchParams(search).get('anotherId') as string
-    // console.log(anotherId, search) // 'O1ujIkBZmJWXwdZi3htg5yai14X2' // TODO：相手のidを
-  }, [])
+
+  }, [anotherId])
 
   return (
     <>
