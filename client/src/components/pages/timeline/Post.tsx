@@ -23,7 +23,7 @@ type PostProps = {
 }
 
 const Post = memo((props: PostProps) => {
-  const { checkPostIsLiked, setPostId, getAnotherPostData } = useBatchPostLiked()
+  const { setPostId, getAnotherPostData } = useBatchPostLiked()
   const location = useLocation()
   const { avater, displayName, text, image, createTime, updateTime, likeCount, postId } = props
   const babi = changeBabi(text)
@@ -38,9 +38,9 @@ const Post = memo((props: PostProps) => {
     readAloud(text)
   }
 
-  const handleClick = async (e: any) => {
-    await setPostId(postId)
-    await getAnotherPostData()
+  const handleClick = (e: any) => {
+    setPostId(postId)
+    getAnotherPostData()
   }
 
   return (
@@ -82,7 +82,7 @@ const Post = memo((props: PostProps) => {
               </p>
             </Grid>
             <Grid item md={0.8}>
-              <FavoriteBorder fontSize='small' {...{ style }} />
+              <FavoriteBorder fontSize='small' {...{ style }} onClick={handleClick} />
             </Grid>
             <Grid item md={0.8}>
               <p style={{ marginTop: 4 }} className='text'>
