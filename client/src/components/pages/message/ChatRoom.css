@@ -1,8 +1,7 @@
 .grid {
-
-    border: 2px solid var(--babichat-color);
+  border: 2px solid var(--babichat-color);
   border-radius: 16px;
-    overflow: auto;;
+  overflow: auto;
 }
 
 .header {
@@ -16,7 +15,6 @@
   /* margin: 15px auto; */
   font-size: 14px;
   background: #7da4cd;
->>>>>>> develop
 }
 
 .chat-screen::-webkit-scrollbar {
@@ -24,10 +22,9 @@
 }
 
 .message {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .input-form {
-    padding-top: 7px;
+  padding-top: 7px;
 }
-
