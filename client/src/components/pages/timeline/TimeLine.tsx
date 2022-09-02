@@ -1,4 +1,12 @@
-import { collectionGroup, DocumentReference, onSnapshot, orderBy, query } from 'firebase/firestore'
+import {
+  collection,
+  collectionGroup,
+  doc,
+  DocumentReference,
+  onSnapshot,
+  orderBy,
+  query,
+} from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
@@ -7,6 +15,7 @@ import Header from '../../ui/header/Header'
 import PostBox from '../../ui/input/post/PostBox'
 
 import './TimeLine.css'
+import { useAuth } from '../../../firebase/authFunction'
 
 type PostType = {
   author: DocumentReference
@@ -22,8 +31,10 @@ type PostType = {
 
 const TimeLine = () => {
   // TODO: 型定義を正しく行う
-  const [posts, setPosts] = useState<any>([])
   const location = useLocation()
+  const signInUser = useAuth()
+  const [posts, setPosts] = useState<any>([])
+  const [likedPosts, setLikedPosts] = useState<any>([])
 
   useEffect(() => {
     const q: any = query(collectionGroup(db, 'posts'), orderBy('createTime', 'desc'))
@@ -52,6 +63,7 @@ const TimeLine = () => {
             updateTime={post.updateTime}
             likeCount={post.likeCount}
             postId={post.postId}
+            likedPosts={likedPosts}
           />
         ))}
       </div>
