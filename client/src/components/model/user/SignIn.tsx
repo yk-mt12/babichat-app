@@ -26,7 +26,7 @@ const SignIn = () => {
       {signInUser.uid ? (
         <Navigate to='/home' />
       ) : (
-        <div>
+        <div className='login-page'>
           <h1>ログイン</h1>
           <form onSubmit={handleSubmit}>
             <div>
@@ -59,7 +59,7 @@ const SignIn = () => {
               </p>
             </div>
           </form>
-          <div>
+          <div className='google-login'>
             <button onClick={signInWithGoogle}>Googleでログイン</button>
           </div>
         </div>

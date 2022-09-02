@@ -30,7 +30,7 @@ const SignUp = () => {
           {signInUser.uid ? (
             <Navigate to='/home' />
           ) : (
-            <div>
+            <div className='login-page'>
               <h1>アカウントを作成</h1>
               <form onSubmit={handleSubmit}>
                 <div>

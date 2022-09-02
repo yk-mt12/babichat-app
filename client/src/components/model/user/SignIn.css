@@ -7,6 +7,10 @@ form {
   text-align: center;
 }
 
+.login-page {
+ padding-right: 200px;
+}
+
 .google-login {
   text-align: center;
   margin-top: 10px;
