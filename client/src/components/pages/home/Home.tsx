@@ -51,11 +51,8 @@ const Home = () => {
             label='ログインが必要な機能です。'
           />
         )}
-        {signInUser.uid ? (
-          <GridItem child={<Setting />} colRatio={7} navigate='setting' width={300} height='40vh' />
-        ) : (
-          <IsLoginGrid colRatio={7} width={300} height='40vh' label='ログインが必要な機能です。' />
-        )}
+           {/* <GridItem child={<Setting />} colRatio={7} navigate='setting' width={300} height='40vh' /> */}
+          <IsLoginGrid colRatio={7} width={300} height='40vh' label='Comming soon...' />
       </Grid>
     </div>
   )
