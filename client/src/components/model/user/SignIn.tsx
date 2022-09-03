@@ -4,7 +4,7 @@ import 'firebaseui/dist/firebaseui.css'
 import { signInWithPopup } from 'firebase/auth'
 import { signIn, useAuth } from '../../../firebase/authFunction'
 import { Link, Navigate } from 'react-router-dom'
-import './SignIn.css'
+import './style.css'
 
 const SignIn = () => {
   const signInWithGoogle = () => {
