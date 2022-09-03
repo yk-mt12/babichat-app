@@ -17,7 +17,7 @@ const SidebarOption = (props: SidebarOptionProps) => {
           container
           direction='row'
           justifyContent='space-evenly'
-          alignItems='baseline'
+          alignItems='center'
           sx={{ m: '0 auto', p: '0 8px' }}
         >
           <Grid

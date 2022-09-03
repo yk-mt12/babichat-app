@@ -12,7 +12,9 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
       {/* {アイコン} */}
-      <SidebarOption Icon={AccountCircleIcon} text='My account' navigate='profile' />
+      <div className='profile-block'>
+        <SidebarOption Icon={AccountCircleIcon} text='My account' navigate='profile' />
+      </div>
       <SidebarOption Icon={HomeIcon} text='Home' navigate='home' />
       <SidebarOption Icon={AssignmentIcon} text='Post' navigate='post' />
       <SidebarOption
@@ -23,7 +25,7 @@ const Sidebar = () => {
       />
       <SidebarOption Icon={QueryStatsIcon} text='Ranking' navigate='ranking' />
       <div className='setting-icon'>
-        <SidebarOption Icon={SettingsIcon} text='Setting' navigate='setting' />
+        {/* <SidebarOption Icon={SettingsIcon} text='Setting' navigate='setting' /> */}
       </div>
     </div>
   )
