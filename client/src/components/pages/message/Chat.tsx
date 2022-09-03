@@ -1,3 +1,4 @@
+import { Avatar } from '@mui/material'
 import React, { useState } from 'react'
 import { useAuth } from '../../../firebase/authFunction'
 import { changeBabi } from '../../../logic/babigo'
@@ -9,19 +10,25 @@ type chatProps = {
   name: string
   msg: string
   createTime: any
+  photoURL: string
 }
 
 const Chat = (props: chatProps) => {
-  const { msg, createTime, name, sendid } = props
+  const { msg, createTime, name, sendid, photoURL} = props
   const signInUser = useAuth()
   const uid = signInUser.uid
   const babi = changeBabi(msg)
   const [isClicked, setIsClicked] = useState(false)
   const style = { margin: 0 }
 
+  console.log('icon', photoURL)
+
   return (
     <div className={uid == sendid ? 'me' : 'you'}>
-      {uid != sendid ? <p> {name}</p> : <p></p>}
+      {uid != sendid ?
+      <Avatar className='icon' src={photoURL} style={{ marginLeft: -10}}/> :
+        <p></p>
+      }
       <p className='says'>
         {isClicked ? <p {...{ style }}>{msg} </p> : <p {...{ style }}>{babi}</p>}
       </p>

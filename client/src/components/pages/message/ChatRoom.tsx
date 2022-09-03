@@ -16,6 +16,7 @@ type chatProps = {
   msg: string
   createTime: any
   chatId: string
+  photoURL: string
 }
 
 const ChatRoom = () => {
@@ -52,6 +53,7 @@ const ChatRoom = () => {
                   msg={chat.msg}
                   createTime={chat.createTime}
                   sendid={chat.sendid}
+                  photoURL={chat.photoURL}
                 />
               ))}
             </div>
