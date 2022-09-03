@@ -95,7 +95,5 @@ export const changeBabi = (text: string): string => {
       out = ''
     }
   })
-
-  console.log(babigo)
   return babigo
 }
