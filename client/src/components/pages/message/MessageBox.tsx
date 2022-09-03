@@ -10,12 +10,14 @@ type ChatLog = {
   name: string
   msg: string
   createTime: any
+  photoURL: string
 }
 
 const MessageBox = () => {
   // const { register, handleSubmit } = useForm();
   const signInUser = useAuth()
   const displayName = signInUser.displayName
+  const photoURL = signInUser.photoURL
   const uid = signInUser.uid
   const [msg, setMsg] = useState('')
   const { anotherId } = useParams()
@@ -28,16 +30,15 @@ const MessageBox = () => {
       name: displayName,
       msg: msg,
       createTime: serverTimestamp(),
+      photoURL: photoURL
     }
 
-    // const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2' // TODO：相手のidを入れる
     const chatroomRef = doc(db, 'users', uid, 'chatroom', anotherId || '')
     const chatsRef = collection(chatroomRef, 'chats')
 
     const receiveChatroomRef = doc(db, 'users', anotherId || '', 'chatroom', uid)
     const receiveChatsRef = collection(receiveChatroomRef, 'chats')
 
-    // console.log(chatroomRef)
     if (msg === '') {
       console.log('メッセージは空です')
       return
