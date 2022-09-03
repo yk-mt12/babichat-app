@@ -20,3 +20,7 @@
   opacity: 40%;
   transition: opacity 0.15s ease-out;
 }
+
+.profile-block {
+  margin-bottom: 12px;
+}
