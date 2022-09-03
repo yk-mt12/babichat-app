@@ -27,7 +27,7 @@ const SignIn = () => {
         <>
           <div className='login-page'>
             <h1>ログイン</h1>
-            <form className="login-form"onSubmit={handleSubmit}>
+            <form className='login-form' onSubmit={handleSubmit}>
               <div>
                 {/* <label>メールアドレス</label> */}
                 <input
@@ -52,19 +52,19 @@ const SignIn = () => {
                 <button className='signIn-button'>ログイン</button>
               </div>
             </form>
-          </div>
-          <div className='google-login'>
-            <p onClick={signInWithGoogle}>
-              Googleで<span className='link-text'>ログイン</span>
-            </p>
-          </div>
-          <div className='google-login'>
-            <p>
-              新規作成は
-              <span className='link-text'>
-                <Link to='/signup'>こちら</Link>
-              </span>
-            </p>
+            <div className='link-block'>
+              <p onClick={signInWithGoogle}>
+                Googleで<span className='link-text'>ログイン</span>
+              </p>
+            </div>
+            <div className='link-block'>
+              <p>
+                アカウントの新規作成は
+                <span className='link-text'>
+                  <Link to='/signup'>こちら</Link>
+                </span>
+              </p>
+            </div>
           </div>
         </>
       )}

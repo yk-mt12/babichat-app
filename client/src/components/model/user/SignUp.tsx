@@ -31,9 +31,10 @@ const SignUp = () => {
           ) : (
             <div className='login-page'>
               <h1>アカウントを作成</h1>
-              <form onSubmit={handleSubmit}>
+              <form className='login-form' onSubmit={handleSubmit}>
                 <div>
                   <input
+                    className='signIn-input'
                     name='email'
                     type='email'
                     placeholder='email'
@@ -42,6 +43,7 @@ const SignUp = () => {
                 </div>
                 <div>
                   <input
+                    className='signIn-input'
                     name='password'
                     type='password'
                     placeholder='password'
@@ -49,10 +51,10 @@ const SignUp = () => {
                   />
                 </div>
                 <div>
-                  <button>アカウントを作成する</button>
+                  <button className='signIn-button'>アカウントを作成する</button>
                 </div>
               </form>
-              <div className='google-login'>
+              <div className='link-block'>
                 <p>
                   ログインは
                   <span className='link-text'>
