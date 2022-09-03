@@ -92,7 +92,7 @@ const Post = memo((props: PostProps) => {
             <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start'>
               <Grid item container md={6} justifyContent='flex-start'>
                 <Grid item md={2.65}>
-                  <Button variant='contained' onClick={() => speechClick(babi)}>
+                  <Button variant='contained' onClick={() => speechClick(babi)} style={{minWidth: '104px'}}>
                     読み上げる
                   </Button>
                 </Grid>
@@ -155,8 +155,8 @@ const Post = memo((props: PostProps) => {
           </Grid>
         </>
       ) : (
-        // /homeの時
         <>
+          {/* /homeの時 */}
           <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start'>
             <Grid item md={2}>
               <Avatar src={avater} style={{ marginTop: 10 }} />
@@ -167,7 +167,7 @@ const Post = memo((props: PostProps) => {
           </Grid>
           <Grid container justifyContent='space-between' alignItems='flex-start'>
             <Grid item md={7}>
-              <p {...{ style }}>{babi}</p>
+              <p {...{ style, marginBottom: 0 }}>{babi}</p>
             </Grid>
             {/* <Grid item md={3} container>
               <Grid item md={4}>
