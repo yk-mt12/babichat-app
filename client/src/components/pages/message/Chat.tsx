@@ -1,4 +1,4 @@
-import React, { useState }from 'react'
+import React, { useState } from 'react'
 import { useAuth } from '../../../firebase/authFunction'
 import { changeBabi } from '../../../logic/babigo'
 import './Chat.css'
@@ -21,8 +21,10 @@ const Chat = (props: chatProps) => {
 
   return (
     <div className={uid == sendid ? 'me' : 'you'}>
-      {uid != sendid ? <p> { name }</p> : <p></p>}
-      <p className='says'>{isClicked ? <p {...{ style }}>{msg} </p> : <p {...{ style }}>{babi}</p>}</p>
+      {uid != sendid ? <p> {name}</p> : <p></p>}
+      <p className='says'>
+        {isClicked ? <p {...{ style }}>{msg} </p> : <p {...{ style }}>{babi}</p>}
+      </p>
       <p className='change' onClick={() => setIsClicked(!isClicked)}>
         {isClicked ? 'バビ語' : '翻訳'}
       </p>
@@ -31,4 +33,3 @@ const Chat = (props: chatProps) => {
 }
 
 export default Chat
-

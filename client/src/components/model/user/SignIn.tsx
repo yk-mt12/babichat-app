@@ -27,7 +27,7 @@ const SignIn = () => {
         <>
           <div className='login-page'>
             <h1>ログイン</h1>
-            <form className="login-form"onSubmit={handleSubmit}>
+            <form className='login-form' onSubmit={handleSubmit}>
               <div>
                 {/* <label>メールアドレス</label> */}
                 <input
