@@ -6,8 +6,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint:precommit": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0",
-    "fmt:precommit": "prettier -l './**/*.{js,jsx,ts,tsx,json,css,scss}'",
+    "lint": "eslint src/**/*.{js,ts,tsx}",
+    "lint:fix": "eslint --fix src/**/*.{js,ts,tsx}",
+    "format": "prettier --write 'src/**/*.{js,ts,tsx,css,md}' --config ./.prettierrc",
     "test": "jest",
     "prepare": "cd .. && husky install client/.husky"
   },
@@ -17,8 +18,8 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": "npm run lint:precommit",
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss}": "npm run fmt:precommit"
+    "src/**/*.{ts,tsx}": "yarn lint:fix",
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss}": "yarn format"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
