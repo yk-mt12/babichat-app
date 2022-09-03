@@ -22,12 +22,14 @@ function UserList() {
 
   return (
     <>
-      {location.pathname === '/chatroom' ? (
+      {location.pathname === '/chatroom' || location.pathname === '/home' ? (
         <>
           <Header title='ChatRoom' />
-          <Grid item xs={12} className='grid history'>
-            <div className='history-title'>
-              <p>ユーザー一覧</p>
+          <Grid item xs={12} className='grid history-only'>
+            <div className='history-title-only'>
+              <p>ユーザーリスト</p>
+            </div>
+            <div className='userlist-only'>
               <User postsArray={userArray} />
             </div>
           </Grid>
@@ -35,7 +37,9 @@ function UserList() {
       ) : (
         <Grid item xs={4} className='grid history'>
           <div className='history-title'>
-            <p>ユーザー一覧</p>
+            <p>ユーザーリスト</p>
+          </div>
+          <div className='userlist'>
             <User postsArray={userArray} />
           </div>
         </Grid>

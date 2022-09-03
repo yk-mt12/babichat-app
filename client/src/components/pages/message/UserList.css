@@ -1,8 +1,24 @@
-.history {
-  /* width: 200; */
-  height: 80vh;
+.history-title {
+  font-size: 25px;
+  width: 175px;
+  text-align: center;
+  height: 35px;
+  line-height: 35px;
+  font-weight: bold;
+  padding-left: 70px;
 }
 
-.history-title {
+.userlist {
+  padding-top: 45px;
+}
+
+.history-title-only {
+  font-size: 20px;
   text-align: center;
+  padding-top: 25px;
+  font-weight: bold;
+}
+
+.userlist-only {
+  padding-top: 10px;
 }
