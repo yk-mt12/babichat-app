@@ -3,7 +3,7 @@ import { useAuth } from '../../../firebase/authFunction'
 import GridItem from '../../ui/gridItem/GridItem'
 import IsLoginGrid from '../../ui/gridItem/IsLoginGrid'
 import Header from '../../ui/header/Header'
-import Message from '../message/ChatRoom'
+import UserList from '../message/UserList'
 import Ranking from '../ranking/ranking'
 import Setting from '../setting/Setting'
 import TimeLine from '../timeline/TimeLine'
@@ -36,9 +36,9 @@ const Home = () => {
       <Grid container direction='row' justifyContent='space-between' alignItems='center'>
         {signInUser.uid ? (
           <GridItem
-            child={<Message />}
+            child={<UserList />}
             colRatio={4.8}
-            navigate='message'
+            navigate='chatroom'
             width={300}
             height='40vh'
             isScroll={true}
