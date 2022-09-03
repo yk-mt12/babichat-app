@@ -25,7 +25,6 @@ const ChatRoom = () => {
   const uid = signInUser.uid
 
   useEffect(() => {
-    console.log(anotherId)
     if (anotherId !== undefined) {
       const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId || '', 'chats')
       const q = query(chatroomRef, orderBy('createTime'), limit(500))
