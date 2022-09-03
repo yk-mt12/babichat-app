@@ -8,6 +8,7 @@ import Profile from '../components/pages/profile/Profile'
 import SignIn from '../components/model/user/SignIn'
 import SignUp from '../components/model/user/SignUp'
 import TimeLine from '../components/pages/timeline/TimeLine'
+import PostDetail from '../components/pages/timeline/PostDetail'
 import { PrivateRoute } from './PrivateRoute'
 
 const Router = () => {
@@ -27,6 +28,14 @@ const Router = () => {
           element={
             <PrivateRoute>
               <TimeLine />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/post/:postId'
+          element={
+            <PrivateRoute>
+              <PostDetail />
             </PrivateRoute>
           }
         />

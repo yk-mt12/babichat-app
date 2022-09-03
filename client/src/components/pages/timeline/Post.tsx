@@ -1,6 +1,6 @@
 import { ChatBubbleOutline, FavoriteBorder, Favorite } from '@mui/icons-material'
 import { Avatar, Grid } from '@mui/material'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { changeBabi } from '../../../logic/babigo'
 import { readAloud } from '../../../logic/readText'
 import { doc, DocumentReference, getDoc } from 'firebase/firestore'
@@ -43,6 +43,7 @@ const Post = memo((props: PostProps) => {
   const signInUser = useAuth()
   const [isClicked, setIsClicked] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
+  const history = useNavigate()
   const style = { marginTop: 8 }
 
   /**
@@ -67,8 +68,12 @@ const Post = memo((props: PostProps) => {
     isLikedCheck()
   }, [handleClick])
 
+  const move = (postId: string) => {
+    history(`/post/${postId}`) // 画面遷移
+  }
+
   return (
-    <div className='post'>
+    <div className='post' onClick={() => move(postId)}>
       {location.pathname !== '/home' ? (
         <>
           {/* /postの時 */}
