@@ -40,31 +40,28 @@ const ChatRoom = () => {
 
   return (
     <>
-      <div className='chatroom'>
-        <Header title='ChatRoom' />
-        <Grid container justifyContent='space-between' className='chat'>
-          <Grid item xs={7.5} className='main-box'>
-            <div className='grid chat-screen'>
-              <div className='message' id='chatBottom'>
-                {chats.map((chat: chatProps) => (
-                  // eslint-disable-next-line react/jsx-key
-                  <Chat
-                    key={chat.chatId}
-                    name={chat.name}
-                    msg={chat.msg}
-                    createTime={chat.createTime}
-                    sendid={chat.sendid}
-                  />
-                ))}
-              </div>
+      <Header title='ChatRoom' />
+      <Grid container justifyContent='space-between'>
+        <Grid item xs={7.5} className='chatroom'>
+          <div className='chat-screen'>
+            <div className='message'>
+              {chats.map((chat: chatProps) => (
+                <Chat
+                  key={chat.chatId}
+                  name={chat.name}
+                  msg={chat.msg}
+                  createTime={chat.createTime}
+                  sendid={chat.sendid}
+                />
+              ))}
             </div>
-            <div className='input-form'>
-              <MessageBox />
-            </div>
-          </Grid>
-          <UserList />
+          </div>
+          <div className='input-form'>
+            <MessageBox />
+          </div>
         </Grid>
-      </div>
+        <UserList />
+      </Grid>
     </>
   )
 }

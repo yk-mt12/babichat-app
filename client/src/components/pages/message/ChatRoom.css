@@ -1,19 +1,11 @@
-.main-box {
+.chatroom {
   height: 80vh;
 }
 
-.grid {
+.chat-screen {
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
   overflow: auto;
-}
-
-.header {
-  width: 200px;
-  height: 50px;
-}
-
-.chat-screen {
   height: 570px;
   padding-bottom: 10px;
   font-size: 14px;
