@@ -15,8 +15,9 @@
   padding: 8px;
   max-width: 250px;
   border-radius: 12px;
-  background: #30d9e8;
+  background: var(--babichat-color);
   font-size: 15px;
+  color: var(--babichat-background);
 }
 
 .you .says:after {
@@ -26,7 +27,7 @@
   top: 3px;
   left: -19px;
   border: 8px solid transparent;
-  border-right: 18px solid #30d9e8;
+  border-right: 18px solid var(--babichat-color);
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
 }
@@ -57,4 +58,9 @@
   border-left: 18px solid #edf1ee;
   -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
+}
+
+.change {
+  font-size: small;
+  color: var(--babichat-color);
 }
