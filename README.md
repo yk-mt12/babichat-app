@@ -100,6 +100,11 @@ git push
 <summary>git-flow</summary>
 [図とコマンドで分かる！ git-flowによる開発の流れと使い方](https://atmarkit.itmedia.co.jp/ait/articles/1401/06/news013.html)
 
+## インストール(masOSの場合)
+```bash
+brew install git-flow
+```
+
 ## ブランチを作成
 ```bash
 git flow feature start '任意のブランチ名'
