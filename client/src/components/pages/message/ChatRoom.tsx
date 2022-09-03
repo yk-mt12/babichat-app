@@ -37,7 +37,6 @@ const ChatRoom = () => {
       })
       return () => unsub()
     }
-
   }, [anotherId])
 
   return (

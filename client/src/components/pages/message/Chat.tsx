@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuth } from '../../../firebase/authFunction'
 import { changeBabi } from '../../../logic/babigo'
 import './Chat.css'
+import ChatRoom from './ChatRoom'
 
 type chatProps = {
   sendid: string
@@ -15,6 +16,7 @@ const Chat = (props: chatProps) => {
   const signInUser = useAuth()
   const uid = signInUser.uid
   const babi = changeBabi(msg)
+
   return (
     <div className={uid == sendid ? 'me' : 'you'}>
       {uid != sendid ? <p> { name }</p> : <p></p>}
