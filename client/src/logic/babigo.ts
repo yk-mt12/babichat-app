@@ -42,10 +42,7 @@ function createDict(array: string[], str: string) {
   const dict: DictType = {}
   array.forEach((element) => {
     dict[element] = element + str
-    // console.log(element+str)
   })
-
-  // console.log(dict)
   return dict
 }
 
@@ -58,14 +55,11 @@ export const changeBabi = (text: string): string => {
   let babigo = ''
   let out = ''
   const babigoAll = rowA.concat(rowI).concat(rowU).concat(rowE).concat(rowO)
-  // console.log(babigoAll)
   const txtArray = text.split('')
   txtArray.forEach(function (value, i) {
-    // console.log(i, value)
+    // ひらがなチェック
     if (isHiragana(txtArray[i])) {
-      // console.log('ひらがなである:', value)
       if (babigoAll.includes(value)) {
-        // console.log('ok')
         if (out != '') {
           babigo += dictAll[out]
         }
@@ -73,16 +67,16 @@ export const changeBabi = (text: string): string => {
           babigo += dictAll[value]
         }
         out = value
-      } else if (['っ'].includes(value)) {
-        babigo += dictAll[out] + value
+      } else if (['っ', 'ぁ', 'ぃ', 'ぅ', 'ぇ', 'ぉ'].includes(value)) {
+        if (out !== '') {
+          babigo += dictAll[out] + value
+        } else {
+          babigo += value
+        }
         out = ''
       } else if (['ゃ', 'ゅ', 'ょ'].includes(value)) {
         out += value
         babigo += dictAll[out]
-        out = ''
-      } else if (value == 'ー') {
-        const tmp = dictAll[out]
-        babigo += tmp + value // + tmp[tmp.length-1]
         out = ''
       } else if (['、', '。'].includes(value)) {
         if (out != '') {
@@ -92,7 +86,6 @@ export const changeBabi = (text: string): string => {
         out = ''
       }
     } else {
-      // console.log('ひらがなではない: ', value)
       if (out != '') {
         babigo += dictAll[out]
         babigo += value
@@ -102,9 +95,8 @@ export const changeBabi = (text: string): string => {
       out = ''
     }
   })
+
+  console.log(babigo)
   return babigo
 }
 
-// let text = 'さいとうきょうこ'
-// let babigo = changeBabi(text)
-// console.log(babigo)
