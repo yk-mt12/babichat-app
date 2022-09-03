@@ -1,6 +1,10 @@
 # バビチャットアプリ
 
+<details>
+<summary>開発環境</summary>
+
 ## Client
+
 ### 環境
 ```
 node -v => v16.14.2
@@ -25,29 +29,42 @@ yarn dev
 ```
 yarn build
 ```
+</details>
+<details>
+<summary>機能要件</summary>
+
 ### 機能要件
 - ログイン機能
+  - サインアップ
+  - サインイン
+  - サインアウト
 - 掲示板機能
   - バビ語変換
-  - いいね機能、リプ数
+  - いいね機能、リプライ機能
 - ランキング機能
+  - いいね数
+  - 返信数
 - 設定画面
+  - バビ語と文章入れ替え機能の切り替え
 - 個人チャット機能
+</details>
+
+<details>
+<summary>技術スタック</summary>
 
 ### 技術スタック
 #### インフラ
 - Docker
 #### データベース
 Firebase
-#### サーバサイド
-- Express
 #### フロントエンド
-- React.js, Typescript
+- React.js, Typescript, Recoil
 #### UI
 Material UI
+</details>
 
-## backend
-comming soon...
+<details>
+<summary>git操作</summary>
 
 ## git操作
 **masterでは作業しない！！ブランチを変更しておく！！**
@@ -77,76 +94,5 @@ git commit -m '任意のコメント'
 ```
 git push
 ```
+</details>
 
-```bash
-./src/
-├── App.css
-├── App.tsx
-├── components
-│   ├── model
-│   │   ├── post
-│   │   │   ├── Post.css
-│   │   │   └── Post.tsx
-│   │   └── user
-│   │       ├── SignIn.tsx
-│   │       ├── SignOut.tsx
-│   │       ├── SignUp.tsx
-│   │       └── style.css
-│   ├── pages
-│   │   ├── home
-│   │   │   ├── Home.css
-│   │   │   └── Home.tsx
-│   │   ├── message
-│   │   │   ├── Chat.css
-│   │   │   ├── Chat.tsx
-│   │   │   ├── ChatRoom.css
-│   │   │   ├── ChatRoom.tsx
-│   │   │   ├── MessageBox.css
-│   │   │   └── MessageBox.tsx
-│   │   ├── profile
-│   │   │   └── Profile.tsx
-│   │   ├── ranking
-│   │   │   ├── Ranking.css
-│   │   │   ├── Ranking.tsx
-│   │   │   ├── RankingPost.tsx
-│   │   │   └── RankingTimeline.tsx
-│   │   ├── setting
-│   │   │   └── Setting.tsx
-│   │   └── timeline
-│   │       ├── TimeLine.css
-│   │       └── TimeLine.tsx
-│   └── ui
-│       ├── gridItem
-│       │   ├── GridItem.css
-│       │   └── GridItem.tsx
-│       ├── header
-│       │   ├── Header.css
-│       │   └── Header.tsx
-│       ├── input
-│       │   └── post
-│       │       ├── PostBox.css
-│       │       └── PostBox.tsx
-│       └── sidebar
-│           ├── Sidebar.css
-│           ├── Sidebar.tsx
-│           └── SidebarOption.tsx
-├── firebase
-│   ├── authFunction.ts
-│   ├── index.ts
-│   └── likeFunction.ts
-├── hooks
-│   └── useBatchPostLiked.ts
-├── index.html
-├── logic
-│   ├── babigo.ts
-│   ├── changeText.js
-│   └── readText.ts
-├── main.tsx
-├── router
-│   └── router.tsx
-├── store
-│   └── auth.ts
-└── vite-env.d.ts
-
-22 directories, 45 files
-```
