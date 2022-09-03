@@ -22,7 +22,7 @@ function UserList() {
 
   return (
     <>
-      {location.pathname === '/chatroom' ? (
+      {location.pathname === '/chatroom' || location.pathname === '/home' ? (
         <>
           <Header title='ChatRoom' />
           <Grid item xs={12} className='grid history-only'>
