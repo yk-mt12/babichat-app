@@ -27,17 +27,20 @@ const RankingPost = (props: Props) => {
   return (
     <div className='ranking--post'>
       <Grid container>
+        {/* ランク */}
         <Grid item md={1.2}>
           <p className='rank-index'>{rank}.</p>
         </Grid>
+        {/* アイコン */}
         <Grid item md={1}>
           <Avatar src={avater} style={{ marginTop: 10 }} />
         </Grid>
+        {/* テキスト（バビ語） */}
         <Grid item md={6}>
           <p {...{ style }}>{babi}</p>
         </Grid>
         <Grid item container md justifyContent='space-between' alignItems='center'>
-          <Grid item md={6} container justifyContent='flex-start' alignItems='center'>
+          {/* <Grid item md={6} container justifyContent='flex-start' alignItems='center'>
             <Grid item md={4}>
               <ChatBubbleOutline fontSize='small' {...{ style }} />
             </Grid>
@@ -46,8 +49,11 @@ const RankingPost = (props: Props) => {
                 rep
               </p>
             </Grid>
-          </Grid>
-          <Grid item md={6} container justifyContent='flex-start' alignItems='center'>
+          </Grid> */}
+
+          {/* リプライ機能を実装した時、下記のmd={8}->{6}に修正する。justifyContet='flex-start'に変更 */}
+          <Grid item md={8} container justifyContent='flex-end' alignItems='center'>
+            {/* いいねアイコンといいね数 */}
             <Grid item md={4}>
               <FavoriteBorder fontSize='small' {...{ style }} />
             </Grid>

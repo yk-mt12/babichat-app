@@ -47,8 +47,8 @@ const Ranking = () => {
       <Header title='Ranking' />
       {location.pathname !== '/home' && (
         <Grid container justifyContent='space-between' alignItems='center'>
-          <GridItem colRatio={5.95} label='いいね数' height={2} cName=' hover-text' />
-          <GridItem colRatio={5.95} label='返信数' height={2} cName=' hover-text' />
+          <GridItem colRatio={8} label='いいね数' height={2} cName=' hover-text' />
+          {/* <GridItem colRatio={5.95} label='返信数' height={2} cName=' hover-text' /> */}
         </Grid>
       )}
 
