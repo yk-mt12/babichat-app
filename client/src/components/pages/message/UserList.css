@@ -19,6 +19,18 @@
   font-weight: bold;
 }
 
+.history-only {
+  height: 83vh;
+}
+
 .userlist-only {
   padding-top: 10px;
+}
+
+.grid {
+  overflow: auto;
+}
+
+.grid::-webkit-scrollbar {
+  display: none;
 }

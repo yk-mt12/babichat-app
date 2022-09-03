@@ -25,7 +25,7 @@ function UserList() {
       {location.pathname === '/chatroom' || location.pathname === '/home' ? (
         <>
           <Header title='ChatRoom' />
-          <Grid item xs={12} className={`${location.pathname !== '/home' && 'grid history'}`}>
+          <Grid item xs={12} className={`${location.pathname !== '/home' && 'grid history-only'}`}>
             {location.pathname === '/home' || (
               <div className='history-title-only'>
                 <p>ユーザーリスト</p>

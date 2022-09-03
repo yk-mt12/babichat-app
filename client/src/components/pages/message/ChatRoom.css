@@ -1,3 +1,7 @@
+.main-box {
+  height: 80vh;
+}
+
 .grid {
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
@@ -10,7 +14,7 @@
 }
 
 .chat-screen {
-  height: 600px;
+  height: 570px;
   padding-bottom: 10px;
   font-size: 14px;
 }
