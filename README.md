@@ -98,6 +98,8 @@ git push
 
 <details>
 <summary>git-flow</summary>
+[図とコマンドで分かる！ git-flowによる開発の流れと使い方](https://atmarkit.itmedia.co.jp/ait/articles/1401/06/news013.html)
+
 ## ブランチを作成
 ```bash
 git flow feature start '任意のブランチ名'
@@ -105,6 +107,11 @@ git flow feature start '任意のブランチ名'
 
 ## ブランチを終了（機能完成）
 ```bash
- git flow feature finish '任意のブランチ名'
+git flow feature finish '任意のブランチ名'
+```
+
+## ブランチの共有
+```bash
+git flow feature publish '任意のブランチ名'
 ```
 </details>
