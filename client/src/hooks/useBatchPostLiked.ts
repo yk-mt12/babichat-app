@@ -26,6 +26,8 @@ type LikedPostType = {
 }
 
 const useBatchPostLiked = () => {
+  const signInUser = useAuth()
+  const uid = signInUser.uid
   /**
    * TODO:postIdとpostDataの初期値をnullにしておくと、初回レンダリング時に、doc()のempty path errorが出てしまう。
    *下記の場合では、postData.authorの値が書き変わらない場合があり、その場合 postData.author/posts/postId に一致しないコレクションを参照するため、firebase errorになる。
@@ -33,20 +35,10 @@ const useBatchPostLiked = () => {
    *1.getAnotherPostData関数で、必ずpostData.authorが書き変わった状態で、checkLikedPost関数を呼び出す方法があると考える。
    *2.初期値を空白にしておき、useEffect内で if(postId == '' || postData.lenght < 1) return で抜ける。この場合、post.tsxで、returnに何も返さないため、エラーになる。
    * */
-  const [postId, setPostId] = useState('cV9hJDJbRYIRQ8Ck0r9s')
+  const [postId, setPostId] = useState<string | undefined>()
   const [postData, setPostData] = useState<any>({
-    author: 'users/H6IKIRLlFTYfEwYcPBwkyFznF4K2',
+    author: '',
   })
-
-  const signInUser = useAuth()
-  const uid = signInUser.uid
-  const userRef = doc(db, 'users', uid)
-  const anotherUserRef = doc(db, postData.author)
-  const postRef = doc(anotherUserRef, 'posts', postId)
-  // users/anotherUserID/posts/postID/likedUser/signInUserID
-  const likedUserRef = doc(postRef, 'likedUser', uid)
-  // users/signInUserID/likedPosts/postID
-  const likedPostRef = doc(userRef, 'likedPosts', postId)
 
   const getAnotherPostData = async () => {
     const q = query(collectionGroup(db, 'posts'), where('postId', '==', postId))
@@ -58,6 +50,21 @@ const useBatchPostLiked = () => {
 
     await checkPostIsLiked()
   }
+
+  const userRef = doc(db, 'users', uid)
+  let postRef = {}
+  let anotherUserRef = {}
+  if (postId !== undefined) {
+    anotherUserRef = doc(db, postData.author)
+  }
+
+  if (anotherUserRef !== undefined) {
+    postRef = doc(anotherUserRef, 'posts', postId)
+  }
+  // users/anotherUserID/posts/postID/likedUser/signInUserID
+  const likedUserRef = doc(postRef, 'likedUser', uid)
+  // users/signInUserID/likedPosts/postID
+  const likedPostRef = doc(userRef, 'likedPosts', postId)
 
   const checkPostIsLiked = async () => {
     console.log(postData.author, postId)
