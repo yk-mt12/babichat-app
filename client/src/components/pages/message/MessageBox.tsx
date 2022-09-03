@@ -58,32 +58,30 @@ const MessageBox = () => {
 
   return (
     <>
-      <div className='chat'>
-        <form className='chatform' onSubmit={sendMsg}>
-          <input
-            style={{
-              width: '78%',
-              fontSize: '15px',
-              fontWeight: '550',
-              marginBottom: '-3px',
-            }}
-            placeholder='新しいメッセージの作成'
-            type='text'
-            value={msg}
-            onChange={(e) => setMsg(e.target.value)}
-            className='input-box'
-          />
-          <SendIcon
-            style={{
-              marginLeft: '20px',
-              marginBottom: '-5px',
-            }}
-            className='postBox-postButton'
-            type='submit'
-            onClick={sendMsg}
-          />
-        </form>
-      </div>
+      <form className='chatform' onSubmit={sendMsg}>
+        <input
+          style={{
+            width: '78%',
+            fontSize: '15px',
+            fontWeight: '550',
+            marginBottom: '-3px',
+          }}
+          placeholder='新しいメッセージの作成'
+          type='text'
+          value={msg}
+          onChange={(e) => setMsg(e.target.value)}
+          className='input-box'
+        />
+        <SendIcon
+          style={{
+            marginLeft: '20px',
+            marginBottom: '-5px',
+          }}
+          className='postBox-postButton'
+          type='submit'
+          onClick={sendMsg}
+        />
+      </form>
     </>
   )
 }
