@@ -39,7 +39,7 @@ const RankingPostTimeline = (props: Props) => {
             rank={rank + 1}
           />
         ))}
-             </div>
+       </div>
   )
 }
 
