@@ -16,7 +16,7 @@
   border: 2px solid var(--babichat-color);
   border-radius: 4px;
   text-align: center;
-  font-size: -1.4em;
+  font-size: 16px;
 }
 
 .signIn-input::placeholder {
@@ -24,10 +24,6 @@
   font-size: 1.6em;
   font-style: italic;
   text-align: center;
-}
-
-Link {
-  font-size: 10px;
 }
 
 .signIn-button {
@@ -40,13 +36,12 @@ Link {
   padding: 2px;
   border: 2px solid var(--babichat-color);
   border-radius: 4px;
-  font-size: -1.4em;
+  font-size: 16px;
   font-style: italic;
 }
 
-.google-login {
-  /* text-align: center; */
-  margin-left: 150px;
+.link-block {
+  margin-bottom: 18px;
 }
 
 .link-text {
