@@ -10,11 +10,11 @@
     "lint:fix": "eslint --fix src/**/*.{js,ts,tsx}",
     "format": "prettier --write 'src/**/*.{js,ts,tsx,css,md ,json}' --config ./.prettierrc",
     "test": "jest",
-    "prepare": "cd .. && husky install client/.husky"
+    "prepare": "cd .. && husky install client/.husky",
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn lint-staged"
     }
   },
   "lint-staged": {
