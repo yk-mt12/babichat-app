@@ -29,11 +29,10 @@ const SignUp = () => {
           {signInUser.uid ? (
             <Navigate to='/home' />
           ) : (
-            <div>
+            <div className='login-page'>
               <h1>アカウントを作成</h1>
               <form onSubmit={handleSubmit}>
                 <div>
-                  <label>メールアドレス</label>
                   <input
                     name='email'
                     type='email'
@@ -42,7 +41,6 @@ const SignUp = () => {
                   />
                 </div>
                 <div>
-                  <label>パスワード</label>
                   <input
                     name='password'
                     type='password'
@@ -54,7 +52,7 @@ const SignUp = () => {
                   <button>アカウントを作成する</button>
                 </div>
               </form>
-              <div>
+              <div className='google-login'>
                 <p>
                   ログインは
                   <span className='link-text'>

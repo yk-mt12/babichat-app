@@ -27,7 +27,7 @@ const RankingPost = (props: Props) => {
   return (
     <div className='ranking--post'>
       <Grid container>
-        <Grid item md={1}>
+        <Grid item md={1.2}>
           <p className='rank-index'>{rank}.</p>
         </Grid>
         <Grid item md={1}>
