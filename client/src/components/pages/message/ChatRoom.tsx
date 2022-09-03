@@ -59,7 +59,7 @@ const ChatRoom = () => {
             </div>
           </div>
           <div className='input-form'>
-            <MessageBox />
+              <MessageBox />
           </div>
         </Grid>
         <UserList />

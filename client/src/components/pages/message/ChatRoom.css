@@ -1,13 +1,9 @@
-.chatroom {
-  height: 80vh;
-}
-
 .chat-screen {
+  height: 75vh;
   border: 2px solid var(--babichat-color);
-  border-radius: 16px;
-  overflow: auto;
-  height: 570px;
-  padding-bottom: 10px;
+  border-radius: 16px 16px 0 0px;
+  border-bottom: transparent;
+  overflow: scroll;
   font-size: 14px;
 }
 
@@ -16,10 +12,14 @@
 }
 
 .message {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .input-form {
-  padding-left: 50px;
-  padding-top: 7px;
+  height: 25px;
+  text-align: center;
+  border: 2px solid var(--babichat-color);
+  border-radius: 0 0 16px 16px;
+  background-color: rgb(255, 255, 255);
+  padding: 10px 0px 20px 0 ;
 }
