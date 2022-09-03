@@ -43,7 +43,7 @@ const ChatRoom = () => {
       <div className='chatroom'>
         <Header title='ChatRoom' />
         <Grid container justifyContent='space-between' className='chat'>
-          <Grid item xs={7.5}>
+          <Grid item xs={7.5} className='main-box'>
             <div className='grid chat-screen'>
               <div className='message' id='chatBottom'>
                 {chats.map((chat: chatProps) => (
