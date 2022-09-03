@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import './GridItem.css'
 
 type Props = {
-  child?:    JSX.Element        // コンポーネント
-  colRatio:  any                // Gridの比率
-  navigate?: string             // <Link/>の遷移先
-  width?:    string | Number    // gridカードの横幅
-  height?:   string | Number    // gridカードの縦
-  label?:    string             // グリッド内に表示するテキスト
-  cName?:    string             // className
-  isScroll?: boolean            // スクロール可能かどうか
+  child?: JSX.Element // コンポーネント
+  colRatio: any // Gridの比率
+  navigate?: string // <Link/>の遷移先
+  width?: string | Number // gridカードの横幅
+  height?: string | Number // gridカードの縦
+  label?: string // グリッド内に表示するテキスト
+  cName?: string // className
+  isScroll?: boolean // スクロール可能かどうか
 }
 
 const GridItem = (props: Props) => {
