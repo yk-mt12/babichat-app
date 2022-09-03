@@ -92,7 +92,11 @@ const Post = memo((props: PostProps) => {
             <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start'>
               <Grid item container md={6} justifyContent='flex-start'>
                 <Grid item md={2.65}>
-                  <Button variant='contained' onClick={() => speechClick(babi)} style={{minWidth: '104px'}}>
+                  <Button
+                    variant='contained'
+                    onClick={() => speechClick(babi)}
+                    style={{ minWidth: '104px' }}
+                  >
                     読み上げる
                   </Button>
                 </Grid>
