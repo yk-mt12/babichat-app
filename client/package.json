@@ -9,19 +9,21 @@
     "lint": "eslint src/**/*.{js,ts,tsx}",
     "lint:fix": "eslint --fix src/**/*.{js,ts,tsx}",
     "format": "prettier --write 'src/**/*.{js,ts,tsx,css,md ,json}' --config ./.prettierrc",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn type-check"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.@(ts|tsx|js|css|md|json)": [
-      "yarn lint",
-      "yarn format",
-      "yarn check-types"
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,less,sass,scss}": [
+      "stylelint --fix"
     ]
   },
   "dependencies": {
