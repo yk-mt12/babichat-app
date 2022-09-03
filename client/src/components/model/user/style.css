@@ -4,7 +4,7 @@
   padding-right: 200px;
 }
 
-form {
+.login-form {
   text-align: center;
 }
 
@@ -12,7 +12,6 @@ form {
   width: 63%;
   height: 52px;
   margin-bottom: 10px;
-  /* outline: solid 1px var(--babichat-color); */
   padding: 2px;
   border: 2px solid var(--babichat-color);
   border-radius: 4px;
