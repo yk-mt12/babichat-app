@@ -25,7 +25,7 @@ function User(props: Props) {
   }
 
   return (
-    <div className='user'>
+    <>
       {postsArray &&
         postsArray.map(
           (post: PostType) =>
@@ -37,7 +37,7 @@ function User(props: Props) {
               </>
             ),
         )}
-    </div>
+    </>
   )
 }
 
