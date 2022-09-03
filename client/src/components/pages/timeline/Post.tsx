@@ -205,11 +205,7 @@ const Post = memo((props: PostProps) => {
           </Grid>
         </>
       )}
-    </div>
-
-
-
-
+                              </div>
   )
 })
 
