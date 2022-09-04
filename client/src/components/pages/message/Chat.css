@@ -3,8 +3,8 @@
 }
 
 .you {
-  width: 100%;
   padding-left: 20px;
+  padding-top: 20px;
   text-align: left;
   margin-bottom: 10px;
 }
@@ -66,4 +66,14 @@
   font-size: 0.5px;
   color: var(--babichat-color);
   margin-left: 35px;
+}
+
+.you .change {
+  width: 30px;
+  margin-left: 35px;
+}
+
+.me .change {
+  margin-left: 93.5%;
+  text-align: center;
 }
