@@ -30,7 +30,7 @@ const MessageBox = () => {
       name: displayName,
       msg: msg,
       createTime: serverTimestamp(),
-      photoURL: photoURL
+      photoURL: photoURL,
     }
 
     const chatroomRef = doc(db, 'users', uid, 'chatroom', anotherId || '')

@@ -27,9 +27,10 @@ const ChatRoom = () => {
 
   useEffect(() => {
     console.log(anotherId)
+
     if (anotherId !== undefined) {
       const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId || '', 'chats')
-      const q = query(chatroomRef, orderBy('createTime'), limit(500))
+      const q = query(chatroomRef, orderBy('createTime'), limit(50))
       const unsub = onSnapshot(q, (querySnapshot) => {
         setChats(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
 
@@ -38,7 +39,7 @@ const ChatRoom = () => {
       })
       return () => unsub()
     }
-  }, [anotherId])
+  }, [anotherId, chats])
 
   return (
     <>
@@ -60,7 +61,7 @@ const ChatRoom = () => {
             </div>
           </div>
           <div className='input-form'>
-              <MessageBox />
+            <MessageBox />
           </div>
         </Grid>
         <UserList />
