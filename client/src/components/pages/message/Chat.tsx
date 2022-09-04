@@ -14,7 +14,7 @@ type chatProps = {
 }
 
 const Chat = (props: chatProps) => {
-  const { msg, createTime, name, sendid, photoURL} = props
+  const { msg, createTime, name, sendid, photoURL } = props
   const signInUser = useAuth()
   const uid = signInUser.uid
   const babi = changeBabi(msg)
@@ -25,10 +25,11 @@ const Chat = (props: chatProps) => {
 
   return (
     <div className={uid == sendid ? 'me' : 'you'}>
-      {uid != sendid ?
-      <Avatar className='icon' src={photoURL} style={{ marginLeft: -10}}/> :
+      {uid != sendid ? (
+        <Avatar className='icon' src={photoURL} style={{ marginLeft: -10 }} />
+      ) : (
         <p></p>
-      }
+      )}
       <p className='says'>
         {isClicked ? <p {...{ style }}>{msg} </p> : <p {...{ style }}>{babi}</p>}
       </p>
