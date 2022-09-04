@@ -3,7 +3,11 @@
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
   overflow: scroll;
-  height: 74vh;
+  height: 52vh;
+}
+
+.post-timeline::-webkit-scrollbar {
+  display: none;
 }
 
 .name {
