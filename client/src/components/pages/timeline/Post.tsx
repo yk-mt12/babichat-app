@@ -22,7 +22,7 @@ type PostProps = {
   updateTime: string
   likeCount: number
   postId: string
-  likedPosts: any[]
+  likedPosts?: any[]
 }
 
 const Post = memo((props: PostProps) => {

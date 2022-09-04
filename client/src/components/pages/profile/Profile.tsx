@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Avatar, Grid } from '@mui/material'
 import GridItem from '../../ui/gridItem/GridItem'
-//import Sidebar from '../sidebar/Sidebar'
 import './Profile.css'
 import Header from '../../ui/header/Header'
 import { useAuth } from '../../../firebase/authFunction'
@@ -16,6 +15,19 @@ import {
   getDocs,
 } from 'firebase/firestore'
 import { db } from '../../../firebase'
+import Post from '../timeline/Post'
+
+type PostType = {
+  author: DocumentReference
+  displayName: string
+  text: string
+  avater: string
+  image: string
+  createTime: string
+  updateTime: string
+  likeCount: number
+  postId: string
+}
 
 const profile = () => {
   const signInUser = useAuth()
@@ -25,11 +37,17 @@ const profile = () => {
     const getDoc = async () => {
       const docRef = collection(db, 'users', signInUser.uid, 'posts')
       const q = query(docRef)
-      const snapShot = await getDocs(q)
 
-      snapShot.forEach((doc) => {
-        setPosts(doc.data())
+      const unsub = onSnapshot(q, (querySnapshot: { docs: any[] }) => {
+        setPosts(querySnapshot.docs.map((doc) => doc.data()))
       })
+      return () => unsub()
+
+      // const snapShot = await getDocs(q)
+
+      // snapShot.forEach((doc) => {
+      //   setPosts(doc.data())
+      // })
     }
 
     getDoc()
@@ -65,8 +83,19 @@ const profile = () => {
 
       <Grid>
         <Grid item xs={12} className='post-timeline'>
-          {posts.map((post: any) => (
-            <p key={post.key}>{post.text}</p>
+          {posts.map((post: PostType) => (
+            <Post
+              key={post.postId}
+              author={post.author}
+              displayName={post.displayName}
+              text={post.text}
+              avater={post.avater}
+              image={post.image}
+              createTime={post.createTime}
+              updateTime={post.updateTime}
+              likeCount={post.likeCount}
+              postId={post.postId}
+            />
           ))}
         </Grid>
       </Grid>
