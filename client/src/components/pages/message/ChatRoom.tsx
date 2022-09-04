@@ -1,5 +1,5 @@
 import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
 import { Grid } from '@mui/material'
@@ -16,18 +16,21 @@ type chatProps = {
   msg: string
   createTime: any
   chatId: string
+  photoURL: string
 }
 
-const ChatRoom = () => {
+// eslint-disable-next-line react/display-name
+const ChatRoom = memo(() => {
   const [chats, setChats] = useState<any>([])
   const { anotherId } = useParams()
   const signInUser = useAuth()
   const uid = signInUser.uid
 
   useEffect(() => {
+
     if (anotherId !== undefined) {
       const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId || '', 'chats')
-      const q = query(chatroomRef, orderBy('createTime'), limit(500))
+      const q = query(chatroomRef, orderBy('createTime'), limit(10))
       const unsub = onSnapshot(q, (querySnapshot) => {
         setChats(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
 
@@ -40,33 +43,31 @@ const ChatRoom = () => {
 
   return (
     <>
-      <div className='chatroom'>
-        <Header title='ChatRoom' />
-        <Grid container justifyContent='space-between' className='chat'>
-          <Grid item xs={7.5}>
-            <div className='grid chat-screen'>
-              <div className='message' id='chatBottom'>
-                {chats.map((chat: chatProps) => (
-                  // eslint-disable-next-line react/jsx-key
-                  <Chat
-                    key={chat.chatId}
-                    name={chat.name}
-                    msg={chat.msg}
-                    createTime={chat.createTime}
-                    sendid={chat.sendid}
-                  />
-                ))}
-              </div>
+      <Header title='ChatRoom' />
+      <Grid container justifyContent='space-between'>
+        <Grid item xs={7.5} className='chatroom'>
+          <div className='chat-screen'>
+            <div className='message'>
+              {chats.map((chat: chatProps) => (
+                <Chat
+                  key={chat.chatId}
+                  name={chat.name}
+                  msg={chat.msg}
+                  createTime={chat.createTime}
+                  sendid={chat.sendid}
+                  photoURL={chat.photoURL}
+                />
+              ))}
             </div>
-            <div className='input-form'>
-              <MessageBox />
-            </div>
-          </Grid>
-          <UserList />
+          </div>
+          <div className='input-form'>
+            <MessageBox />
+          </div>
         </Grid>
-      </div>
+        <UserList />
+      </Grid>
     </>
   )
-}
+})
 
 export default ChatRoom

@@ -6,12 +6,13 @@
   width: 100%;
   padding-left: 20px;
   text-align: left;
+  margin-bottom: 10px;
 }
 
 .you .says {
   display: inline-block;
   position: relative;
-  margin: 0 10px 0 0;
+  margin: 0 10px 0px 30px;
   padding: 8px;
   max-width: 250px;
   border-radius: 12px;
@@ -36,6 +37,7 @@
   text-align: right;
   padding-right: 20px;
   padding-top: 25px;
+  margin-bottom: 10px;
 }
 
 .me .says {
@@ -61,6 +63,7 @@
 }
 
 .change {
-  font-size: small;
+  font-size: 0.5px;
   color: var(--babichat-color);
+  margin-left: 35px;
 }

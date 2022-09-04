@@ -1,5 +1,5 @@
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
 import SendIcon from '@mui/icons-material/Send'
@@ -10,12 +10,15 @@ type ChatLog = {
   name: string
   msg: string
   createTime: any
+  photoURL: string
 }
 
-const MessageBox = () => {
+// eslint-disable-next-line react/display-name
+const MessageBox = memo(() => {
   // const { register, handleSubmit } = useForm();
   const signInUser = useAuth()
   const displayName = signInUser.displayName
+  const photoURL = signInUser.photoURL
   const uid = signInUser.uid
   const [msg, setMsg] = useState('')
   const { anotherId } = useParams()
@@ -28,16 +31,15 @@ const MessageBox = () => {
       name: displayName,
       msg: msg,
       createTime: serverTimestamp(),
+      photoURL: photoURL,
     }
 
-    // const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2' // TODO：相手のidを入れる
     const chatroomRef = doc(db, 'users', uid, 'chatroom', anotherId || '')
     const chatsRef = collection(chatroomRef, 'chats')
 
     const receiveChatroomRef = doc(db, 'users', anotherId || '', 'chatroom', uid)
     const receiveChatsRef = collection(receiveChatroomRef, 'chats')
 
-    // console.log(chatroomRef)
     if (msg === '') {
       console.log('メッセージは空です')
       return
@@ -57,34 +59,32 @@ const MessageBox = () => {
 
   return (
     <>
-      <div className='chat'>
-        <form className='chatform' onSubmit={sendMsg}>
-          <input
-            style={{
-              width: '78%',
-              fontSize: '15px',
-              fontWeight: '550',
-              marginBottom: '-3px',
-            }}
-            placeholder='新しいメッセージの作成'
-            type='text'
-            value={msg}
-            onChange={(e) => setMsg(e.target.value)}
-            className='input-box'
-          />
-          <SendIcon
-            style={{
-              marginLeft: '20px',
-              marginBottom: '-5px',
-            }}
-            className='postBox-postButton'
-            type='submit'
-            onClick={sendMsg}
-          />
-        </form>
-      </div>
+      <form className='chatform' onSubmit={sendMsg}>
+        <input
+          style={{
+            width: '78%',
+            fontSize: '15px',
+            fontWeight: '550',
+            marginBottom: '-3px',
+          }}
+          placeholder='新しいメッセージの作成'
+          type='text'
+          value={msg}
+          onChange={(e) => setMsg(e.target.value)}
+          className='input-box'
+        />
+        <SendIcon
+          style={{
+            marginLeft: '20px',
+            marginBottom: '-5px',
+          }}
+          className='postBox-postButton'
+          type='submit'
+          onClick={sendMsg}
+        />
+      </form>
     </>
   )
-}
+})
 
 export default MessageBox

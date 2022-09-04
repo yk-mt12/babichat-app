@@ -1,24 +1,21 @@
-.history-title {
-  font-size: 25px;
-  width: 175px;
-  text-align: center;
-  height: 35px;
-  line-height: 35px;
-  font-weight: bold;
-  padding-left: 70px;
-}
-
 .userlist {
-  padding-top: 45px;
+  height: 83vh;
+  overflow: auto;
+  border: 2px solid var(--babichat-color);
+  border-radius: 16px;
 }
 
-.history-title-only {
-  font-size: 20px;
+.userlist::-webkit-scrollbar {
+  display: none;
+}
+
+.userlist-title {
+  height: 25px;
+  line-height: 25px;
+  color: var(--babichat-color);
+  font-size: 25px;
   text-align: center;
-  padding-top: 25px;
   font-weight: bold;
-}
-
-.userlist-only {
-  padding-top: 10px;
+  padding-bottom: 25px;
+  border-bottom: 2px solid var(--babichat-color);
 }

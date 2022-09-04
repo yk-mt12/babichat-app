@@ -1,7 +1,12 @@
+.user-info {
+  display: flex;
+  border-bottom: 1px solid var(--babichat-color);
+  padding: 10px 0px 0px 10px;
+}
+
 .username {
   height: 35px;
-  margin: 3px;
-  border-bottom: 1px solid var(--babichat-color);
+  line-height: 35px;
   text-align: left;
-  padding: 5px;
+  padding: 0px 10px 5px;
 }

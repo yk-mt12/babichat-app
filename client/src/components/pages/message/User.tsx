@@ -1,21 +1,24 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { useAuth } from '../../../firebase/authFunction'
 import './User.css'
 import { useNavigate } from 'react-router-dom'
+import { Avatar } from '@mui/material'
+import { memo } from 'react'
 
 type Props = {
-  postsArray: any
+  userlist: any
 }
 
 type PostType = {
   key: string
   uid: string
   displayName: string
-  icon: string
+  photoURL: string
 }
 
-function User(props: Props) {
-  const { postsArray } = props
-  // const [ anotherId, setAnotherId ] = useState('');
+// eslint-disable-next-line react/display-name
+const User = memo((props: Props) => {
+  const { userlist } = props
   const uid = useAuth().uid
   const history = useNavigate()
 
@@ -25,20 +28,21 @@ function User(props: Props) {
   }
 
   return (
-    <div className='user'>
-      {postsArray &&
-        postsArray.map(
+    <>
+      {userlist &&
+        userlist.map(
           (post: PostType) =>
             post.uid === uid || (
-              <>
+              <div className='user-info'>
+                <Avatar src={post.photoURL} style={{ marginTop: 10 }} />
                 <p className='username' onClick={() => move(post.uid)}>
                   {post.displayName}
                 </p>
-              </>
+              </div>
             ),
         )}
-    </div>
+    </>
   )
-}
+})
 
 export default User
