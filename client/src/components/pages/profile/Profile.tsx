@@ -36,48 +36,41 @@ const profile = () => {
   }, [])
 
   return (
-    // <div className='profile-screen'>
-    //   <div className='profile-logo'>Profile</div>
-    //   <Grid container spacing={1} className='box'>
-    //     <img className='icon' src='https://iconbu.com/wp-content/uploads/2020/01/%E3%83%9A%E3%83%B3%E3%82%AE%E3%83%B3%E3%81%AE%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.jpg'></img>
-    //     <ul>
-    //       <li className='box1-list user-name'>ユーザ名</li>
-    //       <li className='box1-list'>ID</li>
-    //     </ul>
-    //     <div className='self-introduction'>自己紹介</div>
-    //     <div className='box1-1'></div>
-    //   </Grid>
-    //   <Grid container spacing={1} className='box'>
-    //     <ul className='post-list'>
-    //       <li className='box2-list'>全ての投稿</li>
-    //       <li className='box2-list'>返信</li>
-    //     </ul>
-    //   </Grid>
-    // </div>
-
-    // <Header title='チャバットボ' />
     <div className='profile-screen'>
-      <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
-        <Grid item xs={3}>
-          {/* <div className='box'>
-            {/* <img className='icon' src='https://iconbu.com/wp-content/uploads/2020/01/%E3%83%9A%E3%83%B3%E3%82%AE%E3%83%B3%E3%81%AE%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.jpg'></img>
-              <ul>
-                <li className='box1-list user-name'>ユーザ名</li>
-                <li className='box1-list'>ID</li>
-              </ul>
-            <div className='self-introduction'>自己紹介</div>
-            <div className='box1-1'></div>
-            </div> */}
-
-          <p>box1</p>
-          {/* <img className='icon' src='https://iconbu.com/wp-content/uploads/2020/01/%E3%83%9A%E3%83%B3%E3%82%AE%E3%83%B3%E3%81%AE%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.jpg'></img> */}
-          <Avatar src={signInUser.photoURL} style={{ marginTop: 10 }} />
+      <Header title='Profile' />
+      <div className='profile'>
+        <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
+          <Grid item xs={1.3}></Grid>
+          <Grid item xs={1.7}>
+            <Avatar
+              src={signInUser.photoURL}
+              style={{ marginTop: 0 }}
+              sx={{ width: 100, height: 100 }}
+            />
+            {/* sx={{width: 60, height: 60}} */}
+          </Grid>
+          <Grid item xs={8}>
+            <p className='name'>{signInUser.displayName}</p>
+            {/* <GridItem label='自己紹介' colRatio={2}/> */}
+          </Grid>
         </Grid>
-        <Grid item xs={8}>
-          <p>{signInUser.displayName}</p>
-          <GridItem label='自己紹介' colRatio={2} />
+        <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
+          <Grid item xs={3}></Grid>
+          <Grid item xs={8}>
+            <GridItem label='自己紹介' colRatio={2} />
+            <GridItem label='初めまして！' colRatio={undefined} width={300} height={200} />
+          </Grid>
+        </Grid>
+      </div>
+
+      <Grid>
+        <Grid item xs={12} className='post-timeline'>
+          {posts.map((post: any) => (
+            <p key={post.key}>{post.text}</p>
+          ))}
         </Grid>
       </Grid>
+
       {/* <div className='post-timeline'>
         {posts.map((post: any) => (
             <p key={post.key}>{post.text}</p>
