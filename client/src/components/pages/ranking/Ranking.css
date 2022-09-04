@@ -7,7 +7,7 @@
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
   overflow: scroll;
-  height: 74vh;
+  height: 82vh;
 }
 
 .ranking--block::-webkit-scrollbar {
