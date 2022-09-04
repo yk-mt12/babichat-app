@@ -1,5 +1,5 @@
 import { Avatar } from '@mui/material'
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useAuth } from '../../../firebase/authFunction'
 import { changeBabi } from '../../../logic/babigo'
 import './Chat.css'
@@ -13,7 +13,8 @@ type chatProps = {
   photoURL: string
 }
 
-const Chat = (props: chatProps) => {
+// eslint-disable-next-line react/display-name
+const Chat = memo((props: chatProps) => {
   const { msg, createTime, name, sendid, photoURL } = props
   const signInUser = useAuth()
   const uid = signInUser.uid
@@ -38,6 +39,6 @@ const Chat = (props: chatProps) => {
       </p>
     </div>
   )
-}
+})
 
 export default Chat

@@ -1,5 +1,5 @@
 import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
 import { Grid } from '@mui/material'
@@ -19,7 +19,8 @@ type chatProps = {
   photoURL: string
 }
 
-const ChatRoom = () => {
+// eslint-disable-next-line react/display-name
+const ChatRoom = memo(() => {
   const [chats, setChats] = useState<any>([])
   const { anotherId } = useParams()
   const signInUser = useAuth()
@@ -28,7 +29,7 @@ const ChatRoom = () => {
   useEffect(() => {
     if (anotherId !== undefined) {
       const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId || '', 'chats')
-      const q = query(chatroomRef, orderBy('createTime'), limit(50))
+      const q = query(chatroomRef, orderBy('createTime'), limit(10))
       const unsub = onSnapshot(q, (querySnapshot) => {
         setChats(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
 
@@ -37,7 +38,7 @@ const ChatRoom = () => {
       })
       return () => unsub()
     }
-  }, [anotherId, chats])
+  }, [anotherId])
 
   return (
     <>
@@ -66,6 +67,6 @@ const ChatRoom = () => {
       </Grid>
     </>
   )
-}
+})
 
 export default ChatRoom
