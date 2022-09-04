@@ -5,3 +5,15 @@
   overflow: scroll;
   height: 74vh;
 }
+
+.name {
+  font-size: 40px;
+  margin: 0;
+}
+
+.profile {
+  padding: 20px 8px 8px 8px;
+  border: 2px solid var(--babichat-color);
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
