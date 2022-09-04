@@ -1,5 +1,5 @@
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
 import SendIcon from '@mui/icons-material/Send'
@@ -13,7 +13,8 @@ type ChatLog = {
   photoURL: string
 }
 
-const MessageBox = () => {
+// eslint-disable-next-line react/display-name
+const MessageBox = memo(() => {
   // const { register, handleSubmit } = useForm();
   const signInUser = useAuth()
   const displayName = signInUser.displayName
@@ -84,6 +85,6 @@ const MessageBox = () => {
       </form>
     </>
   )
-}
+})
 
 export default MessageBox

@@ -3,9 +3,10 @@ import { useAuth } from '../../../firebase/authFunction'
 import './User.css'
 import { useNavigate } from 'react-router-dom'
 import { Avatar } from '@mui/material'
+import { memo } from 'react'
 
 type Props = {
-  postsArray: any
+  userlist: any
 }
 
 type PostType = {
@@ -15,9 +16,9 @@ type PostType = {
   photoURL: string
 }
 
-function User(props: Props) {
-  const { postsArray } = props
-  // const [ anotherId, setAnotherId ] = useState('');
+// eslint-disable-next-line react/display-name
+const User = memo((props: Props) => {
+  const { userlist } = props
   const uid = useAuth().uid
   const history = useNavigate()
 
@@ -28,8 +29,8 @@ function User(props: Props) {
 
   return (
     <>
-      {postsArray &&
-        postsArray.map(
+      {userlist &&
+        userlist.map(
           (post: PostType) =>
             post.uid === uid || (
               <div className='user-info'>
@@ -42,6 +43,6 @@ function User(props: Props) {
         )}
     </>
   )
-}
+})
 
 export default User

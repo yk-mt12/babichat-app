@@ -1,24 +1,29 @@
 import { Grid } from '@mui/material'
-import { collection, onSnapshot, query } from 'firebase/firestore'
-import { useEffect, useState } from 'react'
+import { collection, getDoc, getDocs, onSnapshot, query } from 'firebase/firestore'
+import { memo, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
 import Header from '../../ui/header/Header'
 import User from './User'
 import './UserList.css'
 
-function UserList() {
+// eslint-disable-next-line react/display-name
+const UserList = memo(() => {
   const [users, setUsers] = useState<any>([])
   const location = useLocation()
 
   useEffect(() => {
     const q: any = query(collection(db, 'users'))
-    onSnapshot(q, (querySnapshot: { docs: any[] }) => {
+    const unsub = onSnapshot(q, (querySnapshot: { docs: any[] }) => {
       setUsers(querySnapshot.docs.map((doc) => doc.data()))
     })
+
+    return () => unsub()
   }, [])
 
-  const userArray = users
+  console.log(users)
+
+  const userlist = users
 
   return (
     <>
@@ -32,7 +37,7 @@ function UserList() {
               </div>
             )}
             <div>
-              <User postsArray={userArray} />
+              <User userlist={userlist} />
             </div>
           </Grid>
         </>
@@ -42,12 +47,12 @@ function UserList() {
             <p>ユーザーリスト</p>
           </div>
           <div>
-            <User postsArray={userArray} />
+            <User userlist={userlist} />
           </div>
         </Grid>
       )}
     </>
   )
-}
+})
 
 export default UserList

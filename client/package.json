@@ -17,7 +17,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.10.0",
     "@types/recoil": "^0.0.9",
-    "firebase": "^9.9.2",
+    "firebase": "^9.9.4",
     "firebase-admin": "^11.0.1",
     "firebase-functions": "^3.22.0",
     "flow-typed": "^3.8.0",
@@ -29,6 +29,7 @@
     "react-hook-form": "^7.34.2",
     "react-loading": "^2.0.3",
     "react-router-dom": "^6.3.0",
+    "react-virtualized": "^9.22.3",
     "recoil": "^0.7.5"
   },
   "devDependencies": {
