@@ -1,7 +1,7 @@
 .chat-screen {
-  height: 75vh;
+  height: 67vh;
   border: 2px solid var(--babichat-color);
-  border-radius: 16px 16px 0 0px;
+  /* border-radius: 16px 16px 0 0px; */
   border-bottom: transparent;
   overflow: scroll;
   font-size: 14px;
@@ -22,4 +22,15 @@
   border-radius: 0 0 16px 16px;
   background-color: rgb(255, 255, 255);
   padding: 10px 0px 20px 0;
+}
+
+.anotherName {
+  font-size: 32px;
+  color: var(--babichat-color);
+  font-weight: bold;
+  border: 2px solid var(--babichat-color);
+  border-radius: 16px 16px 0 0;
+  border-bottom: transparent;
+  padding: 10px;
+  padding-left: 25px;
 }

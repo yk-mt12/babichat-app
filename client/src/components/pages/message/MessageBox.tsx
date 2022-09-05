@@ -15,7 +15,6 @@ type ChatLog = {
 
 // eslint-disable-next-line react/display-name
 const MessageBox = memo(() => {
-  // const { register, handleSubmit } = useForm();
   const signInUser = useAuth()
   const displayName = signInUser.displayName
   const photoURL = signInUser.photoURL
@@ -28,10 +27,10 @@ const MessageBox = memo(() => {
 
     const data: ChatLog = {
       sendid: uid,
-      name: displayName,
+      name: displayName || '',
       msg: msg,
       createTime: serverTimestamp(),
-      photoURL: photoURL,
+      photoURL: photoURL || '',
     }
 
     const chatroomRef = doc(db, 'users', uid, 'chatroom', anotherId || '')
