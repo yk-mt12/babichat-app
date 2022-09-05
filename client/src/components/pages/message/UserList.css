@@ -2,6 +2,7 @@
   height: 83vh;
   overflow: auto;
   border: 2px solid var(--babichat-color);
+  box-shadow: 7px 10px 20px 0px rgba(0, 0, 0, .5);
   border-radius: 16px;
 }
 

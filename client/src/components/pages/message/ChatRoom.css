@@ -1,6 +1,7 @@
 .chat-screen {
   height: 75vh;
   border: 2px solid var(--babichat-color);
+  box-shadow: 5px 60px 20px 0 rgba(0, 0, 0, .5);
   border-radius: 16px 16px 0 0px;
   border-bottom: transparent;
   overflow: scroll;
