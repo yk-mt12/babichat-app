@@ -1,7 +1,6 @@
 .chat-screen {
   height: 67vh;
   border: 2px solid var(--babichat-color);
-  /* border-radius: 16px 16px 0 0px; */
   border-bottom: transparent;
   overflow: scroll;
   font-size: 14px;
@@ -16,7 +15,7 @@
 }
 
 .input-form {
-  height: 25px;
+  height: 28px;
   text-align: center;
   border: 2px solid var(--babichat-color);
   border-radius: 0 0 16px 16px;
@@ -31,6 +30,5 @@
   border: 2px solid var(--babichat-color);
   border-radius: 16px 16px 0 0;
   border-bottom: transparent;
-  padding: 10px;
-  padding-left: 25px;
+  padding: 10px 10px 15px 25px;
 }
