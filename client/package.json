@@ -9,7 +9,7 @@
     "lint": "eslint src/**/*.{js,ts,tsx}",
     "lint:fix": "eslint --fix src/**/*.{js,ts,tsx} --max-warnings 0",
     "format": "prettier --write 'src/**/*.{js,ts,tsx,css,md, json}' --config ./.prettierrc",
-    "test": "jest --verbose",
+    "test": "jest",
     "prepare": "cd .. && husky install client/.husky",
     "lint-staged": "lint-staged"
   },
