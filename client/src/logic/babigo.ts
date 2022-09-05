@@ -96,6 +96,6 @@ export const changeBabi = (text: string): string => {
     }
   })
 
-  console.log(babigo)
+  // console.log(babigo)
   return babigo
 }

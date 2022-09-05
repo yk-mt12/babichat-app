@@ -2,6 +2,7 @@ import { Avatar } from '@mui/material'
 import React, { memo, useState } from 'react'
 import { useAuth } from '../../../firebase/authFunction'
 import { changeBabi } from '../../../logic/babigo'
+import formatDate from '../../../logic/formatDate'
 import './Chat.css'
 
 type chatProps = {
@@ -20,6 +21,7 @@ const Chat = memo((props: chatProps) => {
   const babi = changeBabi(msg)
   const [isClicked, setIsClicked] = useState(false)
   const style = { margin: 0 }
+  const send = formatDate(createTime ,'MM/dd HH:mm')
 
   return (
     <div className={uid == sendid ? 'me' : 'you'}>
@@ -34,6 +36,7 @@ const Chat = memo((props: chatProps) => {
       <p className='change' onClick={() => setIsClicked(!isClicked)}>
         {isClicked ? 'バビ語' : '翻訳'}
       </p>
+      <p>{send}</p>
     </div>
   )
 })
