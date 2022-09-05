@@ -25,6 +25,7 @@ type PostProps = {
   likedPosts?: any[]
 }
 
+// eslint-disable-next-line react/display-name
 const Post = memo((props: PostProps) => {
   const { setPostId, getAnotherPostData } = useBatchPostLiked()
   const location = useLocation()

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports = {
   moduleFileExtensions: ['js', 'ts', 'tsx'],
   transform: {

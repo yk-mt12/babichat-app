@@ -7,7 +7,6 @@ type userState = {
   photoURL: string | null
   createTime: any
   updateTime: any
-  intro: string | null
 }
 
 export const signInUserState = atom<userState>({
@@ -18,6 +17,5 @@ export const signInUserState = atom<userState>({
     photoURL: '',
     createTime: '',
     updateTime: '',
-    intro: '',
   },
 })
