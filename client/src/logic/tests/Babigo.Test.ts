@@ -1,5 +1,5 @@
 // import { render, screen } from '@testing-library/react';
-import { changeBabi } from '../logic/babigo'
+import { changeBabi } from '../babigo'
 
 describe('Test Change To BABIGO', () => {
   test('babigo-normal', () => {
