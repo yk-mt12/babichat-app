@@ -60,7 +60,6 @@ export const useAuth = () => {
           photoURL: authUser.photoURL,
           createTime: serverTimestamp(),
           updateTime: serverTimestamp(),
-          intro: authUser.intro,
         })
       } else {
         resetStatus()
@@ -102,7 +101,7 @@ export const createUsersDB = async () => {
           likePostCount: 0,
           photoURL: authUser.photoURL ? authUser.photoURL : '',
           updateTime: serverTimestamp(),
-          intro: '',
+          intro: '自己紹介を書こう！！',
         })
       }
     }
