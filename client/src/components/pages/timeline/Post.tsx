@@ -74,7 +74,7 @@ const Post = memo((props: PostProps) => {
   }
 
   return (
-    <div className='post' onClick={() => move(postId)}>
+    <div className='post'>
       {location.pathname !== '/home' ? (
         <>
           {/* /postの時 */}
@@ -91,7 +91,7 @@ const Post = memo((props: PostProps) => {
           </Grid>
           {/* テキスト */}
           <Grid container direction='row' justifyContent='space-between' alignItems='flex-start'>
-            <Grid item md={12}>
+            <Grid item md={12} onClick={() => move(postId)}>
               {isClicked ? <p {...{ style }}>{text} </p> : <p {...{ style }}>{babi}</p>}
             </Grid>
             {/* ボタン：翻訳機能、読み上げ機能 */}
