@@ -21,8 +21,6 @@ const UserList = memo(() => {
     return () => unsub()
   }, [])
 
-  console.log(users)
-
   const userlist = users
 
   return (
