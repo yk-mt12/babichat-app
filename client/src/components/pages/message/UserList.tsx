@@ -24,9 +24,10 @@ const UserList = memo(() => {
   const userlist = users
 
   return (
-    <div className='userlist-screen'>
+    <>
       {location.pathname === '/chatroom' || location.pathname === '/home' ? (
-        <>
+        // ユーザリストとチャットルームを表示
+        <div className='chatroom-screen'>
           <Header title='ChatRoom' />
           <Grid item xs={12} className={`${location.pathname !== '/home' && 'userlist'}`}>
             {location.pathname === '/home' || (
@@ -38,8 +39,9 @@ const UserList = memo(() => {
               <User userlist={userlist} />
             </div>
           </Grid>
-        </>
+        </div>
       ) : (
+        // ユーザリストのみを表示
         <Grid item xs={4} className='userlist'>
           <div className='userlist-title'>
             <p>ユーザーリスト</p>
@@ -49,7 +51,7 @@ const UserList = memo(() => {
           </div>
         </Grid>
       )}
-    </div>
+    </>
   )
 })
 
