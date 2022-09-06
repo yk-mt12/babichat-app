@@ -2,13 +2,17 @@
   border-right: 1px solid var(--babichat-color);
   border-radius: 20px;
   min-width: 200px;
-  padding-top: 20px;
-  padding-left: 5px;
-  padding-right: 20px;
-  padding-bottom: 40px;
+  padding: 20px 5px 40px;
   background-color: var(--babichat-color);
   margin-top: 16px;
   height: 88vh;
+}
+
+.logo {
+  margin-top: 5px;
+  font-size: 28px;
+  text-align: center;
+  color: #fff;
 }
 
 .sidebar--option {
@@ -23,4 +27,9 @@
 
 .profile-block {
   margin-bottom: 12px;
+  text-align: center;
+}
+
+.account-text {
+  color: #fff;
 }
