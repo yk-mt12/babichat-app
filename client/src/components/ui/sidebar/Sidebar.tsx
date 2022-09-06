@@ -8,14 +8,13 @@ import SidebarOption from './SidebarOption'
 import './Sidebar.css'
 
 const Sidebar = () => {
-  // const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2' // 相手のidを取得
   return (
     <div className='sidebar'>
       {/* {アイコン} */}
       <div className='profile-block'>
         <SidebarOption Icon={AccountCircleIcon} text='My account' navigate='profile' />
       </div>
-      <SidebarOption Icon={HomeIcon} text='Home' navigate='home' />
+      <SidebarOption Icon={HomeIcon} text='ほーむ' navigate='home' />
       <SidebarOption Icon={AssignmentIcon} text='Post' navigate='post' />
       <SidebarOption
         Icon={ForumIcon}
