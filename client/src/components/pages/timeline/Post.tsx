@@ -108,7 +108,7 @@ const Post = memo((props: PostProps) => {
                 </Grid>
                 <Grid item>
                   <Button variant='contained' onClick={() => setIsClicked(!isClicked)}>
-                    翻訳
+                    {isClicked == true ? 'バビ語' : '翻訳'}
                   </Button>
                 </Grid>
               </Grid>
