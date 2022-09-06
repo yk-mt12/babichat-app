@@ -8,11 +8,11 @@ import { Link } from 'react-router-dom'
 import SidebarOption from './SidebarOption'
 import './Sidebar.css'
 import { Avatar } from '@mui/material'
-import { useAuth } from '../../../firebase/authFunction'
 import { useRecoilValue } from 'recoil'
 import { signInUserState } from '../../../store/auth'
+import { memo } from 'react'
 
-const Sidebar = () => {
+const Sidebar = memo(() => {
   const user = useRecoilValue(signInUserState)
 
   return (
@@ -42,6 +42,6 @@ const Sidebar = () => {
       </div>
     </>
   )
-}
+})
 
 export default Sidebar

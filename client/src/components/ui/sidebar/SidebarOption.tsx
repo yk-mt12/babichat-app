@@ -1,4 +1,5 @@
 import { Grid } from '@mui/material'
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
 type SidebarOptionProps = {
@@ -7,7 +8,7 @@ type SidebarOptionProps = {
   navigate?: string
 }
 
-const SidebarOption = (props: SidebarOptionProps) => {
+const SidebarOption = memo((props: SidebarOptionProps) => {
   const { Icon, text, navigate } = props
   const navLink = '/' + navigate
   return (
@@ -49,6 +50,6 @@ const SidebarOption = (props: SidebarOptionProps) => {
       </Link>
     </div>
   )
-}
+})
 
 export default SidebarOption

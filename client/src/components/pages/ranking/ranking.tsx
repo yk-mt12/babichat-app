@@ -7,7 +7,7 @@ import {
   limit,
   DocumentReference,
 } from 'firebase/firestore'
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
 import GridItem from '../../ui/gridItem/GridItem'
@@ -15,19 +15,7 @@ import Header from '../../ui/header/Header'
 import './Ranking.css'
 import RankingPostTimeline from './RankingTimeline'
 
-type PostType = {
-  author: DocumentReference
-  displayName: string
-  text: string
-  avater: string
-  image: string
-  createTime: string
-  updateTime: string
-  likeCount: number
-  postId: string
-}
-
-const Ranking = () => {
+const Ranking = memo(() => {
   const [posts, setPosts] = useState<any>([])
 
   useEffect(() => {
@@ -57,6 +45,6 @@ const Ranking = () => {
       </div>
     </div>
   )
-}
+})
 
 export default Ranking
