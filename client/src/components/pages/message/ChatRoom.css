@@ -1,3 +1,7 @@
+.chatroom-screen {
+  margin-left: 15px;
+}
+
 .chat-screen {
   height: 67vh;
   border: 2px solid var(--babichat-color);

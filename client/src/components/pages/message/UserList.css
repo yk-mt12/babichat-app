@@ -1,3 +1,7 @@
+.userlist-screen {
+  margin-left: 15px;
+}
+
 .userlist {
   height: 84vh;
   overflow: auto;
