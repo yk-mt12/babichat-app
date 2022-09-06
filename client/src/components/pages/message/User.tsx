@@ -32,16 +32,15 @@ const User = memo((props: Props) => {
       {userlist &&
         userlist.map(
           (post: PostType) =>
-          post.uid === uid || (
-            <div className='user-info'>
-              <Avatar src={post.photoURL} style={{ marginTop: 10 }} />
-              <p className='username' onClick={() => move(post.uid)}>
-                {post.displayName}
-              </p>
-            </div>
-          ),
-        )
-      }
+            post.uid === uid || (
+              <div className='user-info'>
+                <Avatar src={post.photoURL} style={{ marginTop: 10 }} />
+                <p className='username' onClick={() => move(post.uid)}>
+                  {post.displayName}
+                </p>
+              </div>
+            ),
+        )}
     </>
   )
 })

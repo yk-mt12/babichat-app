@@ -39,8 +39,6 @@ const ChatRoom = memo(() => {
         if (chatscreen) chatscreen.scrollTop = chatscreen.scrollHeight
       })
       return () => unsub()
-
-
     }
   }, [anotherId])
 

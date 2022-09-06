@@ -69,7 +69,6 @@
   /* margin-left: 35px; */
 }
 
-
 .me .change {
   text-align: center;
 }
@@ -91,7 +90,7 @@
   height: 15px;
   margin-left: 5px;
   padding-left: 5px;
-  border-left:1px solid black;
+  border-left: 1px solid black;
 }
 
 .you .help {
@@ -103,5 +102,5 @@
   height: 15px;
   margin-right: 5px;
   padding-right: 5px;
-  border-right:1px solid black;
+  border-right: 1px solid black;
 }
