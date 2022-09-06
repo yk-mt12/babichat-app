@@ -4,30 +4,43 @@ import AssignmentIcon from '@mui/icons-material/Assignment'
 import ForumIcon from '@mui/icons-material/Forum'
 import QueryStatsIcon from '@mui/icons-material/QueryStats'
 import SettingsIcon from '@mui/icons-material/Settings'
+import { Link } from 'react-router-dom'
 import SidebarOption from './SidebarOption'
 import './Sidebar.css'
+import { Avatar } from '@mui/material'
+import { useAuth } from '../../../firebase/authFunction'
+import { useRecoilValue } from 'recoil'
+import { signInUserState } from '../../../store/auth'
 
 const Sidebar = () => {
-  // const anotherId = 'O1ujIkBZmJWXwdZi3htg5yai14X2' // 相手のidを取得
+  const user = useRecoilValue(signInUserState)
+
   return (
-    <div className='sidebar'>
-      {/* {アイコン} */}
-      <div className='profile-block'>
-        <SidebarOption Icon={AccountCircleIcon} text='My account' navigate='profile' />
+    <>
+      <div className='sidebar'>
+        {/* ロゴ */}
+        <h1 className='logo'>ちゃばっとぼ</h1>
+        {/* {アイコン} */}
+        <div className='profile-block'>
+          <Link to='/profile'>
+            <Avatar src={user.photoURL} sx={{ margin: '0 auto' }} />
+            <p className='account-text'>まいあかうんと</p>
+          </Link>
+        </div>
+        <SidebarOption Icon={HomeIcon} text='ほーむ' navigate='home' />
+        <SidebarOption Icon={AssignmentIcon} text='ぽすと' navigate='post' />
+        <SidebarOption
+          Icon={ForumIcon}
+          text='ちゃっと'
+          // navigate='chatroom/O1ujIkBZmJWXwdZi3htg5yai14X2'
+          navigate='chatroom'
+        />
+        <SidebarOption Icon={QueryStatsIcon} text='らんきんぐ' navigate='ranking' />
+        <div className='setting-icon'>
+          {/* <SidebarOption Icon={SettingsIcon} text='Setting' navigate='setting' /> */}
+        </div>
       </div>
-      <SidebarOption Icon={HomeIcon} text='Home' navigate='home' />
-      <SidebarOption Icon={AssignmentIcon} text='Post' navigate='post' />
-      <SidebarOption
-        Icon={ForumIcon}
-        text='ChatRoom'
-        // navigate='chatroom/O1ujIkBZmJWXwdZi3htg5yai14X2'
-        navigate='chatroom'
-      />
-      <SidebarOption Icon={QueryStatsIcon} text='Ranking' navigate='ranking' />
-      <div className='setting-icon'>
-        {/* <SidebarOption Icon={SettingsIcon} text='Setting' navigate='setting' /> */}
-      </div>
-    </div>
+    </>
   )
 }
 

@@ -63,7 +63,7 @@ const profile = () => {
             <Avatar
               src={signInUser.photoURL}
               style={{ marginTop: 0 }}
-              sx={{ width: 100, height: 100 }}
+              sx={{ width: 50, height: 50 }}
             />
             {/* sx={{width: 60, height: 60}} */}
           </Grid>
