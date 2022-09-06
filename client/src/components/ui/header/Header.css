@@ -1,4 +1,6 @@
 .title {
   color: var(--babichat-color);
-  font-size: 34px;
+  font-size: 5vh;
+  font-family: 'Nico Moji';
+  padding-bottom: 10px;
 }

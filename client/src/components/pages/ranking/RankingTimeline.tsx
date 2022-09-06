@@ -1,6 +1,7 @@
 import { DocumentReference } from 'firebase/firestore'
 import React from 'react'
 import RankingPost from './RankingPost'
+import './RankingTimeline.css'
 
 type Props = {
   postsArray: any
@@ -23,6 +24,7 @@ const RankingPostTimeline = (props: Props) => {
 
   return (
     <div>
+      <h3 className='good'>いいね数</h3>
       {postsArray &&
         postsArray.map((post: PostType, rank: number) => (
           <RankingPost

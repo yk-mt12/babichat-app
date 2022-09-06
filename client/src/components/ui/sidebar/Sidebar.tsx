@@ -12,6 +12,7 @@ import { useRecoilValue } from 'recoil'
 import { signInUserState } from '../../../store/auth'
 import { memo } from 'react'
 
+// eslint-disable-next-line react/display-name
 const Sidebar = memo(() => {
   const user = useRecoilValue(signInUserState)
 

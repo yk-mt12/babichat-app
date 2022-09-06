@@ -3,6 +3,7 @@ import { collection, getDoc, getDocs, onSnapshot, query } from 'firebase/firesto
 import { memo, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
+import BackgroundFluid from '../../ui/background/BackgroundFluid'
 import Header from '../../ui/header/Header'
 import User from './User'
 import './UserList.css'
@@ -26,9 +27,12 @@ const UserList = memo(() => {
   return (
     <>
       {location.pathname === '/chatroom' || location.pathname === '/home' ? (
-        // ユーザリストとチャットルームを表示
-        <div className='chatroom-screen'>
-          <Header title='ChatRoom' />
+        <>
+          <BackgroundFluid top={2} rigth={2} deg={10} backgroundColor={'#fff100'} />
+          <BackgroundFluid top={40} rigth={60} deg={30} backgroundColor={'#fbad03'} />
+          <BackgroundFluid top={5} rigth={100} deg={90} backgroundColor={'#a3e417'} />
+          <BackgroundFluid top={60} rigth={120} deg={45} backgroundColor={'#ee6eee'} />
+          <Header title='ちゃっとるーむ' />
           <Grid item xs={12} className={`${location.pathname !== '/home' && 'userlist'}`}>
             {location.pathname === '/home' || (
               <div className='userlist-title'>
@@ -39,7 +43,7 @@ const UserList = memo(() => {
               <User userlist={userlist} />
             </div>
           </Grid>
-        </div>
+        </>
       ) : (
         // ユーザリストのみを表示
         <Grid item xs={4} className='userlist'>

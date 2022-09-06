@@ -1,20 +1,13 @@
-import { Grid } from '@mui/material'
-import {
-  query,
-  orderBy,
-  collectionGroup,
-  onSnapshot,
-  limit,
-  DocumentReference,
-} from 'firebase/firestore'
+import { query, orderBy, collectionGroup, onSnapshot, limit } from 'firebase/firestore'
 import { memo, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
-import GridItem from '../../ui/gridItem/GridItem'
+import BackgroundFluid from '../../ui/background/BackgroundFluid'
 import Header from '../../ui/header/Header'
 import './Ranking.css'
 import RankingPostTimeline from './RankingTimeline'
 
+// eslint-disable-next-line react/display-name
 const Ranking = memo(() => {
   const [posts, setPosts] = useState<any>([])
 
@@ -27,12 +20,17 @@ const Ranking = memo(() => {
     })
   }, [])
 
-  const postsArray = posts //useStateのpostsをpropsとして<RankingPostTimeline />に渡すとエラーになるため、postsArrayにコピー
+  const postsArray = posts // useStateのpostsをpropsとして<RankingPostTimeline />に渡すとエラーになるため、postsArrayにコピー
   const location = useLocation()
 
   return (
-    <div className='ranking'>
-      <Header title='Ranking' />
+    <div>
+      <BackgroundFluid top={2} rigth={2} deg={10} backgroundColor={'#fff100'} />
+      <BackgroundFluid top={40} rigth={60} deg={30} backgroundColor={'#fbad03'} />
+      <BackgroundFluid top={5} rigth={100} deg={90} backgroundColor={'#a3e417'} />
+      <BackgroundFluid top={60} rigth={120} deg={45} backgroundColor={'#ee6eee'} />
+
+      <Header title='らんきんぐ' />
       {/* {location.pathname !== '/home' && (
         <Grid container justifyContent='space-between' alignItems='center'>
           <GridItem colRatio={8} label='いいね数' height={2} cName=' hover-text' />
