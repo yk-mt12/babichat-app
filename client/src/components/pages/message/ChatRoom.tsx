@@ -30,7 +30,7 @@ const ChatRoom = memo(() => {
   useEffect(() => {
     if (anotherId !== undefined) {
       const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId || '', 'chats')
-      const q = query(chatroomRef, orderBy('createTime'), limit(10))
+      const q = query(chatroomRef, orderBy('createTime'), limit(50))
 
       const unsub = onSnapshot(q, (querySnapshot) => {
         setChats(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))

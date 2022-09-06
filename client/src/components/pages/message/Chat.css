@@ -1,5 +1,6 @@
 .says {
   text-align: left;
+  max-width: 250px;
 }
 
 .you {
@@ -65,15 +66,42 @@
 .change {
   font-size: 0.5px;
   color: var(--babichat-color);
-  margin-left: 35px;
+  /* margin-left: 35px; */
 }
 
-.you .change {
-  width: 30px;
-  margin-left: 35px;
-}
 
 .me .change {
-  margin-left: 93.5%;
   text-align: center;
+}
+
+.help {
+  width: 20%;
+  display: flex;
+  /* justify-content: space-between; */
+  font-size: 10px;
+}
+
+.me .help {
+  text-align: right;
+  margin-left: 87%;
+}
+
+.me .sendTime {
+  margin-top: 0;
+  height: 15px;
+  margin-left: 5px;
+  padding-left: 5px;
+  border-left:1px solid black;
+}
+
+.you .help {
+  margin-left: 4%;
+}
+
+.you .sendTime {
+  margin-top: 0;
+  height: 15px;
+  margin-right: 5px;
+  padding-right: 5px;
+  border-right:1px solid black;
 }
