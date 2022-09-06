@@ -30,7 +30,6 @@ const Chat = memo((props: chatProps) => {
 
   console.log('送信時間', send)
 
-
   return (
     <div className={uid == sendid ? 'me' : 'you'}>
         {uid != sendid ? (
@@ -63,8 +62,6 @@ const Chat = memo((props: chatProps) => {
 
           )}
         </div>
-
-
     </div>
   )
 })
