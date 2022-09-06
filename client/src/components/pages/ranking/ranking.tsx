@@ -39,12 +39,12 @@ const Ranking = () => {
     })
   }, [])
 
-  const postsArray = posts //useStateのpostsをpropsとして<RankingPostTimeline />に渡すとエラーになるため、postsArrayにコピー
+  const postsArray = posts // useStateのpostsをpropsとして<RankingPostTimeline />に渡すとエラーになるため、postsArrayにコピー
   const location = useLocation()
 
   return (
     <div>
-      <Header title='Ranking' />
+      <Header title='らんきんぐ' />
       {/* {location.pathname !== '/home' && (
         <Grid container justifyContent='space-between' alignItems='center'>
           <GridItem colRatio={8} label='いいね数' height={2} cName=' hover-text' />

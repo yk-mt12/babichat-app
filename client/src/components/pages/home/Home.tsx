@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <div className='dashboard--body'>
-      <Header title='チャバットボ' />
+      <Header title='ちゃばっとぼ' />
       <Grid container direction='row' justifyContent='space-between' alignItems='center'>
         <GridItem
           child={<Ranking />}

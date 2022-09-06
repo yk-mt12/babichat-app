@@ -44,7 +44,7 @@ const ChatRoom = memo(() => {
 
   return (
     <>
-      <Header title='ChatRoom' />
+      <Header title='ちゃっとるーむ' />
       <Grid container justifyContent='space-between'>
         <Grid item xs={7.5} className='chatroom'>
           <div className='anotherName'>

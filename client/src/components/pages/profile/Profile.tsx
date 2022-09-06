@@ -55,7 +55,7 @@ const profile = () => {
 
   return (
     <div className='profile-screen'>
-      <Header title='Profile' />
+      <Header title='ぷろふぃーる' />
       <div className='profile'>
         <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
           <Grid item xs={1.3}></Grid>

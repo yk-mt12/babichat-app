@@ -48,7 +48,7 @@ const TimeLine = () => {
 
   return (
     <div className='timeline'>
-      <Header title='Post' />
+      <Header title='ぽすと' />
       {location.pathname != '/home' && <PostBox />}
 
       <div className={location.pathname !== '/home' ? 'timeline--block' : ''}>

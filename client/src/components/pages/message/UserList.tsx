@@ -27,7 +27,7 @@ const UserList = memo(() => {
     <>
       {location.pathname === '/chatroom' || location.pathname === '/home' ? (
         <>
-          <Header title='ChatRoom' />
+          <Header title='ちゃっとるーむ' />
           <Grid item xs={12} className={`${location.pathname !== '/home' && 'userlist'}`}>
             {location.pathname === '/home' || (
               <div className='userlist-title'>
