@@ -24,7 +24,7 @@ const UserList = memo(() => {
   const userlist = users
 
   return (
-    <>
+    <div className='userlist-screen'>
       {location.pathname === '/chatroom' || location.pathname === '/home' ? (
         <>
           <Header title='ChatRoom' />
@@ -49,7 +49,7 @@ const UserList = memo(() => {
           </div>
         </Grid>
       )}
-    </>
+    </div>
   )
 })
 
