@@ -14,7 +14,7 @@ type chatProps = {
 }
 
 // eslint-disable-next-line react/display-name
-const Chat = (props: chatProps) => {
+const Chat = memo((props: chatProps) => {
   const { msg, createTime, sendid, photoURL } = props
   const now = new Date
   // const [send, setSend] = useState<string>(formatDate(now, 'HH:mm'))
@@ -67,6 +67,6 @@ const Chat = (props: chatProps) => {
 
     </div>
   )
-}
+})
 
 export default Chat
