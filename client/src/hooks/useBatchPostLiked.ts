@@ -52,11 +52,10 @@ const useBatchPostLiked = () => {
     const q = query(collectionGroup(db, 'posts'), where('postId', '==', postId))
 
     const querySnapshot = await getDocs(q)
-    querySnapshot.forEach((doc) => {
+    const unsub = querySnapshot.forEach((doc) => {
       setPostData(doc.data())
     })
-
-    await checkPostIsLiked()
+    return unsub
   }
 
   const checkPostIsLiked = async () => {

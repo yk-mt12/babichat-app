@@ -27,7 +27,7 @@ type PostProps = {
 
 // eslint-disable-next-line react/display-name
 const Post = memo((props: PostProps) => {
-  const { setPostId, getAnotherPostData } = useBatchPostLiked()
+  const { setPostId, getAnotherPostData, checkPostIsLiked } = useBatchPostLiked()
   const location = useLocation()
   const {
     avater,
@@ -55,9 +55,10 @@ const Post = memo((props: PostProps) => {
     readAloud(text)
   }
 
-  const handleClick = (e: any) => {
-    setPostId(postId)
-    getAnotherPostData()
+  const handleClick = async (e: any) => {
+    await setPostId(postId)
+    await getAnotherPostData()
+    await checkPostIsLiked()
   }
 
   useEffect(() => {
