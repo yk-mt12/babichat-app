@@ -1,9 +1,9 @@
 import { Avatar } from '@mui/material'
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useAuth } from '../../../firebase/authFunction'
 import { changeBabi } from '../../../logic/babigo'
+import formatDate from '../../../logic/formatDate'
 import './Chat.css'
-import ChatRoom from './ChatRoom'
 
 type chatProps = {
   sendid: string
@@ -15,28 +15,53 @@ type chatProps = {
 
 // eslint-disable-next-line react/display-name
 const Chat = memo((props: chatProps) => {
-  const { msg, createTime, name, sendid, photoURL } = props
+  const { msg, createTime, sendid, photoURL } = props
+  const now = new Date
+  // const [send, setSend] = useState<string>(formatDate(now, 'HH:mm'))
   const signInUser = useAuth()
   const uid = signInUser.uid
   const babi = changeBabi(msg)
   const [isClicked, setIsClicked] = useState(false)
   const style = { margin: 0 }
 
-  console.log('icon', photoURL)
+  const sendTime = createTime.toDate()
+  // setSend(formatDate(sendTime , 'HH:mm'))
+  const send = formatDate(sendTime , 'HH:mm')
+
+  console.log('送信時間', send)
 
   return (
     <div className={uid == sendid ? 'me' : 'you'}>
-      {uid != sendid ? (
-        <Avatar className='icon' src={photoURL} style={{ marginLeft: -10 }} />
-      ) : (
-        <p></p>
-      )}
-      <p className='says'>
-        {isClicked ? <p {...{ style }}>{msg} </p> : <p {...{ style }}>{babi}</p>}
-      </p>
-      <p className='change' onClick={() => setIsClicked(!isClicked)}>
-        {isClicked ? 'バビ語' : '翻訳'}
-      </p>
+        {uid != sendid ? (
+          <Avatar className='icon' src={photoURL} style={{ marginLeft: -10 }} />
+        ) : (
+          <p></p>
+        )}
+        <div className='chat'>
+        </div>
+        <p className='says'>
+          {isClicked ? <p {...{ style }}>{msg} </p> : <p {...{ style }}>{babi}</p>}
+
+        </p>
+        <div className='help'>
+          {uid != sendid ? (
+            <>
+                <p className='sendTime'>{send}</p>
+                <p className='change' onClick={() => setIsClicked(!isClicked)}>
+                  {isClicked ? 'バビ語' : '翻訳'}
+                </p>
+              </>
+
+          ) : (
+            <>
+                <p className='change' onClick={() => setIsClicked(!isClicked)}>
+                  {isClicked ? 'バビ語' : '翻訳'}
+                </p>
+                <p className='sendTime'>{send}</p>
+            </>
+
+          )}
+        </div>
     </div>
   )
 })

@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, serverTimestamp, Timestamp, updateDoc } from 'firebase/firestore'
 import { memo, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
@@ -15,7 +15,6 @@ type ChatLog = {
 
 // eslint-disable-next-line react/display-name
 const MessageBox = memo(() => {
-  // const { register, handleSubmit } = useForm();
   const signInUser = useAuth()
   const displayName = signInUser.displayName
   const photoURL = signInUser.photoURL
@@ -28,10 +27,10 @@ const MessageBox = memo(() => {
 
     const data: ChatLog = {
       sendid: uid,
-      name: displayName,
+      name: displayName || '',
       msg: msg,
-      createTime: serverTimestamp(),
-      photoURL: photoURL,
+      createTime: Timestamp.now(),
+      photoURL: photoURL || '',
     }
 
     const chatroomRef = doc(db, 'users', uid, 'chatroom', anotherId || '')

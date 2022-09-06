@@ -1,4 +1,4 @@
-import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { collection, doc, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { memo, useEffect, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
@@ -9,6 +9,7 @@ import MessageBox from './MessageBox'
 import './ChatRoom.css'
 import Header from '../../ui/header/Header'
 import UserList from './UserList'
+import YourName from './YourName'
 
 type chatProps = {
   sendid: string
@@ -29,7 +30,8 @@ const ChatRoom = memo(() => {
   useEffect(() => {
     if (anotherId !== undefined) {
       const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId || '', 'chats')
-      const q = query(chatroomRef, orderBy('createTime'), limit(10))
+      const q = query(chatroomRef, orderBy('createTime'), limit(50))
+
       const unsub = onSnapshot(q, (querySnapshot) => {
         setChats(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
 
@@ -37,6 +39,8 @@ const ChatRoom = memo(() => {
         if (chatscreen) chatscreen.scrollTop = chatscreen.scrollHeight
       })
       return () => unsub()
+
+
     }
   }, [anotherId])
 
@@ -45,6 +49,9 @@ const ChatRoom = memo(() => {
       <Header title='ChatRoom' />
       <Grid container justifyContent='space-between'>
         <Grid item xs={7.5} className='chatroom'>
+          <div className='anotherName'>
+            <YourName />
+          </div>
           <div className='chat-screen'>
             <div className='message'>
               {chats.map((chat: chatProps) => (

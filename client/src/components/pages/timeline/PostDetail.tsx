@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
 import GridItem from '../../ui/gridItem/GridItem'
 import Header from '../../ui/header/Header'
