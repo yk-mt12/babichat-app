@@ -43,7 +43,7 @@ const Ranking = () => {
   const location = useLocation()
 
   return (
-    <div>
+    <div className='ranking'>
       <Header title='Ranking' />
       {/* {location.pathname !== '/home' && (
         <Grid container justifyContent='space-between' alignItems='center'>
