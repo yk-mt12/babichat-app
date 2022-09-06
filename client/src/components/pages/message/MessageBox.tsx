@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, serverTimestamp, Timestamp, updateDoc } from 'firebase/firestore'
 import { memo, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
@@ -29,7 +29,7 @@ const MessageBox = memo(() => {
       sendid: uid,
       name: displayName || '',
       msg: msg,
-      createTime: serverTimestamp(),
+      createTime: Timestamp.now(),
       photoURL: photoURL || '',
     }
 
