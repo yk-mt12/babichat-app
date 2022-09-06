@@ -9,6 +9,7 @@ type SidebarOptionProps = {
   navigate?: string
 }
 
+// eslint-disable-next-line react/display-name
 const SidebarOption = memo((props: SidebarOptionProps) => {
   const { Icon, text, navigate } = props
   const navLink = '/' + navigate

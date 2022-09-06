@@ -19,12 +19,16 @@ const Sidebar = memo(() => {
   return (
     <>
       <div className='sidebar'>
+        <link
+          href='https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Mochiy+Pop+P+One&display=swap'
+          rel='stylesheet'
+        />
         {/* ロゴ */}
         <h1 className='logo'>ちゃばっとぼ</h1>
         {/* {アイコン} */}
         <div className='profile-block'>
           <Link to='/profile'>
-            <Avatar src={user.photoURL} sx={{ margin: '0 auto' }} />
+            <Avatar src={user.photoURL} sx={{ margin: '0 auto', width: 100, height: 100 }} />
             <p className='account-text'>まいあかうんと</p>
           </Link>
         </div>

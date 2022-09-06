@@ -64,12 +64,12 @@ const profile = () => {
         <Header title='ぷろふぃーる' />
         <div className='profile'>
           <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
-            <Grid item xs={1.3}></Grid>
+            <Grid item xs={0.5}></Grid>
             <Grid item xs={1.7}>
               <Avatar
                 src={signInUser.photoURL}
                 style={{ marginTop: 0 }}
-                sx={{ width: 50, height: 50 }}
+                sx={{ width: 100, height: 100 }}
               />
               {/* sx={{width: 60, height: 60}} */}
             </Grid>
@@ -79,7 +79,7 @@ const profile = () => {
             </Grid>
           </Grid>
           <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
-            <Grid item xs={3}></Grid>
+            <Grid item xs={2.2}></Grid>
             <Grid item xs={8}>
               <GridItem label='自己紹介' colRatio={2} />
               <GridItem label='初めまして！' colRatio={undefined} width={300} height={200} />
