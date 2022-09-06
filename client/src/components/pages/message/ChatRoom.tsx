@@ -43,7 +43,7 @@ const ChatRoom = memo(() => {
   }, [anotherId])
 
   return (
-    <>
+    <div className='chatroom-screen'>
       <Header title='ChatRoom' />
       <Grid container justifyContent='space-between'>
         <Grid item xs={7.5} className='chatroom'>
@@ -70,7 +70,7 @@ const ChatRoom = memo(() => {
         </Grid>
         <UserList />
       </Grid>
-    </>
+    </div>
   )
 })
 
