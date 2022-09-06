@@ -10,8 +10,6 @@ import TimeLine from '../timeline/TimeLine'
 import './Home.css'
 
 const Home = () => {
-  const signInUser = useAuth()
-
   return (
     <div className='dashboard--body'>
       <Header title='チャバットボ' />
