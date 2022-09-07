@@ -1,6 +1,6 @@
 .fluid {
-  width: 30vh;
-  height: 30vh;
+  width: 20vh;
+  height: 20vh;
   z-index: -2;
   animation: fluidrotate 20s ease-out 0s infinite; /*アニメーションの設定*/
 }
