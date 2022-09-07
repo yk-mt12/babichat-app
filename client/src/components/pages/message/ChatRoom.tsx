@@ -11,6 +11,7 @@ import Header from '../../ui/header/Header'
 import UserList from './UserList'
 import YourName from './YourName'
 import BackgroundFluid from '../../ui/background/BackgroundFluid'
+import Fluid from '../../ui/background/Fluid'
 
 type chatProps = {
   sendid: string
@@ -45,10 +46,6 @@ const ChatRoom = memo(() => {
 
   return (
     <>
-      <BackgroundFluid top={2} rigth={2} deg={10} backgroundColor={'#fff100'} />
-      <BackgroundFluid top={40} rigth={60} deg={30} backgroundColor={'#fbad03'} />
-      <BackgroundFluid top={5} rigth={100} deg={90} backgroundColor={'#a3e417'} />
-      <BackgroundFluid top={60} rigth={120} deg={45} backgroundColor={'#ee6eee'} />
       <Header title='ちゃっとるーむ' />
       <Grid container justifyContent='space-between'>
         <Grid item xs={7.5} className='chatroom'>
@@ -75,6 +72,7 @@ const ChatRoom = memo(() => {
         </Grid>
         <UserList />
       </Grid>
+      <Fluid />
     </>
   )
 })
