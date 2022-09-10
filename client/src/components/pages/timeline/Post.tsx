@@ -86,9 +86,16 @@ const Post = memo((props: PostProps) => {
               {isClicked ? <p {...{ style }}>{text} </p> : <p {...{ style }}>{babi}</p>}
             </Grid>
             {/* ボタン：翻訳機能、読み上げ機能 */}
-            <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start'>
-              <Grid item container md={6} justifyContent='flex-start'>
-                <Grid item md={2.65}>
+            <Grid container direction='row' justifyContent='space-between' alignItems='flex-start'>
+              <Grid
+                item
+                container
+                direction='columnSpacing'
+                md={6}
+                justifyContent='flex-start'
+                spacing={1}
+              >
+                <Grid item md={2.7}>
                   <Button
                     variant='contained'
                     onClick={() => speechClick(babi)}
@@ -97,16 +104,31 @@ const Post = memo((props: PostProps) => {
                     読み上げる
                   </Button>
                 </Grid>
-                <Grid item>
+                <Grid item md={2.65}>
                   <Button variant='contained' onClick={() => setIsClicked(!isClicked)}>
                     {isClicked == true ? 'バビ語' : '翻訳'}
                   </Button>
                 </Grid>
               </Grid>
-
-              <Grid item container md={6} justifyContent='flex-end'>
+              {/* いいね、リプライ機能 */}
+              <Grid
+                item
+                container
+                direction='columnSpacing'
+                md={6}
+                justifyContent='flex-end'
+                alignItems='flex-start'
+                spacing={1}
+              >
                 <Grid item md={1}>
-                  {/* いいねされたときにアイコンの色を変更する */}
+                  <ChatBubbleOutline fontSize='small' {...{ style }} />
+                </Grid>
+                <Grid item md={0.8}>
+                  <p style={{ marginTop: 4 }} className='text'>
+                    0
+                  </p>
+                </Grid>
+                <Grid item md={1}>
                   {isLiked ? (
                     <Favorite
                       fontSize='small'
@@ -118,41 +140,13 @@ const Post = memo((props: PostProps) => {
                     <FavoriteBorder fontSize='small' {...{ style }} onClick={handleClick} />
                   )}
                 </Grid>
-                <Grid item>
-                  <p style={{ marginTop: 6 }} className='text'>
+                <Grid item md={0.8}>
+                  <p style={{ marginTop: 4 }} className='text'>
                     {likeCount}
                   </p>
                 </Grid>
               </Grid>
             </Grid>
-
-            {/* <Grid container justifyContent='flex-end' alignItems='flex-start'>
-              <Grid item md={0.8}>
-              <ChatBubbleOutline fontSize='small' {...{ style }} />
-            </Grid>
-            <Grid item md={0.8}>
-              <p style={{ marginTop: 2 }} className='text'>
-                rep
-              </p>
-            </Grid> */}
-            {/* <Grid item md={0.8}>
-              {isLiked ? (
-                <Favorite
-                  fontSize='small'
-                  {...{ style }}
-                  onClick={handleClick}
-                  sx={{ color: 'rgb(249, 24, 128)' }}
-                />
-              ) : (
-                <FavoriteBorder fontSize='small' {...{ style }} onClick={handleClick} />
-              )}
-            </Grid>
-            <Grid item md={0.8}>
-              <p style={{ marginTop: 4 }} className='text'>
-                {likeCount}
-              </p>
-              </Grid>
-            </Grid>*/}
           </Grid>
         </>
       ) : (
@@ -170,16 +164,16 @@ const Post = memo((props: PostProps) => {
             <Grid item md={7}>
               <p {...{ style, marginBottom: 0 }}>{babi}</p>
             </Grid>
-            {/* <Grid item md={3} container>
+            <Grid item md={3} container>
               <Grid item md={4}>
                 <ChatBubbleOutline fontSize='small' {...{ style }} />
               </Grid>
               <Grid item md={3}>
                 <p style={{ marginTop: 2, marginBottom: 0 }} className='text'>
-                  rep
+                  0
                 </p>
               </Grid>
-            </Grid> */}
+            </Grid>
             <Grid item md={5} container justifyContent='flex-end' alignItems='flex-start'>
               <Grid item md={4} mx={{ mt: 2 }}>
                 {isLiked ? (
