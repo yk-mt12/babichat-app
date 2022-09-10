@@ -15,10 +15,6 @@ const SidebarOption = memo((props: SidebarOptionProps) => {
   const navLink = '/' + navigate
   return (
     <div className='sidebar--option'>
-      <link
-        href='https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Mochiy+Pop+P+One&display=swap'
-        rel='stylesheet'
-      />
       <Link to={navLink}>
         <Grid
           container
