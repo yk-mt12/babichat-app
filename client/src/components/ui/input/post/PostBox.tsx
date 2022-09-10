@@ -4,14 +4,15 @@ import { collection, setDoc, doc, serverTimestamp, addDoc, updateDoc } from 'fir
 import { db } from '../../../../firebase'
 import { useAuth } from '../../../../firebase/authFunction'
 import './PostBox.css'
+import { useRecoilValue } from 'recoil'
+import { signInUserState } from '../../../../store/auth'
 
 const PostBox = () => {
-  const [displayName, setDisplayName] = useState<string>('')
   const [postMessage, setPostMessage] = useState<string>('')
   const [postImage, setPostImage] = useState<string>('')
   const [canSubmit, setCanSubmit] = useState<boolean>(true)
   const [error, setErrors] = useState('')
-  const signInUser = useAuth()
+  const signInUser = useRecoilValue(signInUserState)
   const uid = signInUser.uid
   const avater = signInUser.photoURL
   // const username = signInUser.displayName
@@ -28,7 +29,7 @@ const PostBox = () => {
 
     const data = {
       author: usersRef.path,
-      displayName: displayName,
+      displayName: signInUser.displayName,
       text: postMessage,
       image: postImage,
       postId: '',
@@ -43,7 +44,6 @@ const PostBox = () => {
       postId: postRef.id,
     })
 
-    setDisplayName('')
     setPostMessage('')
     setPostImage('')
     setErrors('')
@@ -75,7 +75,14 @@ const PostBox = () => {
             />
           </Grid>
           <Grid item xs={3.8}>
-            <Button className='button' type='submit' onClick={sendPost} disabled={canSubmit}>
+            <Button
+              variant='contained'
+              style={{ borderRadius: 50 }}
+              className='button'
+              type='submit'
+              onClick={sendPost}
+              disabled={canSubmit}
+            >
               投稿する
             </Button>
           </Grid>
