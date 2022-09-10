@@ -29,17 +29,7 @@ type PostProps = {
 const Post = memo((props: PostProps) => {
   const { setPostId, getAnotherPostData, checkPostIsLiked } = useBatchPostLiked()
   const location = useLocation()
-  const {
-    avater,
-    displayName,
-    text,
-    image,
-    createTime,
-    updateTime,
-    likeCount,
-    postId,
-    likedPosts,
-  } = props
+  const { avater, displayName, text, image, createTime, updateTime, likeCount, postId } = props
   const babi = changeBabi(text)
   const signInUser = useAuth()
   const [isClicked, setIsClicked] = useState(false)
