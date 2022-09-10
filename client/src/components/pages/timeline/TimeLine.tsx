@@ -53,6 +53,7 @@ const TimeLine = () => {
       <div className='timeline'>
         <Header title='ぽすと' />
         {location.pathname != '/home' && <PostBox />}
+      </div>
       <div className={location.pathname !== '/home' ? 'timeline--block' : ''}>
         {isLoading ? (
           <Loading />
