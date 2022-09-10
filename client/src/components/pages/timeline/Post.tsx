@@ -1,4 +1,4 @@
-import { FavoriteBorder, Favorite } from '@mui/icons-material'
+import { FavoriteBorder, Favorite, ChatBubbleOutline } from '@mui/icons-material'
 import { Avatar, Grid } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { changeBabi } from '../../../logic/babigo'
