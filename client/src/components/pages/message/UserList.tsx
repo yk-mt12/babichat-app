@@ -31,7 +31,7 @@ const UserList = memo(() => {
           <Grid item xs={12} className={`${location.pathname !== '/home' && 'userlist'}`}>
             {location.pathname === '/home' || (
               <div className='userlist-title'>
-                <p>ユーザーリスト</p>
+                <p>ゆーざーりすと</p>
               </div>
             )}
             <div>
@@ -43,7 +43,7 @@ const UserList = memo(() => {
         // ユーザリストのみを表示
         <Grid item xs={4} className='userlist'>
           <div className='userlist-title'>
-            <p>ユーザーリスト</p>
+            <p>ゆーざーりすと</p>
           </div>
           <div>
             <User userlist={userlist} />
