@@ -1,16 +1,16 @@
-import { ChatBubbleOutline, FavoriteBorder, Favorite } from '@mui/icons-material'
+import { FavoriteBorder, Favorite } from '@mui/icons-material'
 import { Avatar, Grid } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { changeBabi } from '../../../logic/babigo'
 import { readAloud } from '../../../logic/readText'
 import { doc, DocumentReference, getDoc } from 'firebase/firestore'
-import React, { memo, useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import useBatchPostLiked from '../../../hooks/useBatchPostLiked'
 import Button from '@mui/material/Button'
 import './Post.css'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
-import formatDate from '../../../logic/formatDate'
+import daysAgo from '../../../logic/daysAgo'
 
 type PostProps = {
   author: DocumentReference
@@ -29,7 +29,7 @@ type PostProps = {
 const Post = memo((props: PostProps) => {
   const { setPostId, getAnotherPostData, checkPostIsLiked } = useBatchPostLiked()
   const location = useLocation()
-  const { avater, displayName, text, image, createTime, updateTime, likeCount, postId } = props
+  const { avater, displayName, text, createTime, likeCount, postId } = props
   const babi = changeBabi(text)
   const signInUser = useAuth()
   const [isClicked, setIsClicked] = useState(false)
@@ -46,37 +46,10 @@ const Post = memo((props: PostProps) => {
     readAloud(text)
   }
 
-  const handleClick = async (e: any) => {
+  const handleClick = async () => {
     await setPostId(postId)
     await getAnotherPostData()
     await checkPostIsLiked()
-  }
-
-  const beforePost = (time: Date) => {
-    const now = new Date()
-    console.log(now, time)
-    let diffTime = now.getFullYear() - time.getFullYear()
-    if (diffTime == 0) {
-      diffTime = now.getMonth() - time.getMonth()
-      if (diffTime == 0) {
-        diffTime = now.getDate() - time.getDate()
-        if (diffTime == 0) {
-          diffTime = now.getHours() - time.getHours()
-          if (diffTime == 0) {
-            diffTime = now.getMinutes() - time.getMinutes()
-            if (diffTime == 0) {
-              diffTime = now.getSeconds() - time.getSeconds()
-              return `${diffTime}s`
-            }
-            return `${diffTime}m`
-          }
-          return `${diffTime}h`
-        }
-        return `${diffTime}d`
-      }
-      return `${diffTime}M`
-    }
-    return `${diffTime}Y`
   }
 
   useEffect(() => {
@@ -84,7 +57,7 @@ const Post = memo((props: PostProps) => {
       const sendTime = createTime.toDate()
       const docRef = doc(db, 'users', signInUser.uid, 'likedPosts', postId)
       const docSnap = await getDoc(docRef)
-      setSendTime(beforePost(sendTime))
+      setSendTime(daysAgo(sendTime))
       setIsLiked(docSnap.exists())
     }
     isLikedCheck()
@@ -107,7 +80,7 @@ const Post = memo((props: PostProps) => {
 
             {/* ユーザーネーム */}
             <Grid item md={1}>
-              <h3>{displayName === '' ? '匿名' : displayName}</h3>
+              <h3>{displayName || 'ばびー'}</h3>
             </Grid>
 
             {/* 投稿時間*/}
@@ -176,7 +149,7 @@ const Post = memo((props: PostProps) => {
               <Avatar src={avater} style={{ marginTop: 10 }} />
             </Grid>
             <Grid item md={6}>
-              <h3>{displayName === '' ? '匿名' : displayName}</h3>
+              <h3>{displayName || 'ばびー'}</h3>
             </Grid>
           </Grid>
           <Grid container justifyContent='space-between' alignItems='flex-start'>
