@@ -25,10 +25,7 @@ const Chat = memo((props: chatProps) => {
   const style = { margin: 0 }
 
   const sendTime = createTime.toDate()
-  // setSend(formatDate(sendTime , 'HH:mm'))
   const send = formatDate(sendTime, 'HH:mm')
-
-  console.log('送信時間', send)
 
   return (
     <div className={uid == sendid ? 'me' : 'you'}>
