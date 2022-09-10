@@ -15,7 +15,6 @@ import Header from '../../ui/header/Header'
 import PostBox from '../../ui/input/post/PostBox'
 
 import './TimeLine.css'
-import { useAuth } from '../../../firebase/authFunction'
 import Loading from '../../ui/loading/Loading'
 
 type PostType = {
