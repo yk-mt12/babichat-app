@@ -108,7 +108,7 @@ const Post = memo((props: PostProps) => {
 
             {/* ユーザーネーム */}
             <Grid item md={1}>
-              <h3>{displayName === '' ? '匿名' : displayName}</h3>
+              <h3>{displayName || 'ばびー'}</h3>
             </Grid>
 
             {/* 投稿時間*/}
@@ -198,7 +198,7 @@ const Post = memo((props: PostProps) => {
               <Avatar src={avater} style={{ marginTop: 10 }} />
             </Grid>
             <Grid item md={6}>
-              <h3>{displayName === '' ? '匿名' : displayName}</h3>
+              <h3>{displayName || 'ばびー'}</h3>
             </Grid>
           </Grid>
           <Grid container justifyContent='space-between' alignItems='flex-start'>
