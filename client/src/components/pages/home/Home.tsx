@@ -1,7 +1,5 @@
 import { Grid } from '@mui/material'
 import { useAuth } from '../../../firebase/authFunction'
-import BackgroundFluid from '../../ui/background/BackgroundFluid'
-import Fluid from '../../ui/background/Fluid'
 import GridItem from '../../ui/gridItem/GridItem'
 import IsLoginGrid from '../../ui/gridItem/IsLoginGrid'
 import Header from '../../ui/header/Header'
@@ -58,7 +56,6 @@ const Home = () => {
           <IsLoginGrid colRatio={7} width={300} height='40vh' label='Comming soon...' />
         </Grid>
       </div>
-      <Fluid />
     </>
   )
 }

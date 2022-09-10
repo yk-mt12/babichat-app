@@ -2,8 +2,6 @@ import { query, orderBy, collectionGroup, onSnapshot, limit } from 'firebase/fir
 import { memo, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
-import BackgroundFluid from '../../ui/background/BackgroundFluid'
-import Fluid from '../../ui/background/Fluid'
 import GridItem from '../../ui/gridItem/GridItem'
 import Header from '../../ui/header/Header'
 import './Ranking.css'
@@ -39,7 +37,6 @@ const Ranking = memo(() => {
           <RankingPostTimeline postsArray={postsArray} />
         </div>
       </div>
-      {location.pathname !== '/home' && <Fluid />}
     </>
   )
 })

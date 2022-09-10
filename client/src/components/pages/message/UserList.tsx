@@ -3,8 +3,6 @@ import { collection, getDoc, getDocs, onSnapshot, query } from 'firebase/firesto
 import { memo, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
-import BackgroundFluid from '../../ui/background/BackgroundFluid'
-import Fluid from '../../ui/background/Fluid'
 import Header from '../../ui/header/Header'
 import User from './User'
 import './UserList.css'
@@ -40,7 +38,6 @@ const UserList = memo(() => {
               <User userlist={userlist} />
             </div>
           </Grid>
-          {location.pathname !== '/home' && <Fluid />}
         </>
       ) : (
         // ユーザリストのみを表示

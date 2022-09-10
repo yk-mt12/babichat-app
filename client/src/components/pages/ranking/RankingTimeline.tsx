@@ -1,6 +1,5 @@
 import { DocumentReference } from 'firebase/firestore'
 import React from 'react'
-import Fluid from '../../ui/background/Fluid'
 import RankingPost from './RankingPost'
 import './RankingTimeline.css'
 
@@ -44,7 +43,6 @@ const RankingPostTimeline = (props: Props) => {
             />
           ))}
       </div>
-      <Fluid />
     </>
   )
 }

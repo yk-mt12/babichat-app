@@ -10,8 +10,6 @@ import './ChatRoom.css'
 import Header from '../../ui/header/Header'
 import UserList from './UserList'
 import YourName from './YourName'
-import BackgroundFluid from '../../ui/background/BackgroundFluid'
-import Fluid from '../../ui/background/Fluid'
 
 type chatProps = {
   sendid: string
@@ -72,7 +70,6 @@ const ChatRoom = memo(() => {
         </Grid>
         <UserList />
       </Grid>
-      <Fluid />
     </>
   )
 })
