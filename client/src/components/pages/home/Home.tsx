@@ -1,5 +1,7 @@
 import { Grid } from '@mui/material'
 import { useAuth } from '../../../firebase/authFunction'
+import BackgroundFluid from '../../ui/background/BackgroundFluid'
+import Fluid from '../../ui/background/Fluid'
 import GridItem from '../../ui/gridItem/GridItem'
 import IsLoginGrid from '../../ui/gridItem/IsLoginGrid'
 import Header from '../../ui/header/Header'
@@ -13,9 +15,9 @@ const Home = () => {
   const signInUser = useAuth()
 
   return (
-    <div className='home-screen'>
-      <Header title='チャバットボ' />
+    <>
       <div className='dashboard--body'>
+        <Header title='ちゃばっとぼ' />
         <Grid container direction='row' justifyContent='space-between' alignItems='center'>
           <GridItem
             child={<Ranking />}
@@ -35,19 +37,29 @@ const Home = () => {
           />
         </Grid>
         <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-          <GridItem
-            child={<UserList />}
-            colRatio={4.8}
-            navigate='chatroom'
-            width={300}
-            height='43vh'
-            isScroll={true}
-          />
+          {signInUser.uid ? (
+            <GridItem
+              child={<UserList />}
+              colRatio={4.8}
+              navigate='chatroom'
+              width={300}
+              height='40vh'
+              isScroll={true}
+            />
+          ) : (
+            <IsLoginGrid
+              colRatio={4.8}
+              width={300}
+              height='40vh'
+              label='ログインが必要な機能です。'
+            />
+          )}
           {/* <GridItem child={<Setting />} colRatio={7} navigate='setting' width={300} height='40vh' /> */}
-          <IsLoginGrid colRatio={7} width={300} height='43vh' label='Comming soon...' />
+          <IsLoginGrid colRatio={7} width={300} height='40vh' label='Comming soon...' />
         </Grid>
       </div>
-    </div>
+      <Fluid />
+    </>
   )
 }
 

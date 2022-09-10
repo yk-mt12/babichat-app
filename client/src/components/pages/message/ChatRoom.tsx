@@ -10,6 +10,8 @@ import './ChatRoom.css'
 import Header from '../../ui/header/Header'
 import UserList from './UserList'
 import YourName from './YourName'
+import BackgroundFluid from '../../ui/background/BackgroundFluid'
+import Fluid from '../../ui/background/Fluid'
 
 type chatProps = {
   sendid: string
@@ -30,7 +32,7 @@ const ChatRoom = memo(() => {
   useEffect(() => {
     if (anotherId !== undefined) {
       const chatroomRef = collection(db, 'users', uid, 'chatroom', anotherId || '', 'chats')
-      const q = query(chatroomRef, orderBy('createTime'), limit(50))
+      const q = query(chatroomRef, orderBy('createTime'))
 
       const unsub = onSnapshot(q, (querySnapshot) => {
         setChats(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
@@ -43,8 +45,8 @@ const ChatRoom = memo(() => {
   }, [anotherId])
 
   return (
-    <div className='chatroom-screen'>
-      <Header title='ChatRoom' />
+    <>
+      <Header title='ちゃっとるーむ' />
       <Grid container justifyContent='space-between'>
         <Grid item xs={7.5} className='chatroom'>
           <div className='anotherName'>
@@ -70,7 +72,8 @@ const ChatRoom = memo(() => {
         </Grid>
         <UserList />
       </Grid>
-    </div>
+      <Fluid />
+    </>
   )
 })
 

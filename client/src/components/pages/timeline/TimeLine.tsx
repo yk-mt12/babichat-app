@@ -49,10 +49,10 @@ const TimeLine = () => {
   }, [])
 
   return (
-    <div className='timeline'>
-      <Header title='Post' />
-      {location.pathname != '/home' && <PostBox />}
-
+    <>
+      <div className='timeline'>
+        <Header title='ぽすと' />
+        {location.pathname != '/home' && <PostBox />}
       <div className={location.pathname !== '/home' ? 'timeline--block' : ''}>
         {isLoading ? (
           <Loading />
@@ -75,7 +75,7 @@ const TimeLine = () => {
           </>
         )}
       </div>
-    </div>
+    </>
   )
 }
 

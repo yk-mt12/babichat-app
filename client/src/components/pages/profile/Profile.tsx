@@ -16,6 +16,8 @@ import {
 } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import Post from '../timeline/Post'
+import BackgroundFluid from '../../ui/background/BackgroundFluid'
+import Fluid from '../../ui/background/Fluid'
 
 type PostType = {
   author: DocumentReference
@@ -54,58 +56,61 @@ const profile = () => {
   }, [])
 
   return (
-    <div className='profile-screen'>
-      <Header title='Profile' />
-      <div className='profile'>
-        <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
-          <Grid item xs={1.3}></Grid>
-          <Grid item xs={1.7}>
-            <Avatar
-              src={signInUser.photoURL}
-              style={{ marginTop: 0 }}
-              sx={{ width: 50, height: 50 }}
-            />
-            {/* sx={{width: 60, height: 60}} */}
+    <>
+      <div className='profile-screen'>
+        <Header title='ぷろふぃーる' />
+        <div className='profile'>
+          <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
+            <Grid item xs={0.5}></Grid>
+            <Grid item xs={1.7}>
+              <Avatar
+                src={signInUser.photoURL}
+                style={{ marginTop: 0 }}
+                sx={{ width: 100, height: 100 }}
+              />
+              {/* sx={{width: 60, height: 60}} */}
+            </Grid>
+            <Grid item xs={8}>
+              <p className='name'>{signInUser.displayName}</p>
+              {/* <GridItem label='自己紹介' colRatio={2}/> */}
+            </Grid>
           </Grid>
-          <Grid item xs={8}>
-            <p className='name'>{signInUser.displayName}</p>
-            {/* <GridItem label='自己紹介' colRatio={2}/> */}
+          <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
+            <Grid item xs={2.2}></Grid>
+            <Grid item xs={8}>
+              <GridItem label='自己紹介' colRatio={2} />
+              <GridItem label='初めまして！' colRatio={undefined} width={300} height={200} />
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
-          <Grid item xs={3}></Grid>
-          <Grid item xs={8}>
-            <GridItem label='自己紹介' colRatio={2} />
-            <GridItem label='初めまして！' colRatio={undefined} width={300} height={200} />
-          </Grid>
-        </Grid>
-      </div>
+        </div>
 
-      <Grid>
-        <Grid item xs={12} className='post-timeline'>
-          {posts.map((post: PostType) => (
-            <Post
-              key={post.postId}
-              author={post.author}
-              displayName={post.displayName}
-              text={post.text}
-              avater={post.avater}
-              image={post.image}
-              createTime={post.createTime}
-              updateTime={post.updateTime}
-              likeCount={post.likeCount}
-              postId={post.postId}
-            />
-          ))}
+        <Grid>
+          <Grid item xs={12} className='post-timeline'>
+            {posts.map((post: PostType) => (
+              <Post
+                key={post.postId}
+                author={post.author}
+                displayName={post.displayName}
+                text={post.text}
+                avater={post.avater}
+                image={post.image}
+                createTime={post.createTime}
+                updateTime={post.updateTime}
+                likeCount={post.likeCount}
+                postId={post.postId}
+              />
+            ))}
+          </Grid>
         </Grid>
-      </Grid>
 
-      {/* <div className='post-timeline'>
+        {/* <div className='post-timeline'>
         {posts.map((post: any) => (
             <p key={post.key}>{post.text}</p>
         ))}
-      </div> */}
-    </div>
+        </div> */}
+      </div>
+      <Fluid />
+    </>
   )
 }
 
