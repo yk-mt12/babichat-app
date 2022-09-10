@@ -122,9 +122,9 @@ const Post = memo((props: PostProps) => {
               {isClicked ? <p {...{ style }}>{text} </p> : <p {...{ style }}>{babi}</p>}
             </Grid>
             {/* ボタン：翻訳機能、読み上げ機能 */}
-            <Grid container direction='row' justifyContent='flex-start' alignItems='flex-start'>
-              <Grid item container md={6.5} justifyContent='flex-start'>
-                <Grid item md={2.65}>
+            <Grid container direction='row' justifyContent='space-between' alignItems='flex-start'>
+              <Grid item container md={6} justifyContent='flex-start' spacing={1.5}>
+                <Grid item md={2.7}>
                   <Button
                     variant='contained'
                     onClick={() => speechClick(babi)}
