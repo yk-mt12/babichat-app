@@ -16,6 +16,7 @@ import PostBox from '../../ui/input/post/PostBox'
 
 import './TimeLine.css'
 import { useAuth } from '../../../firebase/authFunction'
+import Loading from '../../ui/loading/Loading'
 
 type PostType = {
   author: DocumentReference
@@ -32,17 +33,18 @@ type PostType = {
 const TimeLine = () => {
   // TODO: 型定義を正しく行う
   const location = useLocation()
-  const signInUser = useAuth()
   const [posts, setPosts] = useState<any>([])
-  const [likedPosts, setLikedPosts] = useState<any>([])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
+    setIsLoading(true)
     const q: any = query(collectionGroup(db, 'posts'), orderBy('createTime', 'desc'))
     // 最新の投稿順に並び替える
     // リアルタイムでデータを取得
     const unsub = onSnapshot(q, (querySnapshot: { docs: any[] }) => {
       setPosts(querySnapshot.docs.map((doc) => doc.data()))
     })
+    setIsLoading(false)
     return () => unsub()
   }, [])
 
@@ -52,21 +54,26 @@ const TimeLine = () => {
       {location.pathname != '/home' && <PostBox />}
 
       <div className={location.pathname !== '/home' ? 'timeline--block' : ''}>
-        {posts.map((post: PostType) => (
-          <Post
-            key={post.postId}
-            author={post.author}
-            displayName={post.displayName}
-            text={post.text}
-            avater={post.avater}
-            image={post.image}
-            createTime={post.createTime}
-            updateTime={post.updateTime}
-            likeCount={post.likeCount}
-            postId={post.postId}
-            likedPosts={likedPosts}
-          />
-        ))}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            {posts.map((post: PostType) => (
+              <Post
+                key={post.postId}
+                author={post.author}
+                displayName={post.displayName}
+                text={post.text}
+                avater={post.avater}
+                image={post.image}
+                createTime={post.createTime}
+                updateTime={post.updateTime}
+                likeCount={post.likeCount}
+                postId={post.postId}
+              />
+            ))}
+          </>
+        )}
       </div>
     </div>
   )

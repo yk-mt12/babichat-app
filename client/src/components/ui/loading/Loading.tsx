@@ -2,7 +2,7 @@ import ReactLoading from 'react-loading'
 import './Loading.css'
 
 type Props = {
-  text: string
+  text?: string
 }
 const Loading = (props: Props) => {
   const { text } = props
@@ -12,7 +12,7 @@ const Loading = (props: Props) => {
       <div className='loading-screen'>
         <ReactLoading type='spinningBubbles' color='#5284ff' height={'15%'} width={'15%'} />
       </div>
-      <p className='loading-text'>{text}...</p>
+      {text && <p className='loading-text'>{text}...</p>}
     </section>
   )
 }
