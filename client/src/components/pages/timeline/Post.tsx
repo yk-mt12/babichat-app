@@ -132,7 +132,7 @@ const Post = memo((props: PostProps) => {
                     読み上げる
                   </Button>
                 </Grid>
-                <Grid item md={2.65}>
+                <Grid item md={2.2}>
                   <Button variant='contained' onClick={() => setIsClicked(!isClicked)}>
                     {isClicked == true ? 'バビ語' : '翻訳'}
                   </Button>
