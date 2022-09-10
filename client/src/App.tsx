@@ -7,6 +7,8 @@ import Sidebar from './components/ui/sidebar/Sidebar'
 import SignOut from './components/model/user/SignOut'
 import { Grid } from '@mui/material'
 import Loading from './components/ui/loading/Loading'
+// import BackgroundAnimation from './components/ui/animation/BackgroundAnimation'
+import ParticlesBg from 'particles-bg'
 
 const App = memo(() => {
   const signInUser = useAuth()
@@ -37,6 +39,7 @@ const App = memo(() => {
           </Grid>
         </>
       )}
+      <ParticlesBg type='random' bg={true} />
     </div>
   )
 })
