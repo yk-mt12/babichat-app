@@ -23,6 +23,38 @@ const App = memo(() => {
     setIsLoading(false)
   }, [signInUser.uid])
 
+  const [config, setConfig] = useState<any>({
+    num: [4, 7],
+    rps: 0.1,
+    radius: [5, 40],
+    life: [1.5, 3],
+    v: [2, 3],
+    tha: [-40, 40],
+    alpha: [0.6, 0],
+    scale: [0.1, 0.4],
+    position: 'all',
+    color: ['random', '#ff0000'],
+    cross: 'dead',
+    // emitter: "follow",
+    random: 15,
+  })
+
+  useEffect(() => {
+    if (Math.random() > 0.85) {
+      setConfig(
+        Object.assign(config, {
+          onParticleUpdate: (ctx: any, particle: any) => {
+            ctx.beginPath()
+            ctx.rect(particle.p.x, particle.p.y, particle.radius * 2, particle.radius * 2)
+            ctx.fillStyle = particle.color
+            ctx.fill()
+            ctx.closePath()
+          },
+        }),
+      )
+    }
+  }, [config])
+
   return (
     <div className='app'>
       {isLoading ? (
@@ -37,9 +69,11 @@ const App = memo(() => {
               <Router />
             </Grid>
           </Grid>
+          <ParticlesBg type='Polygon' bg={true} />
+          <ParticlesBg type='Polygon' bg={true} />
         </>
       )}
-      <ParticlesBg type='random' bg={true} />
+      {/* プロパティ候補：ball->Color2, オブジェクト->Polygon */}
     </div>
   )
 })
