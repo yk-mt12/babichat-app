@@ -10,6 +10,7 @@ import Button from '@mui/material/Button'
 import './Post.css'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
+import formatDate from '../../../logic/formatDate'
 
 type PostProps = {
   author: DocumentReference
@@ -17,7 +18,7 @@ type PostProps = {
   text: string
   avater: string
   image: string
-  createTime: string
+  createTime: any
   updateTime: string
   likeCount: number
   postId: string
@@ -33,6 +34,7 @@ const Post = memo((props: PostProps) => {
   const signInUser = useAuth()
   const [isClicked, setIsClicked] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
+  const [sendTime, setSendTime] = useState('')
   const history = useNavigate()
   const style = { marginTop: 8 }
 
@@ -50,10 +52,40 @@ const Post = memo((props: PostProps) => {
     await checkPostIsLiked()
   }
 
+  const beforePost = (time: Date) => {
+    const now = new Date()
+    console.log(now, time)
+    let diffTime = now.getFullYear() - time.getFullYear()
+    if (diffTime == 0) {
+      diffTime = now.getMonth() - time.getMonth()
+      if (diffTime == 0) {
+        diffTime = now.getDate() - time.getDate()
+        if (diffTime == 0) {
+          diffTime = now.getHours() - time.getHours()
+          if (diffTime == 0) {
+            diffTime = now.getMinutes() - time.getMinutes()
+            if (diffTime == 0) {
+              diffTime = now.getSeconds() - time.getSeconds()
+              return `${diffTime}s`
+            }
+            return `${diffTime}m`
+          }
+          return `${diffTime}h`
+        }
+        return `${diffTime}d`
+      }
+      return `${diffTime}M`
+    }
+    return `${diffTime}Y`
+  }
+
   useEffect(() => {
     const isLikedCheck = async () => {
+      const sendTime = createTime.toDate()
+      // console.log('時間の差分：', beforePost(sendTime))
       const docRef = doc(db, 'users', signInUser.uid, 'likedPosts', postId)
       const docSnap = await getDoc(docRef)
+      setSendTime(beforePost(sendTime))
       setIsLiked(docSnap.exists())
     }
     isLikedCheck()
@@ -68,15 +100,20 @@ const Post = memo((props: PostProps) => {
       {location.pathname !== '/home' ? (
         <>
           {/* /postの時 */}
-          <Grid container direction='row' justifyContent='space-between' alignItems='flex-start'>
+          <Grid container spacing={1} justifyContent='flex-start' alignItems='flex-start'>
             {/* アイコン */}
             <Grid item md={1}>
               <Avatar src={avater} style={{ marginTop: 10 }} />
             </Grid>
 
             {/* ユーザーネーム */}
-            <Grid item md={11}>
+            <Grid item md={1}>
               <h3>{displayName === '' ? '匿名' : displayName}</h3>
+            </Grid>
+
+            {/* 投稿時間*/}
+            <Grid item>
+              <div className='sendtime'>{sendTime}</div>
             </Grid>
           </Grid>
           {/* テキスト */}
@@ -102,16 +139,7 @@ const Post = memo((props: PostProps) => {
                   </Button>
                 </Grid>
               </Grid>
-              {/* いいね、リプライ機能 */}
-              <Grid
-                item
-                container
-                direction='columnSpacing'
-                md={6}
-                justifyContent='flex-end'
-                alignItems='flex-start'
-                spacing={1}
-              >
+              <Grid item container md={5} justifyContent='flex-end'>
                 <Grid item md={1}>
                   <ChatBubbleOutline fontSize='small' {...{ style }} />
                 </Grid>

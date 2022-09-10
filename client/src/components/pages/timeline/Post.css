@@ -3,3 +3,8 @@
   padding: 10px 5px 0;
   border-bottom: 1px solid var(--babichat-color);
 }
+
+.sendtime {
+  font-size: 15px;
+  padding-top: 21px;
+}
