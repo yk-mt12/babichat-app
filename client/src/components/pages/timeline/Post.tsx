@@ -82,7 +82,6 @@ const Post = memo((props: PostProps) => {
   useEffect(() => {
     const isLikedCheck = async () => {
       const sendTime = createTime.toDate()
-      // console.log('時間の差分：', beforePost(sendTime))
       const docRef = doc(db, 'users', signInUser.uid, 'likedPosts', postId)
       const docSnap = await getDoc(docRef)
       setSendTime(beforePost(sendTime))
