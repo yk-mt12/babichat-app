@@ -10,8 +10,6 @@ import {
 import { memo, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
-import BackgroundFluid from '../../ui/background/BackgroundFluid'
-import Fluid from '../../ui/background/Fluid'
 import GridItem from '../../ui/gridItem/GridItem'
 import Header from '../../ui/header/Header'
 import './Ranking.css'

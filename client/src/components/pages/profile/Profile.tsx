@@ -16,8 +16,6 @@ import {
 } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import Post from '../timeline/Post'
-import BackgroundFluid from '../../ui/background/BackgroundFluid'
-import Fluid from '../../ui/background/Fluid'
 
 type PostType = {
   author: DocumentReference
@@ -109,7 +107,6 @@ const profile = () => {
         ))}
         </div> */}
       </div>
-      <Fluid />
     </>
   )
 }

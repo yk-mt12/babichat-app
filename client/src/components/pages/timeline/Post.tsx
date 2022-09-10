@@ -7,7 +7,6 @@ import { doc, DocumentReference, getDoc } from 'firebase/firestore'
 import React, { memo, useEffect, useState } from 'react'
 import useBatchPostLiked from '../../../hooks/useBatchPostLiked'
 import Button from '@mui/material/Button'
-
 import './Post.css'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
