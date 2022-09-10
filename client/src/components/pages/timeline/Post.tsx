@@ -154,7 +154,7 @@ const Post = memo((props: PostProps) => {
           </Grid>
           <Grid container justifyContent='space-between' alignItems='flex-start'>
             <Grid item md={7}>
-              <p {...{ style, marginBottom: 0 }}>{babi}</p>
+              <p {...{ style, marginbottom: 0 }}>{babi}</p>
             </Grid>
             <Grid item md={3} container>
               <Grid item md={4}>
