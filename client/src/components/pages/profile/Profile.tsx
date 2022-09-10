@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Avatar, Grid } from '@mui/material'
+import { Avatar, Button, Grid } from '@mui/material'
 import GridItem from '../../ui/gridItem/GridItem'
 import './Profile.css'
 import Header from '../../ui/header/Header'
@@ -13,9 +13,13 @@ import {
   DocumentReference,
   doc,
   getDocs,
+  updateDoc,
 } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import Post from '../timeline/Post'
+import { getAuth, updateProfile } from 'firebase/auth'
+import { useRecoilState } from 'recoil'
+import { signInUserState } from '../../../store/auth'
 
 type PostType = {
   author: DocumentReference
@@ -32,6 +36,8 @@ type PostType = {
 const profile = () => {
   const signInUser = useAuth()
   const [posts, setPosts] = useState<any>([])
+  const [name, setName] = useState<string>(`${signInUser.displayName}`)
+  const [text, setText] = useRecoilState(signInUserState)
 
   useEffect(() => {
     const getDoc = async () => {
@@ -53,6 +59,34 @@ const profile = () => {
     getDoc()
   }, [])
 
+  const update = async () => {
+    const userRef = doc(db, 'users', signInUser.uid)
+    const auth = getAuth()
+    const user: any = auth.currentUser
+    try {
+      // firestoreのデータ更新
+      await updateDoc(userRef, {
+        displayName: name,
+      })
+
+      // Recoilstoreのデータ更新
+      setText((signInUserState) => ({
+        ...signInUserState,
+        displayName: name,
+      }))
+
+      // Authenticationのデータ更新
+      updateProfile(user, {
+        displayName: name,
+      })
+      alert('プロフィールを変更しました')
+      setName(name)
+    } catch (error) {
+      alert('プロフィールの変更に失敗しました')
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <div className='profile-screen'>
@@ -69,9 +103,25 @@ const profile = () => {
               {/* sx={{width: 60, height: 60}} */}
             </Grid>
             <Grid item xs={8}>
-              <p className='name'>{signInUser.displayName}</p>
+              <form className='name'>
+                <input
+                  style={{
+                    width: '50%',
+                    fontSize: '45px',
+                    // fontWeight: '550',
+                    marginBottom: '-3px',
+                    border: 'none',
+                  }}
+                  type='text'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                ></input>
+              </form>
               {/* <GridItem label='自己紹介' colRatio={2}/> */}
             </Grid>
+            <Button variant='contained' style={{ borderRadius: 50 }} onClick={() => update()}>
+              更新
+            </Button>
           </Grid>
           <Grid container direction='row' justifyContent='flex-start' alignItems='center'>
             <Grid item xs={2.2}></Grid>
