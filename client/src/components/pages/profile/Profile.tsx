@@ -108,9 +108,9 @@ const profile = () => {
                   style={{
                     width: '50%',
                     fontSize: '45px',
-                    // fontWeight: '550',
                     marginBottom: '-3px',
                     border: 'none',
+                    backgroundColor: 'transparent',
                   }}
                   type='text'
                   value={name}
