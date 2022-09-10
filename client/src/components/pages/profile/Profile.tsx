@@ -18,7 +18,7 @@ import {
 import { db } from '../../../firebase'
 import Post from '../timeline/Post'
 import { getAuth, updateProfile } from 'firebase/auth'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { signInUserState } from '../../../store/auth'
 
 type PostType = {
@@ -34,10 +34,10 @@ type PostType = {
 }
 
 const profile = () => {
-  const signInUser = useAuth()
+  const signInUser = useRecoilValue(signInUserState)
   const [posts, setPosts] = useState<any>([])
   const [name, setName] = useState<string>(`${signInUser.displayName}`)
-  const [text, setText] = useRecoilState(signInUserState)
+  const [profile, setProfile] = useRecoilState(signInUserState)
 
   useEffect(() => {
     const getDoc = async () => {
@@ -70,7 +70,7 @@ const profile = () => {
       })
 
       // Recoilstoreのデータ更新
-      setText((signInUserState) => ({
+      setProfile((signInUserState) => ({
         ...signInUserState,
         displayName: name,
       }))
