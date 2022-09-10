@@ -29,7 +29,7 @@ const Sidebar = memo(() => {
         <div className='profile-block'>
           <Link to='/profile'>
             <Avatar src={user.photoURL} sx={{ margin: '0 auto', width: 100, height: 100 }} />
-            <p className='account-text'>まいあかうんと</p>
+            <p className='account-text'>ぷろふぃーる</p>
           </Link>
         </div>
         <SidebarOption Icon={HomeIcon} text='ほーむ' navigate='home' />
