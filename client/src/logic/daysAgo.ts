@@ -2,7 +2,6 @@ import formatDate from './formatDate'
 
 function daysAgo(time: Date) {
   const now = new Date()
-  console.log(now, time)
   let diffTime = now.getFullYear() - time.getFullYear()
   if (diffTime == 0) {
     diffTime = now.getMonth() - time.getMonth()
