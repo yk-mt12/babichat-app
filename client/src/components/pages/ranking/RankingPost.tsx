@@ -15,46 +15,60 @@ type Props = {
   likeCount: number
   postId: string
   rank: number
+  isLike: boolean
 }
 
 const RankingPost = (props: Props) => {
-  const { avater, displayName, text, image, createTime, updateTime, likeCount, postId, rank } =
-    props
+  const {
+    avater,
+    displayName,
+    text,
+    image,
+    createTime,
+    updateTime,
+    likeCount,
+    postId,
+    rank,
+    isLike,
+  } = props
   const babi = changeBabi(text ? text : 'null')
 
   const style = { marginTop: 20 }
 
   return (
     <div className='ranking--post'>
-      <Grid container>
-        {/* ランク */}
-        <Grid item md={1.2}>
-          <p className='rank-index'>{rank}.</p>
+      <Grid container justifyContent='space-between'>
+        <Grid item md={6} container justifyContent='flex-start' spacing={2}>
+          {/* ランク */}
+          <Grid item md={1.5}>
+            <p className='rank-index'>{rank}.</p>
+          </Grid>
+          {/* アイコン */}
+          <Grid item>
+            <Avatar src={avater} style={{ marginTop: 10 }} />
+          </Grid>
+          {/* テキスト（バビ語） */}
+          <Grid item>
+            <p {...{ style }}>{babi}</p>
+          </Grid>
         </Grid>
-        {/* アイコン */}
-        <Grid item md={1}>
-          <Avatar src={avater} style={{ marginTop: 10 }} />
-        </Grid>
-        {/* テキスト（バビ語） */}
-        <Grid item md={6}>
-          <p {...{ style }}>{babi}</p>
-        </Grid>
-        <Grid item container md justifyContent='space-between' alignItems='center'>
-          {/* <Grid item md={6} container justifyContent='flex-start' alignItems='center'>
-            <Grid item md={4}>
+
+        {/* リプライ */}
+        {isLike ? (
+          <Grid item md={6} container justifyContent='flex-end' alignItems='center' spacing={1}>
+            <Grid item md={2}>
               <ChatBubbleOutline fontSize='small' {...{ style }} />
             </Grid>
             <Grid item>
               <p style={{ marginBottom: 5 }} className='text'>
-                rep
+                0
               </p>
             </Grid>
-          </Grid> */}
-
-          {/* リプライ機能を実装した時、下記のmd={8}->{6}に修正する。justifyContet='flex-start'に変更 */}
-          <Grid item md={8} container justifyContent='flex-end' alignItems='center'>
+          </Grid>
+        ) : (
+          <Grid item md={6} container justifyContent='flex-end' alignItems='center' spacing={1}>
             {/* いいねアイコンといいね数 */}
-            <Grid item md={4}>
+            <Grid item md={2}>
               <FavoriteBorder fontSize='small' {...{ style }} />
             </Grid>
             <Grid item>
@@ -63,7 +77,7 @@ const RankingPost = (props: Props) => {
               </p>
             </Grid>
           </Grid>
-        </Grid>
+        )}
       </Grid>
     </div>
   )
