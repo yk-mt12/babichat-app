@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Avatar, Button, Grid } from '@mui/material'
 import GridItem from '../../ui/gridItem/GridItem'
 import './Profile.css'
 import Header from '../../ui/header/Header'
-import { useAuth } from '../../../firebase/authFunction'
 import {
   query,
-  orderBy,
   collection,
   onSnapshot,
-  limit,
   DocumentReference,
   doc,
-  getDocs,
   updateDoc,
+  getDoc,
 } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import Post from '../timeline/Post'
 import { getAuth, updateProfile } from 'firebase/auth'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { signInUserState } from '../../../store/auth'
+import { useAuth } from '../../../firebase/authFunction'
 
 type PostType = {
   author: DocumentReference
@@ -36,27 +34,27 @@ type PostType = {
 const profile = () => {
   const signInUser = useRecoilValue(signInUserState)
   const [posts, setPosts] = useState<any>([])
-  const [name, setName] = useState<string>(`${signInUser.displayName}`)
+  const [name, setName] = useState<string>(`${signInUser.displayName || 'ばびー'}`)
+  const [intro, setIntro] = useState<string>('')
   const [profile, setProfile] = useRecoilState(signInUserState)
 
   useEffect(() => {
-    const getDoc = async () => {
-      const docRef = collection(db, 'users', signInUser.uid, 'posts')
+    const getDocs = async () => {
+      const userRef = doc(db, 'users', signInUser.uid)
+      const docRef = collection(userRef, 'posts')
+      const user = await getDoc(userRef)
+      if (user.exists()) {
+        setIntro(user.data().intro)
+      }
       const q = query(docRef)
 
       const unsub = onSnapshot(q, (querySnapshot: { docs: any[] }) => {
         setPosts(querySnapshot.docs.map((doc) => doc.data()))
       })
       return () => unsub()
-
-      // const snapShot = await getDocs(q)
-
-      // snapShot.forEach((doc) => {
-      //   setPosts(doc.data())
-      // })
     }
 
-    getDoc()
+    getDocs()
   }, [])
 
   const update = async () => {
@@ -67,6 +65,7 @@ const profile = () => {
       // firestoreのデータ更新
       await updateDoc(userRef, {
         displayName: name,
+        intro: intro,
       })
 
       // Recoilstoreのデータ更新
@@ -79,8 +78,10 @@ const profile = () => {
       updateProfile(user, {
         displayName: name,
       })
+
       alert('プロフィールを変更しました')
       setName(name)
+      // setIntro(intro)
     } catch (error) {
       alert('プロフィールの変更に失敗しました')
       console.log(error)
@@ -127,7 +128,15 @@ const profile = () => {
             <Grid item xs={2.2}></Grid>
             <Grid item xs={8}>
               <GridItem label='自己紹介' colRatio={2} />
-              <GridItem label='初めまして！' colRatio={undefined} width={300} height={200} />
+              <form>
+                <input
+                  className='introduce'
+                  type='text'
+                  value={intro}
+                  placeholder='自己紹介を書こう！！'
+                  onChange={(e) => setIntro(e.target.value)}
+                ></input>
+              </form>
             </Grid>
           </Grid>
         </div>
@@ -150,12 +159,6 @@ const profile = () => {
             ))}
           </Grid>
         </Grid>
-
-        {/* <div className='post-timeline'>
-        {posts.map((post: any) => (
-            <p key={post.key}>{post.text}</p>
-        ))}
-        </div> */}
       </div>
     </>
   )
