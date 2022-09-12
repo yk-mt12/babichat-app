@@ -97,7 +97,7 @@ export const createUsersDB = async () => {
         await setDoc(doc(db, 'users', authUser.uid), {
           uid: authUser.uid,
           createTime: serverTimestamp(),
-          displayName: 'ログインユーザ',
+          displayName: 'ばびー',
           likePostCount: 0,
           photoURL: authUser.photoURL ? authUser.photoURL : '',
           updateTime: serverTimestamp(),
