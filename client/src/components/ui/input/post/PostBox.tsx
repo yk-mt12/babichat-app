@@ -1,11 +1,10 @@
-import { Avatar, Button, Grid } from '@mui/material'
+import { Button, Grid } from '@mui/material'
 import { useEffect, useState } from 'react'
-import { collection, setDoc, doc, serverTimestamp, addDoc, updateDoc } from 'firebase/firestore'
+import { collection, doc, serverTimestamp, addDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../../../firebase'
-import { useAuth } from '../../../../firebase/authFunction'
-import './PostBox.css'
 import { useRecoilValue } from 'recoil'
 import { signInUserState } from '../../../../store/auth'
+import './PostBox.css'
 
 const PostBox = () => {
   const [postMessage, setPostMessage] = useState<string>('')
@@ -15,7 +14,6 @@ const PostBox = () => {
   const signInUser = useRecoilValue(signInUserState)
   const uid = signInUser.uid
   const avater = signInUser.photoURL
-  // const username = signInUser.displayName
 
   const sendPost = async (e: any) => {
     e.preventDefault()

@@ -1,16 +1,14 @@
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import { Link } from 'react-router-dom'
+import { memo } from 'react'
+import { Avatar } from '@mui/material'
+import { useRecoilValue } from 'recoil'
+import { signInUserState } from '../../../store/auth'
 import HomeIcon from '@mui/icons-material/Home'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import ForumIcon from '@mui/icons-material/Forum'
 import QueryStatsIcon from '@mui/icons-material/QueryStats'
-import SettingsIcon from '@mui/icons-material/Settings'
-import { Link } from 'react-router-dom'
 import SidebarOption from './SidebarOption'
 import './Sidebar.css'
-import { Avatar } from '@mui/material'
-import { useRecoilValue } from 'recoil'
-import { signInUserState } from '../../../store/auth'
-import { memo } from 'react'
 
 // eslint-disable-next-line react/display-name
 const Sidebar = memo(() => {

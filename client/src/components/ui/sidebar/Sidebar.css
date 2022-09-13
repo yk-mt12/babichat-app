@@ -1,18 +1,18 @@
 .sidebar {
+  height: 88vh;
+  min-width: 200px;
+  margin-top: 16px;
+  padding: 20px 5px 40px;
   border-right: 1px solid var(--babichat-color);
   border-radius: 20px;
-  min-width: 200px;
-  padding: 20px 5px 40px;
   background-color: var(--babichat-color);
-  margin-top: 16px;
-  height: 88vh;
 }
 
 .logo {
   margin-top: 5px;
-  font-size: 28px;
   text-align: center;
   color: #fff;
+  font-size: 28px;
   font-family: 'Mochiy Pop P One', sans-serif;
 }
 

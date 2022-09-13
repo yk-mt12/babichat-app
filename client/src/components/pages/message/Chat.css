@@ -1,72 +1,71 @@
 .says {
-  text-align: left;
   max-width: 250px;
+  text-align: left;
 }
 
 .you {
-  padding-left: 20px;
-  padding-top: 20px;
-  text-align: left;
   margin-bottom: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  text-align: left;
 }
 
 .you .says {
   display: inline-block;
   position: relative;
+  max-width: 250px;
   margin: 0 10px 0px 30px;
   padding: 8px;
-  max-width: 250px;
   border-radius: 12px;
   background: var(--babichat-color);
-  font-size: 15px;
   color: var(--babichat-background);
+  font-size: 15px;
 }
 
 .you .says:after {
-  content: '';
   display: inline-block;
   position: absolute;
   top: 3px;
   left: -19px;
+  transform: rotate(35deg);
+  -webkit-transform: rotate(35deg);
   border: 8px solid transparent;
   border-right: 18px solid var(--babichat-color);
-  -webkit-transform: rotate(35deg);
-  transform: rotate(35deg);
+  content: '';
 }
 
 .me {
-  text-align: right;
-  padding-right: 20px;
-  padding-top: 25px;
   margin-bottom: 10px;
+  padding-top: 25px;
+  padding-right: 20px;
+  text-align: right;
 }
 
 .me .says {
   display: inline-block;
   position: relative;
+  max-width: 250px;
   margin: 0 10px 0 0;
   padding: 8px;
-  max-width: 250px;
   border-radius: 12px;
   background: #edf1ee;
   font-size: 15px;
 }
 
 .me .says:after {
-  content: '';
   position: absolute;
   top: 3px;
   right: -19px;
   border: 8px solid transparent;
   border-left: 18px solid #edf1ee;
-  -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
+  -webkit-transform: rotate(-35deg);
+  content: '';
 }
 
 .change {
-  font-size: 0.5px;
   color: var(--babichat-color);
-  /* margin-left: 35px; */
+  font-size: 0.5px;
 }
 
 .me .change {
@@ -74,20 +73,19 @@
 }
 
 .help {
-  width: 20%;
   display: flex;
-  /* justify-content: space-between; */
+  width: 20%;
   font-size: 10px;
 }
 
 .me .help {
-  text-align: right;
   margin-left: 87%;
+  text-align: right;
 }
 
 .me .sendTime {
-  margin-top: 0;
   height: 15px;
+  margin-top: 0;
   margin-left: 5px;
   padding-left: 5px;
   border-left: 1px solid black;
@@ -98,8 +96,8 @@
 }
 
 .you .sendTime {
-  margin-top: 0;
   height: 15px;
+  margin-top: 0;
   margin-right: 5px;
   padding-right: 5px;
   border-right: 1px solid black;

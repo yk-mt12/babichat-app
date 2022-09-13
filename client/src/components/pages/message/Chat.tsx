@@ -1,5 +1,5 @@
 import { Avatar } from '@mui/material'
-import React, { memo, useEffect, useState } from 'react'
+import { memo, useState } from 'react'
 import { useAuth } from '../../../firebase/authFunction'
 import { changeBabi } from '../../../logic/babigo'
 import formatDate from '../../../logic/formatDate'
@@ -16,8 +16,6 @@ type chatProps = {
 // eslint-disable-next-line react/display-name
 const Chat = memo((props: chatProps) => {
   const { msg, createTime, sendid, photoURL } = props
-  const now = new Date()
-  // const [send, setSend] = useState<string>(formatDate(now, 'HH:mm'))
   const signInUser = useAuth()
   const uid = signInUser.uid
   const babi = changeBabi(msg)
@@ -34,7 +32,6 @@ const Chat = memo((props: chatProps) => {
       ) : (
         <p></p>
       )}
-      <div className='chat'></div>
       <p className='says'>
         {isClicked ? <p {...{ style }}>{msg} </p> : <p {...{ style }}>{babi}</p>}
       </p>

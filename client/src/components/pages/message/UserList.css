@@ -1,11 +1,7 @@
-.userlist-screen {
-  margin-left: 15px;
-}
-
 .userlist {
   position: relative;
   height: 84vh;
-  overflow: auto;
+  overflow: scroll;
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
 }
@@ -16,16 +12,16 @@
 
 .userlist-title {
   position: sticky;
-  top:3.5vh;
+  top: 3.5vh;
   z-index: 2;
   height: 25px;
-  line-height: 25px;
-  color: var(--babichat-color);
-  background-color: white;
-  font-size: 25px;
-  text-align: center;
-  font-weight: bold;
   padding-bottom: 25px;
   border-bottom: 2px solid var(--babichat-color);
+  background-color: white;
+  color: var(--babichat-color);
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 25px;
   font-family: 'Mochiy Pop P One', sans-serif;
+  text-align: center;
 }

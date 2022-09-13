@@ -1,9 +1,10 @@
-import { addDoc, collection, doc, serverTimestamp, Timestamp, updateDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, Timestamp, updateDoc } from 'firebase/firestore'
 import { memo, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
-import SendIcon from '@mui/icons-material/Send'
 import { useParams } from 'react-router-dom'
+import SendIcon from '@mui/icons-material/Send'
+import './MessageBox.css'
 
 type ChatLog = {
   sendid: string
@@ -57,32 +58,16 @@ const MessageBox = memo(() => {
   }
 
   return (
-    <>
-      <form className='chatform' onSubmit={sendMsg}>
-        <input
-          style={{
-            width: '78%',
-            fontSize: '15px',
-            fontWeight: '550',
-            marginBottom: '-3px',
-          }}
-          placeholder='新しいメッセージの作成'
-          type='text'
-          value={msg}
-          onChange={(e) => setMsg(e.target.value)}
-          className='input-box'
-        />
-        <SendIcon
-          style={{
-            marginLeft: '20px',
-            marginBottom: '-5px',
-          }}
-          className='postBox-postButton'
-          type='submit'
-          onClick={sendMsg}
-        />
-      </form>
-    </>
+    <form onSubmit={sendMsg}>
+      <input
+        placeholder='新しいメッセージの作成'
+        type='text'
+        value={msg}
+        onChange={(e) => setMsg(e.target.value)}
+        className='input-box'
+      />
+      <SendIcon className='postBox-postButton' type='submit' onClick={sendMsg} />
+    </form>
   )
 })
 

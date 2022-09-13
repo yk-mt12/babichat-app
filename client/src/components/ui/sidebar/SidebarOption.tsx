@@ -39,14 +39,7 @@ const SidebarOption = memo((props: SidebarOptionProps) => {
               color: '#fff',
             }}
           >
-            <h2
-              style={{
-                fontWeight: 400,
-                fontSize: 22,
-              }}
-            >
-              {text}
-            </h2>
+            <h2>{text}</h2>
           </Grid>
         </Grid>
       </Link>

@@ -29,17 +29,17 @@
 
 .hover-text:hover {
   color: var(--babichat-background);
-  transition: opacity 0.15s ease-out;
   cursor: pointer;
+  transition: opacity 0.15s ease-out;
 }
 
 /* IsLoadingGrid.tsx */
 
 .block-label {
-  margin-top: 50px;
-  text-align: center;
   justify-content: center;
   justify-items: center;
+  margin-top: 50px;
+  text-align: center;
   color: var(--babichat-color);
   font-weight: bold;
   font-size: 20px;

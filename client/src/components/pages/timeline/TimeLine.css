@@ -1,15 +1,15 @@
 .timeline {
-  margin-left: 15px;
   margin-right: 15px;
+  margin-left: 15px;
 }
 
 .timeline--block {
+  height: 75.4vh;
+  overflow: scroll;
   margin-top: 10px;
   padding: 8px 20px;
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
-  overflow: scroll;
-  height: 75.4vh;
 }
 
 .timeline--block::-webkit-scrollbar {

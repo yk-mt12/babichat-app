@@ -1,4 +1,4 @@
-import { collection, doc, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { memo, useEffect, useState } from 'react'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
@@ -6,10 +6,10 @@ import { Grid } from '@mui/material'
 import { useParams } from 'react-router-dom'
 import Chat from './Chat'
 import MessageBox from './MessageBox'
-import './ChatRoom.css'
 import Header from '../../ui/header/Header'
 import UserList from './UserList'
 import YourName from './YourName'
+import './ChatRoom.css'
 
 type chatProps = {
   sendid: string
@@ -51,18 +51,16 @@ const ChatRoom = memo(() => {
             <YourName />
           </div>
           <div className='chat-screen'>
-            <div className='message'>
-              {chats.map((chat: chatProps) => (
-                <Chat
-                  key={chat.chatId}
-                  name={chat.name}
-                  msg={chat.msg}
-                  createTime={chat.createTime}
-                  sendid={chat.sendid}
-                  photoURL={chat.photoURL}
-                />
-              ))}
-            </div>
+            {chats.map((chat: chatProps) => (
+              <Chat
+                key={chat.chatId}
+                name={chat.name}
+                msg={chat.msg}
+                createTime={chat.createTime}
+                sendid={chat.sendid}
+                photoURL={chat.photoURL}
+              />
+            ))}
           </div>
           <div className='input-form'>
             <MessageBox />

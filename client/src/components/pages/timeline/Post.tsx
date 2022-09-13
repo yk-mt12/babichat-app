@@ -5,12 +5,12 @@ import { changeBabi } from '../../../logic/babigo'
 import { readAloud } from '../../../logic/readText'
 import { doc, DocumentReference, getDoc } from 'firebase/firestore'
 import { memo, useEffect, useState } from 'react'
-import useBatchPostLiked from '../../../hooks/useBatchPostLiked'
-import Button from '@mui/material/Button'
-import './Post.css'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../firebase/authFunction'
+import useBatchPostLiked from '../../../hooks/useBatchPostLiked'
+import Button from '@mui/material/Button'
 import daysAgo from '../../../logic/daysAgo'
+import './Post.css'
 
 type PostProps = {
   author: DocumentReference
@@ -27,16 +27,16 @@ type PostProps = {
 
 // eslint-disable-next-line react/display-name
 const Post = memo((props: PostProps) => {
-  const { setPostId, getAnotherPostData, checkPostIsLiked } = useBatchPostLiked()
-  const location = useLocation()
   const { avater, displayName, text, createTime, likeCount, postId } = props
-  const babi = changeBabi(text)
-  const signInUser = useAuth()
+  const { setPostId, getAnotherPostData, checkPostIsLiked } = useBatchPostLiked()
   const [isClicked, setIsClicked] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
   const [sendTime, setSendTime] = useState('')
-  const history = useNavigate()
+  const signInUser = useAuth()
+  const location = useLocation()
+  const babi = changeBabi(text)
   const style = { marginTop: 8 }
+  const history = useNavigate()
 
   /**
    * 音声読み上げ

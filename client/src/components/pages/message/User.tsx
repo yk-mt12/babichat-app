@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { useAuth } from '../../../firebase/authFunction'
-import './User.css'
 import { useNavigate } from 'react-router-dom'
 import { Avatar } from '@mui/material'
 import { memo } from 'react'
+import './User.css'
 
 type Props = {
   userlist: any

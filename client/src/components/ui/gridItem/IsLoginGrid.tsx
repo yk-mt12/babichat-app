@@ -1,11 +1,10 @@
 import { Grid } from '@mui/material'
-import { Link } from 'react-router-dom'
 import './GridItem.css'
 
 type Props = {
   colRatio: any
-  width?: string | Number // gridカードの横幅
-  height?: string | Number // gridカードの縦
+  width?: string | number // gridカードの横幅
+  height?: string | number // gridカードの縦
   label?: string
 }
 const IsLoginGrid = (props: Props) => {

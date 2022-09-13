@@ -19,18 +19,7 @@ type Props = {
 }
 
 const RankingPost = (props: Props) => {
-  const {
-    avater,
-    displayName,
-    text,
-    image,
-    createTime,
-    updateTime,
-    likeCount,
-    postId,
-    rank,
-    isLike,
-  } = props
+  const { avater, text, likeCount, rank, isLike } = props
   const babi = changeBabi(text ? text : 'null')
 
   const style = { marginTop: 20 }

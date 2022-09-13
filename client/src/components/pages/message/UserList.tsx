@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material'
-import { collection, getDoc, getDocs, onSnapshot, query } from 'firebase/firestore'
+import { collection, onSnapshot, query } from 'firebase/firestore'
 import { memo, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
@@ -34,9 +34,7 @@ const UserList = memo(() => {
                 <p>ゆーざーりすと</p>
               </div>
             )}
-            <div>
-              <User userlist={userlist} />
-            </div>
+            <User userlist={userlist} />
           </Grid>
         </>
       ) : (

@@ -6,8 +6,8 @@ type Props = {
   child?: JSX.Element // コンポーネント
   colRatio: any // Gridの比率
   navigate?: string // <Link/>の遷移先
-  width?: string | Number // gridカードの横幅
-  height?: string | Number // gridカードの縦
+  width?: string | number // gridカードの横幅
+  height?: string | number // gridカードの縦
   label?: string // グリッド内に表示するテキスト
   cName?: string // className
   isScroll?: boolean // スクロール可能かどうか

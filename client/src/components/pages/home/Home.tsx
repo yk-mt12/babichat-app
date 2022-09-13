@@ -1,16 +1,16 @@
 import { Grid } from '@mui/material'
-import { useAuth } from '../../../firebase/authFunction'
+import { useRecoilValue } from 'recoil'
+import { signInUserState } from '../../../store/auth'
 import GridItem from '../../ui/gridItem/GridItem'
 import IsLoginGrid from '../../ui/gridItem/IsLoginGrid'
 import Header from '../../ui/header/Header'
 import UserList from '../message/UserList'
 import Ranking from '../ranking/ranking'
-import Setting from '../setting/Setting'
 import TimeLine from '../timeline/TimeLine'
 import './Home.css'
 
 const Home = () => {
-  const signInUser = useAuth()
+  const signInUser = useRecoilValue(signInUserState)
 
   return (
     <>

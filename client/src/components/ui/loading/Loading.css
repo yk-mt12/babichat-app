@@ -1,9 +1,9 @@
 .loading-screen {
-  text-align: center;
-  justify-content: center;
   display: flex;
-  justify-items: center;
   margin-top: 100px;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
 }
 
 .loading-text {

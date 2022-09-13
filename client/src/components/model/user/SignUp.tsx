@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
-import 'firebaseui/dist/firebaseui.css'
 import { signUp, useAuth } from '../../../firebase/authFunction'
 import { Navigate, Link } from 'react-router-dom'
 import Loading from '../../ui/loading/Loading'
-
+import 'firebaseui/dist/firebaseui.css'
 import './style.css'
 
 // TODO:メールログイン（サインアップ）の場合、うまくいかない
 const SignUp = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [isLoading, setIsLoading] = useState<Boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const signInUser = useAuth()
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {

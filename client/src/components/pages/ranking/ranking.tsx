@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material'
+import { Button } from '@mui/material'
 import {
   query,
   orderBy,
@@ -10,10 +10,9 @@ import {
 import { memo, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { db } from '../../../firebase'
-import GridItem from '../../ui/gridItem/GridItem'
 import Header from '../../ui/header/Header'
-import './Ranking.css'
 import RankingPost from './RankingPost'
+import './Ranking.css'
 
 type PostType = {
   author: DocumentReference
@@ -44,7 +43,7 @@ const Ranking = memo(() => {
 
   return (
     <div className='ranking'>
-      <Header title='Ranking' />
+      <Header title='らんきんぐ' />
       {location.pathname !== '/home' && (
         <div className='toggle-button'>
           <Button

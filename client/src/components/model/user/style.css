@@ -1,7 +1,7 @@
 .login-page {
   margin-top: 200px;
-  text-align: center;
   padding-right: 200px;
+  text-align: center;
 }
 
 .login-form {
@@ -21,8 +21,8 @@
 
 .signIn-input::placeholder {
   color: var(--babichat-color);
-  font-size: 1.6em;
   font-style: italic;
+  font-size: 1.6em;
   text-align: center;
 }
 
@@ -30,14 +30,13 @@
   width: 64%;
   height: 55px;
   margin-bottom: 10px;
-  background-color: var(--babichat-color);
-  /* border-color: var(--babichat-color); */
-  color: #ffffff;
   padding: 2px;
   border: 2px solid var(--babichat-color);
   border-radius: 4px;
-  font-size: 16px;
+  background-color: var(--babichat-color);
+  color: #ffffff;
   font-style: italic;
+  font-size: 16px;
 }
 
 .link-block {

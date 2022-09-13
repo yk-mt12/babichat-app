@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Avatar, Button, Grid } from '@mui/material'
-import GridItem from '../../ui/gridItem/GridItem'
-import './Profile.css'
-import Header from '../../ui/header/Header'
 import {
   query,
   collection,
@@ -13,11 +10,13 @@ import {
   getDoc,
 } from 'firebase/firestore'
 import { db } from '../../../firebase'
-import Post from '../timeline/Post'
 import { getAuth, updateProfile } from 'firebase/auth'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { signInUserState } from '../../../store/auth'
-import { useAuth } from '../../../firebase/authFunction'
+import GridItem from '../../ui/gridItem/GridItem'
+import Header from '../../ui/header/Header'
+import Post from '../timeline/Post'
+import './Profile.css'
 
 type PostType = {
   author: DocumentReference
@@ -36,7 +35,7 @@ const profile = () => {
   const [posts, setPosts] = useState<any>([])
   const [name, setName] = useState<string>(`${signInUser.displayName || 'ばびー'}`)
   const [intro, setIntro] = useState<string>('')
-  const [profile, setProfile] = useRecoilState(signInUserState)
+  const [, setProfile] = useRecoilState(signInUserState)
 
   useEffect(() => {
     const getDocs = async () => {
@@ -118,7 +117,6 @@ const profile = () => {
                   onChange={(e) => setName(e.target.value)}
                 ></input>
               </form>
-              {/* <GridItem label='自己紹介' colRatio={2}/> */}
             </Grid>
             <Button variant='contained' style={{ borderRadius: 50 }} onClick={() => update()}>
               更新

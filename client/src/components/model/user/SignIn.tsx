@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { auth, provider } from '../../../firebase'
-import 'firebaseui/dist/firebaseui.css'
 import { signInWithPopup } from 'firebase/auth'
 import { signIn, useAuth } from '../../../firebase/authFunction'
 import { Link, Navigate } from 'react-router-dom'
+import 'firebaseui/dist/firebaseui.css'
 import './style.css'
 
 const SignIn = () => {
