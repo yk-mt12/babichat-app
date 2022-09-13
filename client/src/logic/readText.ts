@@ -23,6 +23,3 @@ export const readAloud = (text: string) => {
     window.speechSynthesis.speak(uttr)
   }
 }
-
-// let text = '吾輩は猫である'
-// readAloud(text)
