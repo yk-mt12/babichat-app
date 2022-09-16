@@ -1,6 +1,6 @@
 .userlist {
   position: relative;
-  height: 84vh;
+  height: 81.5vh;
   overflow: scroll;
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
