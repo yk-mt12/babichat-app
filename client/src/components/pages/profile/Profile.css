@@ -27,7 +27,7 @@
 }
 
 .post-timeline {
-  height: 50vh;
+  height: 51vh;
   overflow: scroll;
   padding: 8px 20px;
   border: 2px solid var(--babichat-color);
