@@ -4,7 +4,7 @@
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
   overflow: scroll;
-  height: 72vh;
+  height: 75vh;
 }
 
 .timeline--block::-webkit-scrollbar {
