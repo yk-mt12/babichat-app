@@ -41,7 +41,7 @@ const Home = () => {
               colRatio={4.8}
               navigate='chatroom'
               width={300}
-              height='40vh'
+              height='40.5vh'
               isScroll={true}
             />
           ) : (
@@ -53,7 +53,7 @@ const Home = () => {
             />
           )}
           {/* <GridItem child={<Setting />} colRatio={7} navigate='setting' width={300} height='40vh' /> */}
-          <IsLoginGrid colRatio={7} width={300} height='40vh' label='Comming soon...' />
+          <IsLoginGrid colRatio={7} width={300} height='40.5vh' label='Comming soon...' />
         </Grid>
       </div>
     </>
