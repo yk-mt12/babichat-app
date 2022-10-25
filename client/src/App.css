@@ -3,6 +3,21 @@ body {
   --babichat-background: #e6ecfe;
   margin: 0;
   padding: 0;
+  background: linear-gradient(45deg, #84cef0, #f19ed7, #84eca3); /*グラデーションを定義*/
+  background-size: 200% 200%; /*サイズを大きくひきのばす*/
+  animation: bggradient 20s ease infinite;
+}
+
+@keyframes bggradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 a {

@@ -4,6 +4,7 @@
   border: 2px solid var(--babichat-color);
   border-bottom: transparent;
   font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.596);
 }
 
 .chat-screen::-webkit-scrollbar {
@@ -16,7 +17,7 @@
   text-align: center;
   border: 2px solid var(--babichat-color);
   border-radius: 0 0 16px 16px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.596);
 }
 
 .anotherName {
@@ -27,4 +28,5 @@
   color: var(--babichat-color);
   font-weight: bold;
   font-size: 32px;
+  background-color: rgba(255, 255, 255, 0.596);
 }

@@ -69,8 +69,8 @@ const App = memo(() => {
               <Router />
             </Grid>
           </Grid>
-          {/* <ParticlesBg type='Polygon' bg={true} />
-          <ParticlesBg type='Polygon' bg={true} /> */}
+          {/* <ParticlesBg color="#fffff" type='Polygon' bg={true} /> */}
+          {/* <ParticlesBg type='Polygon' bg={true} /> */}
         </>
       )}
       {/* プロパティ候補：ball->Color2, オブジェクト->Polygon */}

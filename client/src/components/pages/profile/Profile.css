@@ -8,6 +8,7 @@
   padding: 20px 8px 8px 8px;
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.596);
 }
 
 .name {
@@ -32,6 +33,7 @@
   padding: 8px 20px;
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.596);
 }
 
 .post-timeline::-webkit-scrollbar {

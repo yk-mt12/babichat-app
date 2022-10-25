@@ -18,6 +18,7 @@
   overflow: scroll;
   border: 2px solid var(--babichat-color);
   border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.596);
 }
 
 .ranking--block::-webkit-scrollbar {
